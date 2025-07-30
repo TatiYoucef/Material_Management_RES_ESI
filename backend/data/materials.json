@@ -1,0 +1,736 @@
+[
+  {
+    "id": "M001",
+    "type": "Laptop",
+    "name": "Dell XPS 15, i7, 16GB RAM",
+    "details": "High-performance laptop for demanding tasks.",
+    "isAvailable": true,
+    "currentLocation": "DGA",
+    "history": [
+      {
+        "timestamp": "2025-07-28T15:29:25.926Z",
+        "action": "reserved",
+        "changes": {
+          "isAvailable": {
+            "old": true,
+            "new": false
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T15:29:35.736Z",
+        "action": "unreserved",
+        "changes": {
+          "isAvailable": {
+            "old": false,
+            "new": true
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T16:03:24.667Z",
+        "action": "reserved",
+        "changes": {
+          "isAvailable": {
+            "old": true,
+            "new": false
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T16:03:30.256Z",
+        "action": "unreserved",
+        "changes": {
+          "isAvailable": {
+            "old": false,
+            "new": true
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "M002",
+    "type": "Laptop",
+    "name": "HP M201 8GB RAM",
+    "details": "Standard laptop for general use.",
+    "isAvailable": false,
+    "currentLocation": "SR",
+    "history": [
+      {
+        "timestamp": "2025-07-28T15:45:08.123Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "R002",
+            "new": "R001"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T17:14:43.004Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "DGA",
+            "new": "DC"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T17:14:45.201Z",
+        "action": "reserved",
+        "changes": {
+          "isAvailable": {
+            "old": true,
+            "new": false
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-29T18:33:26.158Z",
+        "action": "unreserved",
+        "changes": {
+          "isAvailable": {
+            "old": false,
+            "new": true
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-29T21:04:29.188Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "DC",
+            "new": "SR"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-29T21:04:33.603Z",
+        "action": "reserved",
+        "changes": {
+          "isAvailable": {
+            "old": true,
+            "new": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "M003",
+    "type": "Laptop",
+    "name": "MacBook Air M1",
+    "details": "Lightweight and powerful for everyday use.",
+    "isAvailable": false,
+    "currentLocation": "DC",
+    "history": [
+      {
+        "timestamp": "2025-07-28T15:59:32.603Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "R001",
+            "new": "R002"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "M004",
+    "type": "Projector",
+    "name": "Epson PowerLite",
+    "details": "Standard conference room projector.",
+    "isAvailable": true,
+    "currentLocation": "S31",
+    "history": [
+      {
+        "timestamp": "2025-07-29T11:52:29.155Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "SR",
+            "new": "S30"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-29T11:56:27.560Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "S30",
+            "new": "S31"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "M005",
+    "type": "Projector",
+    "name": "BenQ 4K UHD",
+    "details": "High-resolution projector for presentations.",
+    "isAvailable": true,
+    "currentLocation": "DC",
+    "history": [
+      {
+        "timestamp": "2025-07-28T18:46:01.902Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "R004",
+            "new": "DC"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "M006",
+    "type": "Monitor",
+    "name": "LG 27-inch 4K",
+    "details": "High-resolution monitor for design work.",
+    "isAvailable": true,
+    "currentLocation": "DC",
+    "history": []
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "2 ports Fe, 1 port Ge, 16 GB RAM",
+    "isAvailable": false,
+    "currentLocation": "SR",
+    "id": "M008",
+    "history": [
+      {
+        "timestamp": "2025-07-28T16:41:30.255Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-28T17:06:48.254Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "DGA",
+            "new": "SR"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T17:06:53.585Z",
+        "action": "reserved",
+        "changes": {
+          "isAvailable": {
+            "old": true,
+            "new": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "2 ports Fe, 1 port Ge, 16 GB RAM",
+    "isAvailable": false,
+    "currentLocation": "SR",
+    "id": "M009",
+    "history": [
+      {
+        "timestamp": "2025-07-28T16:41:39.306Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-28T16:45:07.825Z",
+        "action": "updated",
+        "changes": {}
+      },
+      {
+        "timestamp": "2025-07-28T17:07:12.855Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "DGA",
+            "new": "SR"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T17:07:15.010Z",
+        "action": "reserved",
+        "changes": {
+          "isAvailable": {
+            "old": true,
+            "new": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 3560 series",
+    "details": "24 ports FE , 2 ports GE , 16 GB RAM",
+    "isAvailable": true,
+    "currentLocation": "DC",
+    "id": "M010",
+    "history": [
+      {
+        "timestamp": "2025-07-28T16:43:08.028Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-28T16:43:23.612Z",
+        "action": "updated",
+        "changes": {
+          "currentLocation": {
+            "old": "R001",
+            "new": "R002"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 3560 series",
+    "details": "24 ports Fe, 2 ports Ge, 16 GB RAM",
+    "isAvailable": true,
+    "currentLocation": "DC",
+    "id": "M011",
+    "history": [
+      {
+        "timestamp": "2025-07-28T16:44:29.621Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "2 ports Fe, 1 port Ge, 16 GB RAM",
+    "isAvailable": false,
+    "currentLocation": "DC",
+    "id": "M012",
+    "history": [
+      {
+        "timestamp": "2025-07-28T17:03:17.806Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-28T17:07:50.956Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "DGA",
+            "new": "SR"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T17:07:53.641Z",
+        "action": "reserved",
+        "changes": {
+          "isAvailable": {
+            "old": true,
+            "new": false
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T17:08:01.929Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "SR",
+            "new": "DC"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "2 ports Fe, 1 port Ge, 16 GB RAM",
+    "isAvailable": false,
+    "currentLocation": "DGA",
+    "id": "M013",
+    "history": [
+      {
+        "timestamp": "2025-07-28T17:03:17.813Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-28T17:08:11.491Z",
+        "action": "reserved",
+        "changes": {
+          "isAvailable": {
+            "old": true,
+            "new": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "2 ports Fe, 1 port Ge, 16 GB RAM",
+    "isAvailable": true,
+    "currentLocation": "DC",
+    "id": "M014",
+    "history": [
+      {
+        "timestamp": "2025-07-28T17:03:17.822Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-28T17:08:23.545Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "DGA",
+            "new": "DC"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-29T18:32:34.737Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "DC",
+            "new": "SR"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-29T18:32:41.409Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "SR",
+            "new": "DC"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-29T18:32:46.058Z",
+        "action": "reserved",
+        "changes": {
+          "isAvailable": {
+            "old": true,
+            "new": false
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-29T18:32:51.261Z",
+        "action": "unreserved",
+        "changes": {
+          "isAvailable": {
+            "old": false,
+            "new": true
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "Modem",
+    "name": "Cisco 4G",
+    "details": "4G, 50MB/S, modem portable",
+    "isAvailable": false,
+    "currentLocation": "DC",
+    "id": "M007",
+    "history": [
+      {
+        "timestamp": "2025-07-28T17:37:55.923Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-28T17:38:50.506Z",
+        "action": "reserved",
+        "changes": {
+          "isAvailable": {
+            "old": true,
+            "new": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "Modem",
+    "name": "Cisco 3G",
+    "details": "4G, 50MB/S, modem portable",
+    "isAvailable": false,
+    "currentLocation": "DC",
+    "id": "M015",
+    "history": [
+      {
+        "timestamp": "2025-07-28T17:37:55.927Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-28T17:38:56.124Z",
+        "action": "reserved",
+        "changes": {
+          "isAvailable": {
+            "old": true,
+            "new": false
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-29T18:34:36.024Z",
+        "action": "updated",
+        "changes": {
+          "name": {
+            "old": "Cisco 4G",
+            "new": "Cisco 3G"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "Modem",
+    "name": "Cisco 4G",
+    "details": "4G, 50MB/S, modem portable",
+    "isAvailable": true,
+    "currentLocation": "DC",
+    "id": "M016",
+    "history": [
+      {
+        "timestamp": "2025-07-28T17:37:55.932Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M017",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.504Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M018",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.508Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "DGA",
+    "id": "M019",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.514Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-29T21:10:09.902Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "R001",
+            "new": "DGA"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M020",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.519Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M021",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.524Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M022",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.530Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M023",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.535Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M024",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.540Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M025",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.546Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M026",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.552Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M027",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.557Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M028",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.562Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M029",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.570Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M030",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.579Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM",
+    "isAvailable": true,
+    "currentLocation": "R001",
+    "id": "M031",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:31.586Z",
+        "action": "created"
+      }
+    ]
+  }
+]

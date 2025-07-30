@@ -1,0 +1,180 @@
+[
+  {
+    "id": "DGA",
+    "name": "DGA",
+    "capacity": 10,
+    "materials": [
+      {
+        "materialId": "M001",
+        "quantity": 3
+      },
+      {
+        "materialId": "M002",
+        "quantity": 1
+      }
+    ],
+    "history": [
+      {
+        "timestamp": "2025-07-28T16:53:41.485Z",
+        "action": "updated",
+        "changes": {
+          "name": {
+            "old": "Conference Room A",
+            "new": "DGA"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T17:04:02.550Z",
+        "action": "updated",
+        "changes": {}
+      }
+    ]
+  },
+  {
+    "id": "DC",
+    "name": "Data Center",
+    "capacity": 40,
+    "materials": [
+      {
+        "materialId": "M001",
+        "quantity": 2
+      },
+      {
+        "materialId": "M003",
+        "quantity": 5
+      }
+    ],
+    "history": [
+      {
+        "timestamp": "2025-07-28T17:04:23.193Z",
+        "action": "id_updated",
+        "changes": {
+          "id": {
+            "old": "R002",
+            "new": "DC"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T17:04:23.208Z",
+        "action": "updated",
+        "changes": {
+          "name": {
+            "old": "Meeting Room B",
+            "new": "Data Center"
+          },
+          "capacity": {
+            "old": 6,
+            "new": 40
+          }
+        }
+      }
+    ]
+  },
+  {
+    "id": "SR",
+    "name": "Server Room",
+    "capacity": 50,
+    "materials": [
+      {
+        "materialId": "M002",
+        "quantity": 2
+      },
+      {
+        "materialId": "M003",
+        "quantity": 5
+      }
+    ],
+    "history": [
+      {
+        "timestamp": "2025-07-28T17:04:51.551Z",
+        "action": "id_updated",
+        "changes": {
+          "id": {
+            "old": "R003",
+            "new": "SR"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-28T17:04:51.565Z",
+        "action": "updated",
+        "changes": {
+          "name": {
+            "old": "Training Room C",
+            "new": "Server Room"
+          },
+          "capacity": {
+            "old": 20,
+            "new": 50
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "DGB",
+    "capacity": 10,
+    "id": "DGB",
+    "history": [
+      {
+        "timestamp": "2025-07-28T17:05:12.678Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-28T17:05:19.643Z",
+        "action": "updated",
+        "changes": {}
+      }
+    ]
+  },
+  {
+    "name": "Salle n°31",
+    "capacity": 30,
+    "id": "S31",
+    "history": [
+      {
+        "timestamp": "2025-07-28T19:53:05.081Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-28T19:53:15.345Z",
+        "action": "updated",
+        "changes": {}
+      },
+      {
+        "timestamp": "2025-07-29T11:57:13.294Z",
+        "action": "updated",
+        "changes": {}
+      }
+    ]
+  },
+  {
+    "name": "Salle n°30",
+    "capacity": 10,
+    "id": "S30",
+    "history": [
+      {
+        "timestamp": "2025-07-29T11:56:42.126Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-29T11:56:58.535Z",
+        "action": "updated",
+        "changes": {}
+      }
+    ]
+  },
+  {
+    "name": "Magazin",
+    "capacity": 50,
+    "id": "R001",
+    "history": [
+      {
+        "timestamp": "2025-07-29T21:09:03.294Z",
+        "action": "created"
+      }
+    ]
+  }
+]
