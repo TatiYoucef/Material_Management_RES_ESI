@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 
 const usersPath = path.join(__dirname, '../data/users.json');
-const SECRET_KEY = 'your_secret_key'; // In a real app, use an environment variable
+const SECRET_KEY = process.env.SECRET_KEY || 'your_secret_key';
 
 router.post('/login', (req, res) => {
   const { username, password } = req.body;

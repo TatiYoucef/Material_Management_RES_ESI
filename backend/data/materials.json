@@ -1,734 +1,1166 @@
 [
   {
-    "id": "M001",
-    "type": "Laptop",
-    "name": "Dell XPS 15, i7, 16GB RAM",
-    "details": "High-performance laptop for demanding tasks.",
-    "isAvailable": true,
-    "currentLocation": "DGA",
-    "history": [
-      {
-        "timestamp": "2025-07-28T15:29:25.926Z",
-        "action": "reserved",
-        "changes": {
-          "isAvailable": {
-            "old": true,
-            "new": false
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-28T15:29:35.736Z",
-        "action": "unreserved",
-        "changes": {
-          "isAvailable": {
-            "old": false,
-            "new": true
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-28T16:03:24.667Z",
-        "action": "reserved",
-        "changes": {
-          "isAvailable": {
-            "old": true,
-            "new": false
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-28T16:03:30.256Z",
-        "action": "unreserved",
-        "changes": {
-          "isAvailable": {
-            "old": false,
-            "new": true
-          }
-        }
-      }
-    ]
-  },
-  {
-    "id": "M002",
-    "type": "Laptop",
-    "name": "HP M201 8GB RAM",
-    "details": "Standard laptop for general use.",
-    "isAvailable": false,
-    "currentLocation": "SR",
-    "history": [
-      {
-        "timestamp": "2025-07-28T15:45:08.123Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "R002",
-            "new": "R001"
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-28T17:14:43.004Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "DGA",
-            "new": "DC"
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-28T17:14:45.201Z",
-        "action": "reserved",
-        "changes": {
-          "isAvailable": {
-            "old": true,
-            "new": false
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-29T18:33:26.158Z",
-        "action": "unreserved",
-        "changes": {
-          "isAvailable": {
-            "old": false,
-            "new": true
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-29T21:04:29.188Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "DC",
-            "new": "SR"
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-29T21:04:33.603Z",
-        "action": "reserved",
-        "changes": {
-          "isAvailable": {
-            "old": true,
-            "new": false
-          }
-        }
-      }
-    ]
-  },
-  {
-    "id": "M003",
-    "type": "Laptop",
-    "name": "MacBook Air M1",
-    "details": "Lightweight and powerful for everyday use.",
-    "isAvailable": false,
-    "currentLocation": "DC",
-    "history": [
-      {
-        "timestamp": "2025-07-28T15:59:32.603Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "R001",
-            "new": "R002"
-          }
-        }
-      }
-    ]
-  },
-  {
-    "id": "M004",
-    "type": "Projector",
-    "name": "Epson PowerLite",
-    "details": "Standard conference room projector.",
-    "isAvailable": true,
-    "currentLocation": "S31",
-    "history": [
-      {
-        "timestamp": "2025-07-29T11:52:29.155Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "SR",
-            "new": "S30"
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-29T11:56:27.560Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "S30",
-            "new": "S31"
-          }
-        }
-      }
-    ]
-  },
-  {
-    "id": "M005",
-    "type": "Projector",
-    "name": "BenQ 4K UHD",
-    "details": "High-resolution projector for presentations.",
-    "isAvailable": true,
-    "currentLocation": "DC",
-    "history": [
-      {
-        "timestamp": "2025-07-28T18:46:01.902Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "R004",
-            "new": "DC"
-          }
-        }
-      }
-    ]
-  },
-  {
-    "id": "M006",
-    "type": "Monitor",
-    "name": "LG 27-inch 4K",
-    "details": "High-resolution monitor for design work.",
-    "isAvailable": true,
-    "currentLocation": "DC",
-    "history": []
-  },
-  {
     "type": "Router",
     "name": "Cisco 2800 Series",
-    "details": "2 ports Fe, 1 port Ge, 16 GB RAM",
-    "isAvailable": false,
-    "currentLocation": "SR",
-    "id": "M008",
+    "details": "8GB RAM, 16 FE, 2GE",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "0174",
     "history": [
       {
-        "timestamp": "2025-07-28T16:41:30.255Z",
+        "timestamp": "2025-07-30T19:26:19.969Z",
         "action": "created"
       },
       {
-        "timestamp": "2025-07-28T17:06:48.254Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "DGA",
-            "new": "SR"
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-28T17:06:53.585Z",
-        "action": "reserved",
-        "changes": {
-          "isAvailable": {
-            "old": true,
-            "new": false
-          }
-        }
-      }
-    ]
-  },
-  {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "2 ports Fe, 1 port Ge, 16 GB RAM",
-    "isAvailable": false,
-    "currentLocation": "SR",
-    "id": "M009",
-    "history": [
-      {
-        "timestamp": "2025-07-28T16:41:39.306Z",
-        "action": "created"
-      },
-      {
-        "timestamp": "2025-07-28T16:45:07.825Z",
+        "timestamp": "2025-07-31T20:17:40.128Z",
         "action": "updated",
         "changes": {}
       },
       {
-        "timestamp": "2025-07-28T17:07:12.855Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "DGA",
-            "new": "SR"
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-28T17:07:15.010Z",
-        "action": "reserved",
-        "changes": {
-          "isAvailable": {
-            "old": true,
-            "new": false
-          }
-        }
+        "timestamp": "2025-07-31T20:51:59.345Z",
+        "action": "updated",
+        "changes": {}
       }
     ]
   },
   {
-    "type": "Switch",
-    "name": "Catalyst 3560 series",
-    "details": "24 ports FE , 2 ports GE , 16 GB RAM",
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM, 16 FE, 2GE",
     "isAvailable": true,
-    "currentLocation": "DC",
+    "currentLocation": "Magazin",
+    "id": "M002",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:26:19.969Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM, 16 FE, 2GE",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M003",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:26:19.969Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM, 16 FE, 2GE",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M004",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:26:19.970Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM, 16 FE, 2GE",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M005",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:26:19.970Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-30T20:04:52.394Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "Mag",
+            "new": "DGA"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-07-30T20:24:29.140Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "DGA",
+          "to": "Mag",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from DGA to Mag as part of a bulk move of 1 Router(s)."
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM, 16 FE, 2GE",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M006",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:26:19.970Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM, 16 FE, 2GE",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M007",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:26:19.971Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM, 16 FE, 2GE",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M008",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:26:19.971Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM, 16 FE, 2GE",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M009",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:26:19.971Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2800 Series",
+    "details": "8GB RAM, 16 FE, 2GE",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
     "id": "M010",
     "history": [
       {
-        "timestamp": "2025-07-28T16:43:08.028Z",
+        "timestamp": "2025-07-30T19:26:19.972Z",
         "action": "created"
       },
       {
-        "timestamp": "2025-07-28T16:43:23.612Z",
-        "action": "updated",
+        "timestamp": "2025-07-30T20:24:57.413Z",
+        "action": "moved",
         "changes": {
           "currentLocation": {
-            "old": "R001",
-            "new": "R002"
+            "old": "Mag",
+            "new": "DGA"
           }
         }
-      }
-    ]
-  },
-  {
-    "type": "Switch",
-    "name": "Catalyst 3560 series",
-    "details": "24 ports Fe, 2 ports Ge, 16 GB RAM",
-    "isAvailable": true,
-    "currentLocation": "DC",
-    "id": "M011",
-    "history": [
-      {
-        "timestamp": "2025-07-28T16:44:29.621Z",
-        "action": "created"
-      }
-    ]
-  },
-  {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "2 ports Fe, 1 port Ge, 16 GB RAM",
-    "isAvailable": false,
-    "currentLocation": "DC",
-    "id": "M012",
-    "history": [
-      {
-        "timestamp": "2025-07-28T17:03:17.806Z",
-        "action": "created"
       },
       {
-        "timestamp": "2025-07-28T17:07:50.956Z",
+        "timestamp": "2025-07-30T20:34:31.310Z",
         "action": "moved",
         "changes": {
           "currentLocation": {
             "old": "DGA",
-            "new": "SR"
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-28T17:07:53.641Z",
-        "action": "reserved",
-        "changes": {
-          "isAvailable": {
-            "old": true,
-            "new": false
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-28T17:08:01.929Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "SR",
-            "new": "DC"
+            "new": "Mag"
           }
         }
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "2 ports Fe, 1 port Ge, 16 GB RAM",
-    "isAvailable": false,
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "DGA",
+    "id": "M011",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.951Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-30T20:16:23.312Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Mag",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "DGA",
+    "id": "M012",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.951Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-30T20:16:23.313Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Mag",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
     "currentLocation": "DGA",
     "id": "M013",
     "history": [
       {
-        "timestamp": "2025-07-28T17:03:17.813Z",
+        "timestamp": "2025-07-30T19:27:58.951Z",
         "action": "created"
       },
       {
-        "timestamp": "2025-07-28T17:08:11.491Z",
-        "action": "reserved",
+        "timestamp": "2025-07-30T20:16:23.313Z",
+        "action": "moved_bulk",
         "changes": {
-          "isAvailable": {
-            "old": true,
-            "new": false
-          }
-        }
+          "from": "Mag",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "2 ports Fe, 1 port Ge, 16 GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "DC",
+    "currentLocation": "DGA",
     "id": "M014",
     "history": [
       {
-        "timestamp": "2025-07-28T17:03:17.822Z",
+        "timestamp": "2025-07-30T19:27:58.952Z",
         "action": "created"
       },
       {
-        "timestamp": "2025-07-28T17:08:23.545Z",
-        "action": "moved",
+        "timestamp": "2025-07-30T20:16:23.313Z",
+        "action": "moved_bulk",
         "changes": {
-          "currentLocation": {
-            "old": "DGA",
-            "new": "DC"
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-29T18:32:34.737Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "DC",
-            "new": "SR"
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-29T18:32:41.409Z",
-        "action": "moved",
-        "changes": {
-          "currentLocation": {
-            "old": "SR",
-            "new": "DC"
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-29T18:32:46.058Z",
-        "action": "reserved",
-        "changes": {
-          "isAvailable": {
-            "old": true,
-            "new": false
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-29T18:32:51.261Z",
-        "action": "unreserved",
-        "changes": {
-          "isAvailable": {
-            "old": false,
-            "new": true
-          }
-        }
+          "from": "Mag",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Modem",
-    "name": "Cisco 4G",
-    "details": "4G, 50MB/S, modem portable",
-    "isAvailable": false,
-    "currentLocation": "DC",
-    "id": "M007",
-    "history": [
-      {
-        "timestamp": "2025-07-28T17:37:55.923Z",
-        "action": "created"
-      },
-      {
-        "timestamp": "2025-07-28T17:38:50.506Z",
-        "action": "reserved",
-        "changes": {
-          "isAvailable": {
-            "old": true,
-            "new": false
-          }
-        }
-      }
-    ]
-  },
-  {
-    "type": "Modem",
-    "name": "Cisco 3G",
-    "details": "4G, 50MB/S, modem portable",
-    "isAvailable": false,
-    "currentLocation": "DC",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "DGA",
     "id": "M015",
     "history": [
       {
-        "timestamp": "2025-07-28T17:37:55.927Z",
+        "timestamp": "2025-07-30T19:27:58.952Z",
         "action": "created"
       },
       {
-        "timestamp": "2025-07-28T17:38:56.124Z",
-        "action": "reserved",
+        "timestamp": "2025-07-30T20:16:23.313Z",
+        "action": "moved_bulk",
         "changes": {
-          "isAvailable": {
-            "old": true,
-            "new": false
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-29T18:34:36.024Z",
-        "action": "updated",
-        "changes": {
-          "name": {
-            "old": "Cisco 4G",
-            "new": "Cisco 3G"
-          }
-        }
+          "from": "Mag",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Modem",
-    "name": "Cisco 4G",
-    "details": "4G, 50MB/S, modem portable",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "DC",
+    "currentLocation": "DGA",
     "id": "M016",
     "history": [
       {
-        "timestamp": "2025-07-28T17:37:55.932Z",
+        "timestamp": "2025-07-30T19:27:58.952Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-30T20:16:23.313Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Mag",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGA",
     "id": "M017",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.504Z",
+        "timestamp": "2025-07-30T19:27:58.952Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-30T20:16:23.313Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Mag",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGA",
     "id": "M018",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.508Z",
+        "timestamp": "2025-07-30T19:27:58.953Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-30T20:16:23.313Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Mag",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
     "currentLocation": "DGA",
     "id": "M019",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.514Z",
+        "timestamp": "2025-07-30T19:27:58.953Z",
         "action": "created"
       },
       {
-        "timestamp": "2025-07-29T21:10:09.902Z",
-        "action": "moved",
+        "timestamp": "2025-07-30T20:16:23.313Z",
+        "action": "moved_bulk",
         "changes": {
-          "currentLocation": {
-            "old": "R001",
-            "new": "DGA"
-          }
-        }
+          "from": "Mag",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGA",
     "id": "M020",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.519Z",
+        "timestamp": "2025-07-30T19:27:58.953Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-30T20:16:23.313Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Mag",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGB",
     "id": "M021",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.524Z",
+        "timestamp": "2025-07-30T19:27:58.953Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T19:07:04.823Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGB",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGB",
     "id": "M022",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.530Z",
+        "timestamp": "2025-07-30T19:27:58.954Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T19:07:04.823Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGB",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGB",
     "id": "M023",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.535Z",
+        "timestamp": "2025-07-30T19:27:58.954Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T19:07:04.823Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGB",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGB",
     "id": "M024",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.540Z",
+        "timestamp": "2025-07-30T19:27:58.954Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T19:07:04.823Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGB",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGB",
     "id": "M025",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.546Z",
+        "timestamp": "2025-07-30T19:27:58.954Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T19:07:04.823Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGB",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGB",
     "id": "M026",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.552Z",
+        "timestamp": "2025-07-30T19:27:58.955Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T19:07:04.823Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGB",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGB",
     "id": "M027",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.557Z",
+        "timestamp": "2025-07-30T19:27:58.955Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T19:07:04.823Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGB",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGB",
     "id": "M028",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.562Z",
+        "timestamp": "2025-07-30T19:27:58.955Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T19:07:04.823Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGB",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGB",
     "id": "M029",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.570Z",
+        "timestamp": "2025-07-30T19:27:58.956Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T19:07:04.823Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGB",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
+    "currentLocation": "DGB",
     "id": "M030",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.579Z",
+        "timestamp": "2025-07-30T19:27:58.956Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T19:07:04.823Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGB",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "DGA",
+    "id": "M031",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.956Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T20:40:20.242Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGA as part of a bulk move of 5 HDMI cable(s)."
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "DGA",
+    "id": "M032",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.956Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T20:40:20.242Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGA as part of a bulk move of 5 HDMI cable(s)."
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "DGA",
+    "id": "M033",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.956Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T20:40:20.243Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGA as part of a bulk move of 5 HDMI cable(s)."
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "DGA",
+    "id": "M034",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.956Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T20:40:20.243Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGA as part of a bulk move of 5 HDMI cable(s)."
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "DGA",
+    "id": "M035",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.957Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-07-31T20:40:20.243Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGA as part of a bulk move of 5 HDMI cable(s)."
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M036",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.957Z",
         "action": "created"
       }
     ]
   },
   {
-    "type": "Router",
-    "name": "Cisco 2800 Series",
-    "details": "8GB RAM",
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "R001",
-    "id": "M031",
+    "currentLocation": "Magazin",
+    "id": "M037",
     "history": [
       {
-        "timestamp": "2025-07-29T21:09:31.586Z",
+        "timestamp": "2025-07-30T19:27:58.957Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M038",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.957Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M039",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.958Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M040",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.958Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M041",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.958Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M042",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.958Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M043",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.958Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M044",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.958Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M045",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.958Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M046",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.959Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M047",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.959Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M048",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.959Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M049",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.959Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M050",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.960Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M051",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.960Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M052",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.960Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M053",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.960Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M054",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.960Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M055",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.960Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M056",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.961Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M057",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.961Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M058",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.961Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M059",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.961Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "HDMI cable",
+    "name": "5M HDMI cable",
+    "details": "5 meters , 16 FT , 300MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M060",
+    "history": [
+      {
+        "timestamp": "2025-07-30T19:27:58.961Z",
         "action": "created"
       }
     ]

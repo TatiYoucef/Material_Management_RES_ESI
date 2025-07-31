@@ -1,180 +1,125 @@
 [
   {
-    "id": "DGA",
-    "name": "DGA",
-    "capacity": 10,
-    "materials": [
-      {
-        "materialId": "M001",
-        "quantity": 3
-      },
-      {
-        "materialId": "M002",
-        "quantity": 1
-      }
-    ],
+    "name": "Magazin",
+    "capacity": 100,
+    "id": "Magazin",
     "history": [
       {
-        "timestamp": "2025-07-28T16:53:41.485Z",
-        "action": "updated",
-        "changes": {
-          "name": {
-            "old": "Conference Room A",
-            "new": "DGA"
-          }
-        }
+        "timestamp": "2025-07-30T17:37:27.966Z",
+        "action": "created"
       },
       {
-        "timestamp": "2025-07-28T17:04:02.550Z",
+        "timestamp": "2025-07-30T17:37:46.658Z",
         "action": "updated",
         "changes": {}
-      }
-    ]
-  },
-  {
-    "id": "DC",
-    "name": "Data Center",
-    "capacity": 40,
-    "materials": [
-      {
-        "materialId": "M001",
-        "quantity": 2
       },
       {
-        "materialId": "M003",
-        "quantity": 5
+        "timestamp": "2025-07-30T20:16:23.313Z",
+        "action": "materials_moved_out",
+        "description": "10 HDMI cable(s) moved out to DGA."
+      },
+      {
+        "timestamp": "2025-07-30T20:24:29.140Z",
+        "action": "materials_moved_in",
+        "description": "1 Router(s) moved in from DGA."
+      },
+      {
+        "timestamp": "2025-07-30T20:34:31.313Z",
+        "action": "materials_moved_in",
+        "description": "1 Router (Cisco 2800 Series) moved in from DGA."
+      },
+      {
+        "timestamp": "2025-07-31T17:50:26.783Z",
+        "action": "updated",
+        "changes": {}
+      },
+      {
+        "timestamp": "2025-07-31T19:07:04.824Z",
+        "action": "materials_moved_out",
+        "description": "10 HDMI cable(s) moved out to DGB."
+      },
+      {
+        "timestamp": "2025-07-31T20:40:20.243Z",
+        "action": "materials_moved_out",
+        "description": "5 HDMI cable(s) moved out to DGA."
       }
     ],
-    "history": [
-      {
-        "timestamp": "2025-07-28T17:04:23.193Z",
-        "action": "id_updated",
-        "changes": {
-          "id": {
-            "old": "R002",
-            "new": "DC"
-          }
-        }
-      },
-      {
-        "timestamp": "2025-07-28T17:04:23.208Z",
-        "action": "updated",
-        "changes": {
-          "name": {
-            "old": "Meeting Room B",
-            "new": "Data Center"
-          },
-          "capacity": {
-            "old": 6,
-            "new": 40
-          }
-        }
-      }
-    ]
+    "materialCount": 50
   },
   {
-    "id": "SR",
-    "name": "Server Room",
-    "capacity": 50,
-    "materials": [
-      {
-        "materialId": "M002",
-        "quantity": 2
-      },
-      {
-        "materialId": "M003",
-        "quantity": 5
-      }
-    ],
+    "name": "DGA",
+    "capacity": 20,
+    "id": "DGA",
     "history": [
       {
-        "timestamp": "2025-07-28T17:04:51.551Z",
-        "action": "id_updated",
-        "changes": {
-          "id": {
-            "old": "R003",
-            "new": "SR"
-          }
-        }
+        "timestamp": "2025-07-30T18:47:58.098Z",
+        "action": "created"
       },
       {
-        "timestamp": "2025-07-28T17:04:51.565Z",
+        "timestamp": "2025-07-30T19:00:12.137Z",
         "action": "updated",
-        "changes": {
-          "name": {
-            "old": "Training Room C",
-            "new": "Server Room"
-          },
-          "capacity": {
-            "old": 20,
-            "new": 50
-          }
-        }
+        "changes": {}
+      },
+      {
+        "timestamp": "2025-07-30T20:16:23.313Z",
+        "action": "materials_moved_in",
+        "description": "10 HDMI cable(s) moved in from Mag."
+      },
+      {
+        "timestamp": "2025-07-30T20:24:29.140Z",
+        "action": "materials_moved_out",
+        "description": "1 Router(s) moved out to Mag."
+      },
+      {
+        "timestamp": "2025-07-30T20:34:31.312Z",
+        "action": "materials_moved_out",
+        "description": "1 Router (Cisco 2800 Series) moved out to Mag."
+      },
+      {
+        "timestamp": "2025-07-31T20:40:20.243Z",
+        "action": "materials_moved_in",
+        "description": "5 HDMI cable(s) moved in from Magazin."
       }
-    ]
+    ],
+    "materialCount": 0
   },
   {
     "name": "DGB",
-    "capacity": 10,
+    "capacity": 50,
     "id": "DGB",
     "history": [
       {
-        "timestamp": "2025-07-28T17:05:12.678Z",
+        "timestamp": "2025-07-31T19:06:18.634Z",
         "action": "created"
       },
       {
-        "timestamp": "2025-07-28T17:05:19.643Z",
-        "action": "updated",
-        "changes": {}
-      }
-    ]
-  },
-  {
-    "name": "Salle n°31",
-    "capacity": 30,
-    "id": "S31",
-    "history": [
-      {
-        "timestamp": "2025-07-28T19:53:05.081Z",
-        "action": "created"
-      },
-      {
-        "timestamp": "2025-07-28T19:53:15.345Z",
+        "timestamp": "2025-07-31T19:06:24.872Z",
         "action": "updated",
         "changes": {}
       },
       {
-        "timestamp": "2025-07-29T11:57:13.294Z",
-        "action": "updated",
-        "changes": {}
+        "timestamp": "2025-07-31T19:07:04.824Z",
+        "action": "materials_moved_in",
+        "description": "10 HDMI cable(s) moved in from Magazin."
       }
-    ]
+    ],
+    "materialCount": 0
   },
   {
-    "name": "Salle n°30",
-    "capacity": 10,
+    "name": "S30",
+    "capacity": 20,
     "id": "S30",
     "history": [
       {
-        "timestamp": "2025-07-29T11:56:42.126Z",
+        "timestamp": "2025-07-31T20:42:10.358Z",
         "action": "created"
       },
       {
-        "timestamp": "2025-07-29T11:56:58.535Z",
+        "timestamp": "2025-07-31T20:42:20.752Z",
         "action": "updated",
         "changes": {}
       }
-    ]
-  },
-  {
-    "name": "Magazin",
-    "capacity": 50,
-    "id": "R001",
-    "history": [
-      {
-        "timestamp": "2025-07-29T21:09:03.294Z",
-        "action": "created"
-      }
-    ]
+    ],
+    "materialCount": 0
   }
 ]

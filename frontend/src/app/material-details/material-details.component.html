@@ -1,0 +1,90 @@
+<div class="material-details-container">
+  <div *ngIf="material" class="material-info-section">
+    <h2 class="material-details-title">{{ material.name }} Details</h2>
+    <div class="detail-item">
+      <strong>ID:</strong> <span>{{ material.id }}</span>
+    </div>
+    <div class="detail-item">
+      <strong>Name:</strong> <span>{{ material.name }}</span>
+    </div>
+    <div class="detail-item">
+      <strong>Type:</strong> <a [routerLink]="['/material-instances', material.type]" class="room-link">{{ material.type }}</a>
+    </div>
+    <div class="detail-item">
+      <strong>Details:</strong> <span>{{ material.details }}</span>
+    </div>
+    <div class="detail-item">
+      <strong>Status:</strong> <span [ngClass]="{'available' : material.isAvailable, 'reserved': !material.isAvailable}">{{ material.isAvailable ? 'Available' : 'Reserved' }}</span>
+    </div>
+    <div class="detail-item">
+      <strong>Current Location:</strong> <a [routerLink]="['/rooms', material.currentLocation]" class="room-link">{{ material.currentLocation }}</a>
+    </div>
+
+    <hr class="section-divider">
+
+    <h3 class="section-subtitle">Actions</h3>
+    <div class="action-section">
+      <div class="action-card">
+        <h4 class="card-title">Move Material</h4>
+        <div class="form-group">
+          <label for="selectRoom" class="form-label">Select New Room:</label>
+          <select id="selectRoom" [(ngModel)]="selectedRoomId" class="form-select">
+            <option value="">-- Select a Room --</option>
+            <option *ngFor="let room of rooms" [value]="room.id">{{ room.name }}</option>
+          </select>
+        </div>
+        <button class="btn btn-primary action-button" (click)="moveMaterial()">Move Material</button>
+      </div>
+
+      <div class="action-card">
+        <h4 class="card-title">Reserve Material</h4>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <input type="text" id="description" [(ngModel)]="reservationData.description" required>
+        </div>
+        <div class="form-group">
+          <label for="endDate">End Date (Optional):</label>
+          <input type="date" id="endDate" [(ngModel)]="reservationData.endDate">
+        </div>
+        <button class="btn btn-warning action-button" (click)="reserveMaterial()" [disabled]="!material.isAvailable">Reserve</button>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <h3 class="section-subtitle">Material History</h3>
+    <div class="history-section">
+      <ul *ngIf="materialHistory && materialHistory.length > 0" class="history-list">
+        <li *ngFor="let entry of materialHistory" class="history-item">
+          <strong>{{ entry.timestamp | date:'short':'':'en-GB' }}</strong>: 
+          <span *ngIf="entry.action === 'created'" [ngClass]="'history-created'">Material created.</span>
+          <span *ngIf="entry.action === 'updated'" [ngClass]="'history-updated'">Material updated.</span>
+          <span *ngIf="entry.action === 'moved'" [ngClass]="'history-moved'">Material moved to {{ entry.changes?.currentLocation?.new }}.</span>
+          <span *ngIf="entry.action === 'id_updated'" [ngClass]="'history-id-updated'">ID changed from {{ entry.changes?.id?.old }} to {{ entry.changes?.id?.new }}.</span>
+          <span *ngIf="entry.action === 'reserved'" [ngClass]="'history-reserved'">Material reserved<span *ngIf="entry.description">: {{ entry.description }}</span>.</span>
+          <span *ngIf="entry.action === 'unreserved'" [ngClass]="'history-unreserved'">Material made available<span *ngIf="entry.description">: {{ entry.description }}</span>.</span>
+          <span *ngIf="entry.action === 'moved_bulk'" [ngClass]="'history-moved-bulk'">{{ entry.description }}</span>
+          <div *ngIf="entry.changes && entry.action !== 'moved_bulk'" class="history-changes">
+            <span *ngFor="let key of (entry.changes | keyvalue)" class="change-item">
+              {{ key.key }}: <span class="old-value">{{ $any(key.value).old }}</span> → <span class="new-value">{{ $any(key.value).new }}</span>; 
+            </span>
+          </div>
+        </li>
+      </ul>
+      <p *ngIf="!materialHistory || materialHistory.length === 0" class="no-data-message">No history available for this material.</p>
+    </div>
+
+    <hr class="section-divider">
+
+    <h3 class="section-subtitle">Delete</h3>
+    <button class="btn btn-danger action-button delete-button" (click)="deleteMaterial()">Delete Material</button>
+
+  </div>
+
+  <div *ngIf="!material" class="material-not-found">
+    <p class="no-data-message">Material not found or has been deleted.</p>
+    <div class="back-button-container">
+      <button routerLink="/home" class="back-button">Back to Home</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="material-instances-container">
+  <h2 class="section-header">{{ materialType }} Materials</h2>
+
+  <div class="summary-card">
+    <h3>Summary</h3>
+    <p>Available: {{ summary.available }} | Reserved: {{ summary.reserved }}</p>
+    <p>Total Quantity: {{ summary.reserved + summary.available }}</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <h3>Summary by Room</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Room</th>
+        <th>Quantity Available</th>
+        <th>Quantity Reserved</th>
+        <th>Total Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let room of getRoomNames()">
+        <td><a [routerLink]="['/rooms', room]" class="room-link">{{ room }}</a></td>
+        <td>{{ roomSummary[room].available }}</td>
+        <td>{{ roomSummary[room].reserved }}</td>
+        <td>{{ roomSummary[room].available + roomSummary[room].reserved }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>All materials</h3>
+
+  <div class="filter-section">
+    <input type="text" [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search instances..." class="search-input">
+
+    <select [(ngModel)]="filterAvailability" (change)="onFilterChange()">
+      <option value="">All Statuses</option>
+      <option value="true">Available</option>
+      <option value="false">Reserved</option>
+    </select>
+
+    <select [(ngModel)]="filterLocation" (change)="onFilterChange()">
+      <option value="">All Locations</option>
+      <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+    </select>
+  </div>
+
+  <div *ngIf="materialInstances.length > 0" class="card-grid">
+    <div class="card material-instance-card" *ngFor="let instance of materialInstances" [routerLink]="['/materials', instance.id]">
+      <h4>{{ instance.name }} ({{ instance.id }})</h4>
+      <p>Details: {{ instance.details }}</p>
+      <p>Status: <span [class.available]="instance.isAvailable" [class.reserved]="!instance.isAvailable">{{ instance.isAvailable ? 'Available' : 'Reserved' }}</span></p>
+      <p>Location: {{ instance.currentLocation }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="materialInstances.length === 0 && !errorMessage" class="no-instances-message">
+    <p>No instances found for {{ materialType }}.</p>
+  </div>
+
+  <div class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+
+  <div class="back-button-container">
+    <button routerLink="/home" class="back-button">Back to Home</button>
+  </div>
+</div>

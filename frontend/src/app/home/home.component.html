@@ -1,0 +1,45 @@
+<div class="home-container">
+  <h2 class="section-header">Home</h2>
+
+  <div class="search-filter-section">
+    <input type="text" [(ngModel)]="searchQuery" (input)="onSearch()" [placeholder]="viewMode === 'materialTypes' ? 'Search material types...' : 'Search rooms...'" class="search-input">
+
+    <div class="view-toggle">
+      <button (click)="changeView('materialTypes')" [class.active]="viewMode === 'materialTypes'" class="toggle-button" [class.active-toggle]="viewMode === 'materialTypes'">Material Types</button>
+      <button (click)="changeView('rooms')" [class.active]="viewMode === 'rooms'" class="toggle-button" [class.active-toggle]="viewMode === 'rooms'">Rooms</button>
+    </div>
+  </div>
+
+  <div *ngIf="viewMode === 'materialTypes'" class="materials-section">
+    <h3 class="section-subheader">Material Types</h3>
+    <div class="card-grid">
+      <div class="card material-card" *ngFor="let materialType of materialTypes.data" [routerLink]="['/material-instances', materialType.type]">
+        <h4>{{ materialType.type }}</h4>
+        <p>Available: {{ materialType.available }}</p>
+        <p>Reserved: {{ materialType.reserved }}</p>
+        <p>Total Instances: {{ materialType.totalInstances }}</p>
+      </div>
+    </div>
+    <div class="pagination-controls">
+      <button (click)="prevPage()" [disabled]="!materialTypes.previous" class="pagination-button">Previous</button>
+      <span class="pagination-info">Page {{ materialTypes.page }} of {{ materialTypes.totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="!materialTypes.next" class="pagination-button">Next</button>
+    </div>
+  </div>
+
+  <div *ngIf="viewMode === 'rooms'" class="rooms-section">
+    <h3 class="section-subheader">Rooms</h3>
+    <div class="card-grid">
+      <div class="card room-card" *ngFor="let room of rooms.data" [routerLink]="['/rooms', room.id]">
+        <h4>{{ room.name }}</h4>
+        <p>Capacity: {{ room.capacity }}</p>
+        <p>Material Count: {{ room.materialCount }}</p>
+      </div>
+    </div>
+    <div class="pagination-controls">
+      <button (click)="prevPage()" [disabled]="!rooms.previous" class="pagination-button">Previous</button>
+      <span class="pagination-info">Page {{ rooms.page }} of {{ rooms.totalPages }}</span>
+      <button (click)="nextPage()" [disabled]="!rooms.next" class="pagination-button">Next</button>
+    </div>
+  </div>
+</div>

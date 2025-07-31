@@ -1,0 +1,81 @@
+<div class="material-management-container">
+  <h2>Material Management</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <h3>{{ editingMaterial ? 'Edit Material' : 'Add New Material' }}</h3>
+  <div class="material-form">
+    <div *ngIf="editingMaterial">
+      <label for="id">ID:</label>
+      <input type="text" id="id" [(ngModel)]="currentMaterial.id" required>
+    </div>
+    <label for="type">Type:</label>
+    <input type="text" id="type" [(ngModel)]="currentMaterial.type" required>
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="currentMaterial.name" required>
+
+    <label for="details">Details:</label>
+    <textarea id="details" [(ngModel)]="currentMaterial.details"></textarea>
+
+    <label for="currentLocation">Initial Location:</label>
+    <select id="currentLocation" [(ngModel)]="currentMaterial.currentLocation" required>
+      <option value="">-- Select a Room --</option>
+      <option *ngFor="let room of rooms" [value]="room.id">{{ room.name }}</option>
+    </select>
+
+    <div *ngIf="!editingMaterial">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" [(ngModel)]="currentMaterial.quantity" min="1">
+    </div>
+
+    <button *ngIf="!editingMaterial" (click)="addMaterial()">Add Material</button>
+    <button *ngIf="editingMaterial" (click)="updateMaterial()">Update Material</button>
+    <button *ngIf="editingMaterial" (click)="cancelEdit()">Cancel</button>
+  </div>
+
+  <h3>Existing Materials</h3>
+
+  <div class="filter-section">
+    <input type="text" [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search materials..." class="search-input">
+
+    <select [(ngModel)]="filterType" (change)="onFilterChange()">
+      <option value="">All Types</option>
+      <option *ngFor="let type of materialTypes" [value]="type">{{ type }}</option>
+    </select>
+
+    <select [(ngModel)]="filterAvailability" (change)="onFilterChange()">
+      <option value="">All Statuses</option>
+      <option value="true">Available</option>
+      <option value="false">Reserved</option>
+    </select>
+
+    <select [(ngModel)]="filterLocation" (change)="onFilterChange()">
+      <option value="">All Locations</option>
+      <option *ngFor="let loc of locations" [value]="loc">{{ loc }}</option>
+    </select>
+  </div>
+
+  <div class="material-list">
+    <div class="material-item" *ngFor="let material of materials">
+      <div>
+        <h4>{{ material.name }} ({{ material.id }})</h4>
+        <p>Type: {{ material.type }}</p>
+        <p>Status: <span [class.available]="material.isAvailable" [class.reserved]="!material.isAvailable">{{ material.isAvailable ? 'Available' : 'Reserved' }}</span></p>
+        <p>Location: {{ material.currentLocation }}</p>
+      </div>
+      <div class="actions">
+        <button (click)="editMaterial(material)">Edit</button>
+        <button (click)="deleteMaterial(material.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div class="room-details-container">
+  <div *ngIf="room" class="room-info-section">
+    <h2 class="room-details-title">{{ room.name }} Details</h2>
+    <div class="detail-item">
+      <strong>ID:</strong> <span>{{ room.id }}</span>
+    </div>
+    <div class="detail-item">
+      <strong>Full name:</strong> <span>{{ room.name }}</span>
+    </div>
+    <div class="detail-item">
+      <strong>Capacity:</strong> <span>{{ room.capacity }}</span>
+    </div>
+
+    <h4 class="section-subtitle">Materials in this room:</h4>
+    <ul *ngIf="materialsInRoom.length > 0" class="material-list">
+      <li *ngFor="let materialType of materialsInRoom" class="material-item material-type-item">
+        <div class="material-type-header" (click)="toggleDetails(materialType)">
+          <span class="material-link">{{ materialType.type }}</span> - Quantity: {{ materialType.count }}
+          <i class="arrow" [class.expanded]="materialType.isExpanded"></i>
+        </div>
+        <ul *ngIf="materialType.isExpanded" class="material-instances-list">
+          <li *ngFor="let instance of materialType.instances" class="material-instance-detail">
+            <a [routerLink]="['/materials', instance.id]">{{ instance.name }} ({{ instance.id }})</a>
+            <span [class.available]="instance.isAvailable" [class.reserved]="!instance.isAvailable">{{ instance.isAvailable ? 'Available' : 'Reserved' }}</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <p *ngIf="materialsInRoom.length === 0" class="no-data-message">No materials in this room.</p>
+
+    <hr class="section-divider">
+
+    <h3 class="section-subtitle">Room History</h3>
+    <div class="history-section">
+      <ul *ngIf="roomHistory && roomHistory.length > 0" class="history-list">
+        <li *ngFor="let entry of roomHistory" class="history-item">
+          <strong>{{ entry.timestamp | date:'short':'':'en-GB' }}</strong>: 
+          <span *ngIf="entry.action === 'created'" [ngClass]="'history-created'">Room created.</span>
+          <span *ngIf="entry.action === 'updated'" [ngClass]="'history-updated'">Room updated.</span>
+          <span *ngIf="entry.action === 'id_updated'" [ngClass]="'history-id-updated'">ID changed from {{ entry.changes?.id?.old }} to {{ entry.changes?.id?.new }}.</span>
+          <span *ngIf="entry.action === 'materials_moved_out'" [ngClass]="'history-moved-out'">Materials moved out: {{ entry.description }}</span>
+          <span *ngIf="entry.action === 'materials_moved_in'" [ngClass]="'history-moved-in'">Materials moved in: {{ entry.description }}</span>
+          <div *ngIf="entry.changes" class="history-changes">
+            <span *ngFor="let key of (entry.changes | keyvalue)" class="change-item">
+              {{ key.key }}: <span class="old-value">{{ $any(key.value).old }}</span> → <span class="new-value">{{ $any(key.value).new }}</span>; 
+            </span>
+          </div>
+        </li>
+      </ul>
+      <p *ngIf="!roomHistory || roomHistory.length === 0" class="no-data-message">No history available for this room.</p>
+    </div>
+
+    <hr class="section-divider">
+
+    <h3 class="section-subtitle">Move Materials</h3>
+    <div class="move-material-section">
+      <div class="form-group">
+        <label for="materialType">Material Type:</label>
+        <select id="materialType" [(ngModel)]="moveMaterialData.materialType">
+          <option *ngFor="let mat of materialsInRoom" [value]="mat.type">{{ mat.type }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" [(ngModel)]="moveMaterialData.quantity" min="1">
+      </div>
+      <div class="form-group">
+        <label for="toRoom">To Room:</label>
+        <select id="toRoom" [(ngModel)]="moveMaterialData.toRoom">
+          <option *ngFor="let r of allRooms" [value]="r.id">{{ r.name }}</option>
+        </select>
+      </div>
+      <button (click)="moveMaterial()">Move</button>
+    </div>
+
+    <hr class="section-divider">
+
+    <h3 class="section-subtitle">Danger Zone</h3>
+    <button class="btn btn-danger action-button delete-button" (click)="deleteRoom()">Delete Room</button>
+
+  </div>
+
+  <div *ngIf="!room" class="room-not-found">
+    <p class="no-data-message">Room not found or has been deleted.</p>
+    <hr class="section-divider">
+    <h3 class="section-subtitle">Create New Room</h3>
+    <div class="create-room-section">
+      <div class="form-group">
+        <label for="newName" class="form-label">Name:</label>
+        <input type="text" id="newName" [(ngModel)]="newRoom.name" required class="form-input">
+      </div>
+      <div class="form-group">
+        <label for="newCapacity" class="form-label">Capacity:</label>
+        <input type="number" id="newCapacity" [(ngModel)]="newRoom.capacity" min="0" class="form-input">
+      </div>
+      <button class="btn btn-success action-button" (click)="createRoom()">Create Room</button>
+    </div>
+  </div>
+</div>

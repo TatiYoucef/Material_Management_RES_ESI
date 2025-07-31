@@ -1,0 +1,236 @@
+.material-management-container {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+h3 {
+  color: #34495e;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.error-message {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.material-form {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+  }
+
+  .form-select,
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border: 1px solid #a7b9c9;
+    border-radius: 8px;
+    font-size: 1em;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+      outline: none;
+    }
+  }
+
+  select {
+    max-height: 200px; /* Adjust as needed */
+    overflow-y: auto;
+  }
+
+  .location-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+
+    input {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    button {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #c0392b;
+      }
+    }
+  }
+
+  button {
+    background-color: #2ecc71;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-right: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      background-color: #27ae60;
+      transform: translateY(-2px);
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.cancel-button {
+      background-color: #95a5a6;
+
+      &:hover {
+        background-color: #7f8c8d;
+      }
+    }
+  }
+}
+
+.material-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.material-item {
+  background-color: #ffffff;
+  border: 1px solid #e0e6ed;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  }
+
+  h4 {
+    color: #3498db;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 5px;
+  }
+
+  .actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+
+    button {
+      flex: 1;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      border: none;
+      transition: background-color 0.3s ease;
+
+      &:first-child {
+        background-color: #f39c12; /* Edit button */
+        color: white;
+
+        &:hover {
+          background-color: #e67e22;
+        }
+      }
+
+      &:last-child {
+        background-color: #e74c3c; /* Delete button */
+        color: white;
+
+        &:hover {
+          background-color: #c0392b;
+        }
+      }
+    }
+  }
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+
+  button {
+    background-color: blue;
+    color: white;
+    min-width: 150px;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+
+    &:hover:not(:disabled) {
+      background-color: rgb(3, 3, 119);
+    }
+
+    &:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  }
+
+  span {
+    font-size: 1.1em;
+    color: #555;
+    font-weight: 500;
+  }
+}

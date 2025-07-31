@@ -1,42 +1,89 @@
 const express = require('express');
 const router = express.Router();
-const fs = require('fs');
+const fs = require('fs').promises;
+const { acquireLock } = require('../file-lock');
 const path = require('path');
 
-const dataPath = path.join(__dirname, '../data');
+const materialsFilePath = path.join(__dirname, '../data/materials.json');
+
+// Middleware to load materials data
+async function loadMaterials(req, res, next) {
+  const release = await acquireLock(materialsFilePath);
+  try {
+    const data = await fs.readFile(materialsFilePath, 'utf8');
+    req.materials = JSON.parse(data);
+    next();
+  } catch (error) {
+    console.error('Error reading materials file:', error);
+    res.status(500).json({ error: 'Error loading material data.' });
+  } finally {
+    release();
+  }
+}
+
+// Helper to write materials data
+async function writeMaterials(data) {
+  const release = await acquireLock(materialsFilePath);
+  try {
+    await fs.writeFile(materialsFilePath, JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.error('Error writing materials file:', error);
+    throw new Error('Error saving material data.');
+  } finally {
+    release();
+  }
+}
+
+// Helper to write rooms data
+async function writeRooms(data) {
+  const roomsFilePath = path.join(__dirname, '../data/rooms.json');
+  const release = await acquireLock(roomsFilePath);
+  try {
+    await fs.writeFile(roomsFilePath, JSON.stringify(data, null, 2));
+  } catch (error) {
+    console.error('Error writing rooms file:', error);
+    throw new Error('Error saving room data.');
+  } finally {
+    release();
+  }
+}
 
 // Helper function for material instance validation
 function validateMaterialInstance(material) {
   const errors = [];
 
-  if (!material.type || material.type.trim() === '') {
-    errors.push('Material type is required.');
+  if (!material.type || typeof material.type !== 'string' || material.type.trim() === '') {
+    errors.push('Material type is required and must be a string.');
   }
-  if (!material.name || material.name.trim() === '') {
-    errors.push('Material name is required.');
+  if (!material.name || typeof material.name !== 'string' || material.name.trim() === '') {
+    errors.push('Material name is required and must be a string.');
   }
   if (typeof material.isAvailable !== 'boolean') {
     errors.push('isAvailable must be a boolean.');
   }
-  if (!material.currentLocation || material.currentLocation.trim() === '') {
-    errors.push('Current location is required.');
+  if (!material.currentLocation || typeof material.currentLocation !== 'string' || material.currentLocation.trim() === '') {
+    errors.push('Current location is required and must be a string.');
+  }
+  if (material.details && typeof material.details !== 'string') {
+    errors.push('Details must be a string.');
   }
 
   return errors;
 }
 
 // Get all specific material instances
-router.get('/', (req, res) => {
-  let materials = JSON.parse(fs.readFileSync(path.join(dataPath, 'materials.json')));
+router.get('/', loadMaterials, (req, res) => {
+  let materials = [...req.materials];
 
   // Filtering for specific instances
   const { search, isAvailable, type, location } = req.query;
   if (search) {
     const lowerCaseSearch = search.toLowerCase();
     materials = materials.filter(m => 
-      m.name.toLowerCase().includes(lowerCaseSearch) || 
-      m.details.toLowerCase().includes(lowerCaseSearch) ||
-      m.type.toLowerCase().includes(lowerCaseSearch)
+      (m.id && m.id.toLowerCase().includes(lowerCaseSearch)) || 
+      (m.name && m.name.toLowerCase().includes(lowerCaseSearch)) || 
+      (m.details && m.details.toLowerCase().includes(lowerCaseSearch)) ||
+      (m.type && m.type.toLowerCase().includes(lowerCaseSearch))
     );
   }
   if (isAvailable !== undefined) {
@@ -78,12 +125,11 @@ router.get('/', (req, res) => {
 });
 
 // Get aggregated material types for home page
-router.get('/types', (req, res) => {
-  let materials = JSON.parse(fs.readFileSync(path.join(dataPath, 'materials.json')));
+router.get('/types', loadMaterials, (req, res) => {
   const materialTypes = {};
   const { search } = req.query;
 
-  materials.forEach(m => {
+  req.materials.forEach(m => {
     if (!materialTypes[m.type]) {
       materialTypes[m.type] = {
         type: m.type,
@@ -107,49 +153,101 @@ router.get('/types', (req, res) => {
     result = result.filter(type => type.type.toLowerCase().includes(lowerCaseSearch));
   }
 
-  res.json(result);
+  // Pagination
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 10;
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+
+  const paginatedResults = {};
+  paginatedResults.total = result.length;
+  paginatedResults.page = page;
+  paginatedResults.limit = limit;
+  paginatedResults.totalPages = Math.ceil(result.length / limit);
+
+  if (endIndex < result.length) {
+    paginatedResults.next = {
+      page: page + 1,
+      limit: limit
+    };
+  }
+  if (startIndex > 0) {
+    paginatedResults.previous = {
+      page: page - 1,
+      limit: limit
+    };
+  }
+  paginatedResults.data = result.slice(startIndex, endIndex);
+
+  res.json(paginatedResults);
 });
 
 // Get a specific material instance by ID
-router.get('/:id', (req, res) => {
-  const materials = JSON.parse(fs.readFileSync(path.join(dataPath, 'materials.json')));
-  const material = materials.find(m => m.id === req.params.id);
+router.get('/:id', loadMaterials, async (req, res) => {
+  const material = req.materials.find(m => m.id === req.params.id);
   if (material) {
+    // Load reservations to find if this material is part of an active reservation
+    const reservationsData = await fs.readFile(path.join(__dirname, '../data/reservations.json'), 'utf8');
+    const reservations = JSON.parse(reservationsData);
+    const activeReservation = reservations.find(res => 
+      res.materials.some(mat => mat.id === material.id) && (!res.endDate || new Date(res.endDate) >= new Date())
+    );
+
+    if (activeReservation) {
+      material.reservationDetails = {
+        description: activeReservation.description,
+        endDate: activeReservation.endDate
+      };
+    }
     res.json(material);
   } else {
-    res.status(404).send('Material not found');
+    res.status(404).json({ error: 'Material not found' });
   }
 });
 
 // Create a new specific material instance
-router.post('/', (req, res) => {
-  const newMaterial = req.body;
-  let materials = JSON.parse(fs.readFileSync(path.join(dataPath, 'materials.json')));
+router.post('/', loadMaterials, async (req, res) => {
+  const { quantity = 1, ...materialData } = req.body;
+  console.log('Backend: Received new material data:', req.body);
+  let materials = [...req.materials];
+  const createdMaterials = [];
 
-  const errors = validateMaterialInstance(newMaterial);
-  if (errors.length > 0) {
-    return res.status(400).json({ errors });
+  for (let i = 0; i < quantity; i++) {
+    const newMaterial = { ...materialData };
+
+    // Automatically set availability
+    newMaterial.isAvailable = true;
+
+    // Generate a unique ID
+    let nextIdNum = 1;
+    const existingIds = new Set(materials.map(m => parseInt(m.id.substring(1))));
+    while (existingIds.has(nextIdNum)) {
+      nextIdNum++;
+    }
+    newMaterial.id = `M${nextIdNum.toString().padStart(3, '0')}`;
+    console.log('Backend: Generated new ID:', newMaterial.id);
+
+    newMaterial.history = [{ timestamp: new Date().toISOString(), action: 'created' }];
+    materials.push(newMaterial);
+    createdMaterials.push(newMaterial);
   }
 
-  // Generate a unique ID
-  let nextIdNum = 1;
-  const existingIds = new Set(materials.map(m => parseInt(m.id.substring(1))));
-  while (existingIds.has(nextIdNum)) {
-    nextIdNum++;
+  console.log('Backend: Materials array before write:', materials.length);
+  try {
+    await writeMaterials(materials);
+    console.log('Backend: Material(s) created successfully:', createdMaterials);
+    res.status(201).json(createdMaterials);
+  } catch (error) {
+    console.error('Backend: Error creating material:', error);
+    res.status(500).json({ error: error.message });
   }
-  newMaterial.id = `M${nextIdNum.toString().padStart(3, '0')}`;
-
-  newMaterial.history = [{ timestamp: new Date().toISOString(), action: 'created' }];
-  materials.push(newMaterial);
-  fs.writeFileSync(path.join(dataPath, 'materials.json'), JSON.stringify(materials, null, 2));
-  res.status(201).json(newMaterial);
 });
 
 // Update a specific material instance
-router.put('/:id', (req, res) => {
+router.put('/:id', loadMaterials, async (req, res) => {
   const materialId = req.params.id;
   const updatedMaterial = req.body;
-  let materials = JSON.parse(fs.readFileSync(path.join(dataPath, 'materials.json')));
+  let materials = [...req.materials];
   const index = materials.findIndex(m => m.id === materialId);
 
   if (index !== -1) {
@@ -163,7 +261,6 @@ router.put('/:id', (req, res) => {
 
     materials[index] = materialToValidate;
     
-    // Add history entry
     if (!materials[index].history) {
       materials[index].history = [];
     }
@@ -173,25 +270,36 @@ router.put('/:id', (req, res) => {
       changes: getChanges(oldMaterial, materials[index])
     });
 
-    fs.writeFileSync(path.join(dataPath, 'materials.json'), JSON.stringify(materials, null, 2));
-    res.json(materials[index]);
+    try {
+      await writeMaterials(materials);
+      res.json(materials[index]);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   } else {
-    res.status(404).send('Material not found');
+    res.status(404).json({ error: 'Material not found' });
   }
 });
 
 // Delete a specific material instance
-router.delete('/:id', (req, res) => {
+router.delete('/:id', loadMaterials, async (req, res) => {
   const materialId = req.params.id;
-  let materials = JSON.parse(fs.readFileSync(path.join(dataPath, 'materials.json')));
-  const initialLength = materials.length;
-  materials = materials.filter(m => m.id !== materialId);
+  console.log('Backend: Received delete request for material ID:', materialId);
+  let materials = req.materials.filter(m => m.id !== materialId);
 
-  if (materials.length < initialLength) {
-    fs.writeFileSync(path.join(dataPath, 'materials.json'), JSON.stringify(materials, null, 2));
-    res.status(204).send(); // No Content
+  if (materials.length < req.materials.length) {
+    console.log('Backend: Material found and filtered. New materials count:', materials.length);
+    try {
+      await writeMaterials(materials);
+      console.log('Backend: Material deleted successfully.');
+      res.status(204).json({ message: 'Material deleted successfully.' });
+    } catch (error) {
+      console.error('Backend: Error writing materials after delete:', error);
+      res.status(500).json({ error: error.message });
+    }
   } else {
-    res.status(404).send('Material not found');
+    console.log('Backend: Material not found for ID:', materialId);
+    res.status(404).json({ error: 'Material not found' });
   }
 });
 
@@ -199,7 +307,6 @@ router.delete('/:id', (req, res) => {
 function getChanges(oldObj, newObj) {
   const changes = {};
   for (const key in newObj) {
-    // Only track changes for relevant fields in the new model
     if (['name', 'details', 'isAvailable', 'currentLocation'].includes(key) && oldObj[key] !== newObj[key]) {
       changes[key] = { old: oldObj[key], new: newObj[key] };
     }
@@ -208,10 +315,10 @@ function getChanges(oldObj, newObj) {
 }
 
 // Action: Move a material instance to a new location
-router.post('/:id/move', (req, res) => {
+router.post('/:id/move', loadMaterials, async (req, res) => {
   const materialId = req.params.id;
   const { newLocation } = req.body;
-  let materials = JSON.parse(fs.readFileSync(path.join(dataPath, 'materials.json')));
+  let materials = [...req.materials];
   const index = materials.findIndex(m => m.id === materialId);
 
   if (index !== -1) {
@@ -230,64 +337,72 @@ router.post('/:id/move', (req, res) => {
       changes: { currentLocation: { old: oldMaterial.currentLocation, new: newLocation } }
     });
 
-    fs.writeFileSync(path.join(dataPath, 'materials.json'), JSON.stringify(materials, null, 2));
-    res.json(materials[index]);
+    try {
+      await writeMaterials(materials);
+
+      // Update room histories
+      const roomsFilePath = path.join(__dirname, '../data/rooms.json');
+      const releaseRooms = await acquireLock(roomsFilePath);
+      try {
+        const roomsData = await fs.readFile(roomsFilePath, 'utf8');
+        let rooms = JSON.parse(roomsData);
+
+        const fromRoomObj = rooms.find(r => r.id === oldMaterial.currentLocation);
+        const toRoomObj = rooms.find(r => r.id === newLocation);
+
+        if (fromRoomObj) {
+          if (!fromRoomObj.history) fromRoomObj.history = [];
+          fromRoomObj.history.push({
+            timestamp: new Date().toISOString(),
+            action: 'materials_moved_out',
+            description: `1 ${oldMaterial.type} (${oldMaterial.name}) moved out to ${newLocation}.`
+          });
+        }
+
+        if (toRoomObj) {
+          if (!toRoomObj.history) toRoomObj.history = [];
+          toRoomObj.history.push({
+            timestamp: new Date().toISOString(),
+            action: 'materials_moved_in',
+            description: `1 ${oldMaterial.type} (${oldMaterial.name}) moved in from ${oldMaterial.currentLocation}.`
+          });
+        }
+        await writeRooms(rooms);
+      } catch (error) {
+        console.error('Error updating room histories for single move:', error);
+      } finally {
+        releaseRooms();
+      }
+
+      res.json(materials[index]);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   } else {
-    res.status(404).send('Material not found');
+    res.status(404).json({ error: 'Material not found' });
   }
 });
 
-// Action: Reserve/Unreserve a material instance
-router.post('/:id/reserve', (req, res) => {
+
+
+router.get('/:id/history', loadMaterials, (req, res) => {
   const materialId = req.params.id;
-  const { reserve } = req.body; // boolean: true to reserve, false to unreserve
-  let materials = JSON.parse(fs.readFileSync(path.join(dataPath, 'materials.json')));
-  const index = materials.findIndex(m => m.id === materialId);
-
-  if (index !== -1) {
-    const oldMaterial = { ...materials[index] };
-    if (typeof reserve !== 'boolean') {
-      return res.status(400).json({ errors: ["'reserve' must be a boolean."] });
-    }
-
-    materials[index].isAvailable = !reserve;
-
-    if (!materials[index].history) {
-      materials[index].history = [];
-    }
-    materials[index].history.push({
-      timestamp: new Date().toISOString(),
-      action: reserve ? 'reserved' : 'unreserved',
-      changes: { isAvailable: { old: oldMaterial.isAvailable, new: !reserve } }
-    });
-
-    fs.writeFileSync(path.join(dataPath, 'materials.json'), JSON.stringify(materials, null, 2));
-    res.json(materials[index]);
-  } else {
-    res.status(404).send('Material not found');
-  }
-});
-
-router.get('/:id/history', (req, res) => {
-  const materialId = req.params.id;
-  const materials = JSON.parse(fs.readFileSync(path.join(dataPath, 'materials.json')));
-  const material = materials.find(m => m.id === materialId);
+  const material = req.materials.find(m => m.id === materialId);
   if (material && material.history) {
     res.json(material.history);
   } else if (material) {
-    res.json([]); // Material found but no history
+    res.json([]);
   } else {
-    res.status(404).send('Material not found');
+    res.status(404).json({ error: 'Material not found' });
   }
 });
 
 // Action: Update material ID
-router.put('/:oldId/id', (req, res) => {
+router.put('/:oldId/id', loadMaterials, async (req, res) => {
   const oldId = req.params.oldId;
   const { newId } = req.body;
-  let materials = JSON.parse(fs.readFileSync(path.join(dataPath, 'materials.json')));
+  let materials = [...req.materials];
 
-  // 1. Validate newId
   if (!newId || newId.trim() === '') {
     return res.status(400).json({ errors: ['New ID is required.'] });
   }
@@ -299,9 +414,8 @@ router.put('/:oldId/id', (req, res) => {
 
   if (materialIndex !== -1) {
     const oldMaterial = { ...materials[materialIndex] };
-    materials[materialIndex].id = newId; // Update the ID
+    materials[materialIndex].id = newId;
 
-    // Add history entry for ID change
     if (!materials[materialIndex].history) {
       materials[materialIndex].history = [];
     }
@@ -311,11 +425,87 @@ router.put('/:oldId/id', (req, res) => {
       changes: { id: { old: oldId, new: newId } }
     });
 
-    fs.writeFileSync(path.join(dataPath, 'materials.json'), JSON.stringify(materials, null, 2));
-    res.json(materials[materialIndex]);
+    try {
+      await writeMaterials(materials);
+      res.json(materials[materialIndex]);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
   } else {
-    res.status(404).send('Material not found');
+    res.status(404).json({ error: 'Material not found' });
   }
 });
 
 module.exports = router;
+
+// Action: Move a quantity of a material type from one room to another
+router.post('/move-quantity', loadMaterials, async (req, res) => {
+  const { materialType, quantity, fromRoom, toRoom } = req.body;
+  let materials = [...req.materials];
+
+  if (!materialType || !quantity || !fromRoom || !toRoom) {
+    return res.status(400).json({ errors: ['Missing required fields.'] });
+  }
+
+  const available = materials.filter(m => m.type === materialType && m.currentLocation === fromRoom && m.isAvailable);
+  if (available.length < quantity) {
+    return res.status(400).json({ errors: [`Not enough available materials of type ${materialType} in room ${fromRoom}.`] });
+  }
+
+  const movedInstances = available.slice(0, quantity);
+  for (const instance of movedInstances) {
+    const index = materials.findIndex(m => m.id === instance.id);
+    const oldLocation = materials[index].currentLocation;
+    materials[index].currentLocation = toRoom;
+
+    // Add history entry for each moved instance
+    if (!materials[index].history) materials[index].history = [];
+    materials[index].history.push({
+      timestamp: new Date().toISOString(),
+      action: 'moved_bulk',
+      changes: { from: oldLocation, to: toRoom, type: materialType, quantity: 1 },
+      description: `Moved from ${oldLocation} to ${toRoom} as part of a bulk move of ${quantity} ${materialType}(s).`
+    });
+  }
+
+  // Update room histories
+  const roomsFilePath = path.join(__dirname, '../data/rooms.json');
+  const releaseRooms = await acquireLock(roomsFilePath);
+  try {
+    const roomsData = await fs.readFile(roomsFilePath, 'utf8');
+    let rooms = JSON.parse(roomsData);
+
+    const fromRoomObj = rooms.find(r => r.id === fromRoom);
+    const toRoomObj = rooms.find(r => r.id === toRoom);
+
+    if (fromRoomObj) {
+      if (!fromRoomObj.history) fromRoomObj.history = [];
+      fromRoomObj.history.push({
+        timestamp: new Date().toISOString(),
+        action: 'materials_moved_out',
+        description: `${quantity} ${materialType}(s) moved out to ${toRoom}.`
+      });
+    }
+
+    if (toRoomObj) {
+      if (!toRoomObj.history) toRoomObj.history = [];
+      toRoomObj.history.push({
+        timestamp: new Date().toISOString(),
+        action: 'materials_moved_in',
+        description: `${quantity} ${materialType}(s) moved in from ${fromRoom}.`
+      });
+    }
+    await writeRooms(rooms);
+  } catch (error) {
+    console.error('Error updating room histories:', error);
+  } finally {
+    releaseRooms();
+  }
+
+  try {
+    await writeMaterials(materials);
+    res.json({ message: `Successfully moved ${quantity} instances of ${materialType} from ${fromRoom} to ${toRoom}.` });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});

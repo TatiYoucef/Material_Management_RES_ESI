@@ -1,0 +1,53 @@
+<div class="room-management-container">
+  <h2>Room Management</h2>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <h3>{{ editingRoom ? 'Edit Room' : 'Add New Room' }}</h3>
+  <div class="room-form">
+    <div *ngIf="editingRoom">
+      <label for="id">ID:</label>
+      <input type="text" id="id" [(ngModel)]="currentRoom.id" required>
+    </div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" [(ngModel)]="currentRoom.name" required>
+
+    <label for="capacity">Capacity:</label>
+    <input type="number" id="capacity" [(ngModel)]="currentRoom.capacity" min="0" required>
+
+    <button *ngIf="!editingRoom" (click)="addRoom()">Add Room</button>
+    <button *ngIf="editingRoom" (click)="updateRoom()">Update Room</button>
+    <button *ngIf="editingRoom" (click)="cancelEdit()">Cancel</button>
+  </div>
+
+  <h3>Existing Rooms</h3>
+
+  <div class="filter-section">
+    <input type="text" [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search rooms..." class="search-input">
+
+    <label for="filterCapacity">Min Capacity:</label>
+    <input type="number" id="filterCapacity" [(ngModel)]="filterCapacity" (input)="onFilterChange()" class="filter-input">
+  </div>
+
+  <div class="room-list">
+    <div class="room-item" *ngFor="let room of rooms">
+      <div>
+        <h4>{{ room.name }} ({{ room.id }})</h4>
+        <p>Capacity: {{ room.capacity }}</p>
+        <p>Material Count: {{ room.materialCount }}</p>
+      </div>
+      <div class="actions">
+        <button (click)="editRoom(room)">Edit</button>
+        <button (click)="deleteRoom(room.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pagination-controls">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
+</div>
