@@ -208,7 +208,6 @@ router.get('/:id', loadMaterials, async (req, res) => {
 // Create a new specific material instance
 router.post('/', loadMaterials, async (req, res) => {
   const { quantity = 1, ...materialData } = req.body;
-  console.log('Backend: Received new material data:', req.body);
   let materials = [...req.materials];
   const createdMaterials = [];
 
@@ -225,17 +224,14 @@ router.post('/', loadMaterials, async (req, res) => {
       nextIdNum++;
     }
     newMaterial.id = `M${nextIdNum.toString().padStart(3, '0')}`;
-    console.log('Backend: Generated new ID:', newMaterial.id);
 
     newMaterial.history = [{ timestamp: new Date().toISOString(), action: 'created' }];
     materials.push(newMaterial);
     createdMaterials.push(newMaterial);
   }
 
-  console.log('Backend: Materials array before write:', materials.length);
   try {
     await writeMaterials(materials);
-    console.log('Backend: Material(s) created successfully:', createdMaterials);
     res.status(201).json(createdMaterials);
   } catch (error) {
     console.error('Backend: Error creating material:', error);
@@ -284,21 +280,17 @@ router.put('/:id', loadMaterials, async (req, res) => {
 // Delete a specific material instance
 router.delete('/:id', loadMaterials, async (req, res) => {
   const materialId = req.params.id;
-  console.log('Backend: Received delete request for material ID:', materialId);
   let materials = req.materials.filter(m => m.id !== materialId);
 
   if (materials.length < req.materials.length) {
-    console.log('Backend: Material found and filtered. New materials count:', materials.length);
     try {
       await writeMaterials(materials);
-      console.log('Backend: Material deleted successfully.');
       res.status(204).json({ message: 'Material deleted successfully.' });
     } catch (error) {
       console.error('Backend: Error writing materials after delete:', error);
       res.status(500).json({ error: error.message });
     }
   } else {
-    console.log('Backend: Material not found for ID:', materialId);
     res.status(404).json({ error: 'Material not found' });
   }
 });

@@ -112,7 +112,11 @@ router.get('/', loadData, (req, res) => {
 });
 
 router.get('/:id', loadData, (req, res) => {
-  const room = req.rooms.find(r => r.id === req.params.id);
+  let room = req.rooms.find(r => r.id === req.params.id);
+  const materials = [...req.materials];
+
+  room.materialCount = materials.filter(m => m.currentLocation === room.id).length;
+
   if (room) {
     res.json(room);
   } else {
@@ -122,17 +126,14 @@ router.get('/:id', loadData, (req, res) => {
 
 router.post('/', loadData, async (req, res) => {
   const newRoom = req.body;
-  console.log('Backend: Received new room data:', newRoom);
   let rooms = [...req.rooms];
 
   if (newRoom.id && rooms.some(r => r.id === newRoom.id)) {
-    console.log('Backend: ID already exists.');
     return res.status(400).json({ errors: ['ID already exists.'] });
   }
 
   const errors = validateRoom(newRoom);
   if (errors.length > 0) {
-    console.log('Backend: Validation errors:', errors);
     return res.status(400).json({ errors });
   }
 
@@ -143,7 +144,6 @@ router.post('/', loadData, async (req, res) => {
         nextIdNum++;
     }
     newRoom.id = `R${nextIdNum.toString().padStart(3, '0')}`;
-    console.log('Backend: Generated new ID:', newRoom.id);
   }
   
   newRoom.history = [{ timestamp: new Date().toISOString(), action: 'created' }];
@@ -151,7 +151,6 @@ router.post('/', loadData, async (req, res) => {
 
   try {
     await writeData(roomsFilePath, rooms);
-    console.log('Backend: Room created successfully:', newRoom);
     res.status(201).json(newRoom);
   } catch (error) {
     console.error('Backend: Error creating room:', error);

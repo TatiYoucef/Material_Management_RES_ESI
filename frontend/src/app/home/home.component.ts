@@ -34,7 +34,6 @@ export class HomeComponent implements OnInit {
       params.search = this.searchQuery;
     }
     this.dataService.getMaterialTypes(params).subscribe(response => {
-      console.log("response Mat:", response)
       this.materialTypes = response;
     });
   }
@@ -52,7 +51,6 @@ export class HomeComponent implements OnInit {
     }
 
     this.dataService.getRooms(params).subscribe(response => {
-      console.log(response)
       this.rooms = response;
     });
   }

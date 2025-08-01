@@ -42,9 +42,29 @@
         "timestamp": "2025-07-31T20:40:20.243Z",
         "action": "materials_moved_out",
         "description": "5 HDMI cable(s) moved out to DGA."
+      },
+      {
+        "timestamp": "2025-08-01T14:59:13.974Z",
+        "action": "updated",
+        "changes": {
+          "name": {
+            "old": "Magazin",
+            "new": "Magazine"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-01T14:59:22.388Z",
+        "action": "updated",
+        "changes": {
+          "name": {
+            "old": "Magazine",
+            "new": "Magazin"
+          }
+        }
       }
     ],
-    "materialCount": 50
+    "materialCount": 35
   },
   {
     "name": "DGA",

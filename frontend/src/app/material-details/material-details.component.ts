@@ -38,14 +38,12 @@ export class MaterialDetailsComponent implements OnInit {
 
   loadMaterialAndRooms(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    console.log('Loading material and rooms for ID:', id);
     if (id) {
       this.dataService.getMaterial(id).subscribe(
         data => {
           this.material = data;
           this.selectedRoomId = this.material.currentLocation; // Pre-select current location
           this.loadMaterialHistory(id);
-          console.log('Material loaded:', this.material);
         },
         error => {
           console.error('Error loading material:', error);
@@ -57,7 +55,6 @@ export class MaterialDetailsComponent implements OnInit {
       data => {
         this.rooms = data.data; // Access data property for paginated response
         this.rooms = this.rooms.sort((a, b) => a.name.localeCompare(b.name));
-        console.log('Rooms loaded:', this.rooms);
       },
       error => {
         console.error('Error loading rooms:', error);

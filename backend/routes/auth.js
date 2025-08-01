@@ -10,7 +10,6 @@ const SECRET_KEY = process.env.SECRET_KEY || 'your_secret_key';
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
   const users = JSON.parse(fs.readFileSync(usersPath));
-  console.log('Login request received:', req.body); // Add this
 
   const user = users.find(u => u.username === username && u.password === password);
 

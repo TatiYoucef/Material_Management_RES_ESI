@@ -28,7 +28,6 @@ export class DataService {
         httpParams = httpParams.append(key, params[key]);
       }
     }
-    console.log('DataService: Calling /materials/types with params:', httpParams.toString());
     return this.http.get<any[]>(`${this.baseUrl}/materials/types`, { headers: this.getHeaders(), params: httpParams });
   }
 

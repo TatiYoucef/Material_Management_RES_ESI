@@ -82,7 +82,6 @@ export class RoomManagementComponent implements OnInit {
 
   addRoom(): void {
     this.errorMessage = '';
-    console.log('Attempting to add room with data:', this.newRoom);
     this.dataService.createRoom(this.newRoom).subscribe(
       (room: any) => {
         this.loadRooms(); 

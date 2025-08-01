@@ -75,7 +75,6 @@ export class MaterialManagementComponent implements OnInit {
         this.rooms = data.data; // Access data property for paginated response
         this.rooms = this.rooms.sort((a, b) => a.name.localeCompare(b.name));
         this.locations = this.rooms.map(room => room.id);
-        console.log('Rooms loaded:', this.rooms);
       },
       error => {
         console.error('Error loading rooms:', error);
@@ -119,7 +118,6 @@ export class MaterialManagementComponent implements OnInit {
 
   addMaterial(): void {
     this.errorMessage = '';
-    console.log('Attempting to add material with data:', this.newMaterial);
     this.dataService.createMaterial(this.newMaterial).subscribe(
       (response: any) => {
         this.currentPage = 1; // Reset to first page to see newly added materials
@@ -189,7 +187,6 @@ export class MaterialManagementComponent implements OnInit {
 
   deleteMaterial(id: string): void {
     this.errorMessage = '';
-    console.log('Frontend: Attempting to delete material with ID:', id);
     this.dataService.deleteMaterial(id).subscribe(
       () => {
         this.loadMaterials();

@@ -3,9 +3,9 @@
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
-    "id": "0174",
+    "id": "M001",
     "history": [
       {
         "timestamp": "2025-07-30T19:26:19.969Z",
@@ -20,6 +20,16 @@
         "timestamp": "2025-07-31T20:51:59.345Z",
         "action": "updated",
         "changes": {}
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:46.734Z",
+        "action": "updated",
+        "changes": {}
       }
     ]
   },
@@ -27,13 +37,18 @@
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M002",
     "history": [
       {
         "timestamp": "2025-07-30T19:26:19.969Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -41,13 +56,18 @@
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M003",
     "history": [
       {
         "timestamp": "2025-07-30T19:26:19.969Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -55,13 +75,18 @@
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M004",
     "history": [
       {
         "timestamp": "2025-07-30T19:26:19.970Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -69,7 +94,7 @@
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M005",
     "history": [
@@ -97,6 +122,11 @@
           "quantity": 1
         },
         "description": "Moved from DGA to Mag as part of a bulk move of 1 Router(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -104,13 +134,18 @@
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M006",
     "history": [
       {
         "timestamp": "2025-07-30T19:26:19.970Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -118,13 +153,18 @@
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M007",
     "history": [
       {
         "timestamp": "2025-07-30T19:26:19.971Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -132,13 +172,18 @@
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M008",
     "history": [
       {
         "timestamp": "2025-07-30T19:26:19.971Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -146,13 +191,18 @@
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M009",
     "history": [
       {
         "timestamp": "2025-07-30T19:26:19.971Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -160,7 +210,7 @@
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M010",
     "history": [
@@ -187,6 +237,11 @@
             "new": "Mag"
           }
         }
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -194,7 +249,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M011",
     "history": [
@@ -212,6 +267,11 @@
           "quantity": 1
         },
         "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -219,7 +279,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M012",
     "history": [
@@ -237,6 +297,11 @@
           "quantity": 1
         },
         "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -244,7 +309,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M013",
     "history": [
@@ -262,6 +327,11 @@
           "quantity": 1
         },
         "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -269,7 +339,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M014",
     "history": [
@@ -287,6 +357,11 @@
           "quantity": 1
         },
         "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -294,7 +369,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M015",
     "history": [
@@ -312,6 +387,11 @@
           "quantity": 1
         },
         "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -319,7 +399,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M016",
     "history": [
@@ -337,6 +417,11 @@
           "quantity": 1
         },
         "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -344,7 +429,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M017",
     "history": [
@@ -362,6 +447,11 @@
           "quantity": 1
         },
         "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -369,7 +459,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M018",
     "history": [
@@ -387,6 +477,11 @@
           "quantity": 1
         },
         "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -394,7 +489,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M019",
     "history": [
@@ -412,6 +507,11 @@
           "quantity": 1
         },
         "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -419,7 +519,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M020",
     "history": [
@@ -437,6 +537,11 @@
           "quantity": 1
         },
         "description": "Moved from Mag to DGA as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -444,7 +549,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGB",
     "id": "M021",
     "history": [
@@ -462,6 +567,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -469,7 +579,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGB",
     "id": "M022",
     "history": [
@@ -487,6 +597,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -494,7 +609,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGB",
     "id": "M023",
     "history": [
@@ -512,6 +627,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -519,7 +639,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGB",
     "id": "M024",
     "history": [
@@ -537,6 +657,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -544,7 +669,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGB",
     "id": "M025",
     "history": [
@@ -562,6 +687,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -569,7 +699,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGB",
     "id": "M026",
     "history": [
@@ -587,6 +717,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -594,7 +729,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGB",
     "id": "M027",
     "history": [
@@ -612,6 +747,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -619,7 +759,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGB",
     "id": "M028",
     "history": [
@@ -637,6 +777,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -644,7 +789,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGB",
     "id": "M029",
     "history": [
@@ -662,6 +807,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -669,7 +819,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGB",
     "id": "M030",
     "history": [
@@ -687,6 +837,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGB as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -694,7 +849,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M031",
     "history": [
@@ -712,6 +867,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGA as part of a bulk move of 5 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -719,7 +879,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M032",
     "history": [
@@ -737,6 +897,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGA as part of a bulk move of 5 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -744,7 +909,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M033",
     "history": [
@@ -762,6 +927,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGA as part of a bulk move of 5 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -769,7 +939,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M034",
     "history": [
@@ -787,6 +957,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGA as part of a bulk move of 5 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -794,7 +969,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "DGA",
     "id": "M035",
     "history": [
@@ -812,6 +987,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to DGA as part of a bulk move of 5 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -819,13 +999,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M036",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.957Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -833,13 +1018,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M037",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.957Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -847,13 +1037,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M038",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.957Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -861,13 +1056,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M039",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.958Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -875,13 +1075,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M040",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.958Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -889,13 +1094,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M041",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.958Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -903,13 +1113,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M042",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.958Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -917,13 +1132,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M043",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.958Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -931,13 +1151,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M044",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.958Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -945,13 +1170,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M045",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.958Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -959,13 +1189,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M046",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.959Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -973,13 +1208,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M047",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.959Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -987,13 +1227,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M048",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.959Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1001,13 +1246,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M049",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.959Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1015,13 +1265,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M050",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.960Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1029,13 +1284,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M051",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.960Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1043,13 +1303,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M052",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.960Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1057,13 +1322,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M053",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.960Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1071,13 +1341,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M054",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.960Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1085,13 +1360,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M055",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.960Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1099,13 +1379,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M056",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.961Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1113,13 +1398,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M057",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.961Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1127,13 +1417,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M058",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.961Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1141,13 +1436,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M059",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.961Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   },
@@ -1155,13 +1455,18 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M060",
     "history": [
       {
         "timestamp": "2025-07-30T19:27:58.961Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T16:47:18.803Z",
+        "action": "reserved",
+        "description": "Borrow from CACE"
       }
     ]
   }

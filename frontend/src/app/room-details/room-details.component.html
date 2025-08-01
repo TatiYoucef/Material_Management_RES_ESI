@@ -8,7 +8,10 @@
       <strong>Full name:</strong> <span>{{ room.name }}</span>
     </div>
     <div class="detail-item">
-      <strong>Capacity:</strong> <span>{{ room.capacity }}</span>
+      <strong>Material count:</strong> <span>{{ room.materialCount }}</span>
+    </div>
+    <div class="detail-item">
+      <strong>Maximum Capacity:</strong> <span>{{ room.capacity }}</span>
     </div>
 
     <h4 class="section-subtitle">Materials in this room:</h4>
@@ -75,7 +78,7 @@
 
     <hr class="section-divider">
 
-    <h3 class="section-subtitle">Danger Zone</h3>
+    <h3 class="section-subtitle">Delete</h3>
     <button class="btn btn-danger action-button delete-button" (click)="deleteRoom()">Delete Room</button>
 
   </div>
