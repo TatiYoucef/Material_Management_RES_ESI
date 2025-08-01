@@ -140,48 +140,24 @@ export class MaterialManagementComponent implements OnInit {
     this.errorMessage = '';
     
     if (this.editingMaterial) {
-      if (this.editingMaterial.id !== this.originalMaterialId) {
-        // ID has changed, update ID first
-        this.dataService.updateMaterialId(this.originalMaterialId!, this.editingMaterial.id).subscribe(
-          () => {
-            // After ID is updated, proceed with updating other material details
-            this.dataService.updateMaterial(this.editingMaterial.id, this.editingMaterial).subscribe(
-              (material: any) => {
-                this.loadMaterials();
-                this.editingMaterial = null;
-                this.originalMaterialId = null;
-              },
-              (error: any) => {
-                console.error('Error updating material details after ID change:', error);
-                this.errorMessage = error.error?.errors 
-                  ? error.error.errors.join(', ') 
-                  : 'Failed to update material details after ID change.';
-              }
-            );
-          },
-          (error: any) => {
-            console.error('Error updating material ID:', error);
-            this.errorMessage = error.error?.errors 
-              ? error.error.errors.join(', ') 
-              : 'Failed to update material ID.';
-          }
-        );
-      } else {
-        // No ID change, just update material details
-        this.dataService.updateMaterial(this.editingMaterial.id, this.editingMaterial).subscribe(
-          (material: any) => {
-            this.loadMaterials();
-            this.editingMaterial = null;
-            this.originalMaterialId = null;
-          },
-          (error: any) => {
-            console.error('Error updating material:', error);
-            this.errorMessage = error.error?.errors 
-              ? error.error.errors.join(', ') 
-              : 'Failed to update material.';
-          }
-        );
-      }
+      const updatedMaterial = {
+        ...this.editingMaterial,
+        newId: this.editingMaterial.id
+      };
+
+      this.dataService.updateMaterialWithId(this.originalMaterialId!, updatedMaterial).subscribe(
+        (material: any) => {
+          this.loadMaterials();
+          this.editingMaterial = null;
+          this.originalMaterialId = null;
+        },
+        (error: any) => {
+          console.error('Error updating material:', error);
+          this.errorMessage = error.error?.errors 
+            ? error.error.errors.join(', ') 
+            : 'Failed to update material.';
+        }
+      );
     }
   }
 

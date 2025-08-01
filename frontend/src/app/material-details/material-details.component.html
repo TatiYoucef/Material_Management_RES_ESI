@@ -36,17 +36,41 @@
         <button class="btn btn-primary action-button" (click)="moveMaterial()">Move Material</button>
       </div>
 
-      <div class="action-card">
+      <div class="action-card" *ngIf="material.isAvailable">
         <h4 class="card-title">Reserve Material</h4>
         <div class="form-group">
-          <label for="description">Description:</label>
-          <input type="text" id="description" [(ngModel)]="reservationData.description" required>
+          <label for="newDescription">New Reservation Description:</label>
+          <input type="text" id="newDescription" [(ngModel)]="newReservationData.description">
         </div>
         <div class="form-group">
-          <label for="endDate">End Date (Optional):</label>
-          <input type="date" id="endDate" [(ngModel)]="reservationData.endDate">
+          <label for="newEndDate">End Date (Optional):</label>
+          <input type="date" id="newEndDate" [(ngModel)]="newReservationData.endDate">
         </div>
-        <button class="btn btn-warning action-button" (click)="reserveMaterial()" [disabled]="!material.isAvailable">Reserve</button>
+        <button class="btn btn-warning action-button" (click)="reserveMaterialNew()">Create New Reservation</button>
+
+        <hr>
+
+        <h4 class="card-title">Add to Existing Reservation</h4>
+        <div class="form-group">
+          <label for="existingReservation">Select Reservation:</label>
+          <select id="existingReservation" [(ngModel)]="selectedExistingReservationId">
+            <option value="">-- Select an active reservation --</option>
+            <option *ngFor="let res of activeReservations" [value]="res.id">{{ res.description }} ({{ res.id }})</option>
+          </select>
+        </div>
+        <button class="btn btn-info action-button" (click)="addMaterialToExistingReservation()" [disabled]="!selectedExistingReservationId">Add to Selected Reservation</button>
+      </div>
+
+      <div class="action-card" *ngIf="!material.isAvailable && material.reservationDetails">
+        <h4 class="card-title">Reserved Details</h4>
+        <div class="detail-item">
+          <strong>Reservation ID:</strong> <a [routerLink]="['/reservations', material.reservationDetails.id]">{{ material.reservationDetails.id }}</a>
+        </div>
+        <div class="detail-item">
+          <strong>Description:</strong> {{ material.reservationDetails.description }}
+        </div>
+        <div><strong>End Date:</strong> {{ (material.reservationDetails?.endDate | date) ?? 'None' }}</div>
+        <button class="btn btn-danger action-button" (click)="excludeMaterialFromReservation()">Exclude from Reservation</button>
       </div>
     </div>
 

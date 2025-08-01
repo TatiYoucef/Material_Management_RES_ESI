@@ -1,0 +1,62 @@
+.container {
+  padding: 20px;
+}
+
+.header-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  width: 300px;
+  padding: 8px;
+}
+
+button {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #f4f4f4;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.material-summary {
+  cursor: pointer;
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.status {
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+}
+
+.status.active {
+  background-color: #28a745;
+}
+
+.status.ended {
+  background-color: #6c757d;
+}
+
+.status.cancelled {
+  background-color: #dc3545;
+}

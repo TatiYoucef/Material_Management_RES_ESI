@@ -64,11 +64,6 @@ export class DataService {
     return this.http.get<any>(`${this.baseUrl}/rooms/${id}`, { headers: this.getHeaders() });
   }
 
-  // Update a specific material instance
-  updateMaterial(id: string, material: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/materials/${id}`, material, { headers: this.getHeaders() });
-  }
-
   updateRoom(id: string, room: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/rooms/${id}`, room, { headers: this.getHeaders() });
   }
@@ -109,11 +104,6 @@ export class DataService {
     return this.http.post<any>(`${this.baseUrl}/materials/${id}/reserve`, { reserve }, { headers: this.getHeaders() });
   }
 
-  // New: Update material ID
-  updateMaterialId(oldId: string, newId: string): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/materials/${oldId}/id`, { newId }, { headers: this.getHeaders() });
-  }
-
   // New: Update room ID
   updateRoomId(oldId: string, newId: string): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/rooms/${oldId}/id`, { newId }, { headers: this.getHeaders() });
@@ -127,8 +117,32 @@ export class DataService {
     return this.http.get<any[]>(`${this.baseUrl}/reservations`, { headers: this.getHeaders(), params });
   }
 
+  getReservation(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/reservations/${id}`, { headers: this.getHeaders() });
+  }
+
   createReservation(reservation: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/reservations`, reservation, { headers: this.getHeaders() });
+  }
+
+  cancelReservation(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/reservations/${id}`, { headers: this.getHeaders() });
+  }
+
+  endReservation(id: string): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/reservations/${id}/end`, {}, { headers: this.getHeaders() });
+  }
+
+  addMaterialsToReservation(id: string, materials: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/reservations/${id}/materials`, { materials }, { headers: this.getHeaders() });
+  }
+
+  removeMaterialFromReservation(reservationId: string, materialId: string): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/reservations/${reservationId}/remove-material/${materialId}`, {}, { headers: this.getHeaders() });
+  }
+
+  updateMaterialWithId(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/materials/${id}/update-with-id`, data, { headers: this.getHeaders() });
   }
 
   moveMaterialQuantity(materialType: string, quantity: number, fromRoom: string, toRoom: string): Observable<any> {

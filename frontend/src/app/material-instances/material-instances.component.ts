@@ -14,7 +14,6 @@ import { DataService } from '../data.service';
 export class MaterialInstancesComponent implements OnInit {
   materialType: string | null = null;
   materialInstances: any[] = [];
-  allMaterialInstancesOfType: any[] = []; // New property to store all instances for summary
   summary = { available: 0, reserved: 0 };
   roomSummary: any = {};
   errorMessage: string = '';
@@ -40,7 +39,6 @@ export class MaterialInstancesComponent implements OnInit {
       this.materialType = params.get('type');
       if (this.materialType) {
         this.loadMaterialInstances(this.materialType);
-        this.loadFilterOptions();
       }
     });
   }
@@ -63,33 +61,18 @@ export class MaterialInstancesComponent implements OnInit {
       params.location = this.filterLocation;
     }
 
-    this.dataService.getMaterials({ type: type, limit: 1000 }).subscribe(
-      (response: any) => {
-        this.allMaterialInstancesOfType = response.data; // Fetch all for summary
-        this.calculateSummary();
-      },
-      (error: any) => {
-        console.error('Error loading all material instances for summary:', error);
-      }
-    );
-
     this.dataService.getMaterials(params).subscribe(
       (response: any) => {
         this.materialInstances = response.data;
         this.totalPages = Math.ceil(response.total / this.limit);
+        this.summary = response.summary;
+        this.roomSummary = response.roomSummary;
       },
       (error: any) => {
         console.error('Error loading material instances:', error);
         this.errorMessage = 'Failed to load material instances.';
       }
     );
-  }
-
-  loadFilterOptions(): void {
-    // Fetch all rooms to get unique locations for filtering
-    this.dataService.getRooms({ all: true }).subscribe((response: any) => {
-      this.locations = response.map((r: any) => r.id).sort();
-    });
   }
 
   onSearch(): void {
@@ -122,26 +105,6 @@ export class MaterialInstancesComponent implements OnInit {
         this.loadMaterialInstances(this.materialType);
       }
     }
-  }
-
-  calculateSummary(): void {
-    this.summary = {
-      available: this.allMaterialInstancesOfType.filter(i => i.isAvailable).length,
-      reserved: this.allMaterialInstancesOfType.filter(i => !i.isAvailable).length
-    };
-
-    this.roomSummary = this.allMaterialInstancesOfType.reduce((acc, instance) => {
-      const room = instance.currentLocation;
-      if (!acc[room]) {
-        acc[room] = { available: 0, reserved: 0 };
-      }
-      if (instance.isAvailable) {
-        acc[room].available++;
-      } else {
-        acc[room].reserved++;
-      }
-      return acc;
-    }, {});
   }
 
   getRoomNames(): string[] {

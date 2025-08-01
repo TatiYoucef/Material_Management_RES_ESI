@@ -99,6 +99,16 @@
         "timestamp": "2025-07-31T20:40:20.243Z",
         "action": "materials_moved_in",
         "description": "5 HDMI cable(s) moved in from Magazin."
+      },
+      {
+        "timestamp": "2025-08-01T20:27:38.932Z",
+        "action": "materials_moved_out",
+        "description": "5 HDMI cable(s) moved out to DGA."
+      },
+      {
+        "timestamp": "2025-08-01T20:27:38.932Z",
+        "action": "materials_moved_in",
+        "description": "5 HDMI cable(s) moved in from DGA."
       }
     ],
     "materialCount": 0

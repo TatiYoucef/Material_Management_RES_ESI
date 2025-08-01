@@ -8,7 +8,9 @@ import { MaterialManagementComponent } from './material-management/material-mana
 import { MaterialInstancesComponent } from './material-instances/material-instances.component';
 import { RoomManagementComponent } from './room-management/room-management.component';
 import { authGuard } from './auth.guard';
-import { ReservationManagementComponent } from './reservation-management/reservation-management.component';
+import { ReservationHistoryComponent } from './reservation-history/reservation-history.component';
+import { ReservationCreateComponent } from './reservation-create/reservation-create.component';
+import { ReservationDetailsComponent } from './reservation-details/reservation-details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -19,6 +21,8 @@ export const routes: Routes = [
   { path: 'material-management', component: MaterialManagementComponent, canActivate: [authGuard] },
   { path: 'material-instances/:type', component: MaterialInstancesComponent, canActivate: [authGuard] },
   { path: 'room-management', component: RoomManagementComponent, canActivate: [authGuard] },
-  { path: 'reservation-management', component: ReservationManagementComponent, canActivate: [authGuard] },
+  { path: 'reservations', component: ReservationHistoryComponent, canActivate: [authGuard] },
+  { path: 'reservations/new', component: ReservationCreateComponent, canActivate: [authGuard] },
+  { path: 'reservations/:id', component: ReservationDetailsComponent, canActivate: [authGuard] },
   { path: '**', component: NotFoundComponent }
 ];

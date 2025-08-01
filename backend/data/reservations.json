@@ -1,250 +1,72 @@
 [
   {
-    "id": "RES1754066838797",
+    "id": "RES1754072991812",
     "description": "Borrow from CACE",
-    "endDate": "2025-08-03",
+    "startDate": "2025-07-27",
+    "endDate": "2025-07-29",
     "materials": [
       {
-        "id": "0174",
-        "type": "Router"
+        "id": "M001",
+        "type": "Router",
+        "name": "Cisco 2800 Series"
       },
       {
         "id": "M002",
-        "type": "Router"
+        "type": "Router",
+        "name": "Cisco 2800 Series"
       },
       {
         "id": "M003",
-        "type": "Router"
-      },
-      {
-        "id": "M004",
-        "type": "Router"
-      },
-      {
-        "id": "M005",
-        "type": "Router"
-      },
-      {
-        "id": "M006",
-        "type": "Router"
-      },
-      {
-        "id": "M007",
-        "type": "Router"
-      },
-      {
-        "id": "M008",
-        "type": "Router"
-      },
-      {
-        "id": "M009",
-        "type": "Router"
-      },
-      {
-        "id": "M010",
-        "type": "Router"
-      },
-      {
-        "id": "M011",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M012",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M013",
-        "type": "HDMI cable"
+        "type": "Router",
+        "name": "Cisco 2800 Series"
       },
       {
         "id": "M014",
-        "type": "HDMI cable"
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
       },
       {
-        "id": "M015",
-        "type": "HDMI cable"
+        "id": "M004",
+        "type": "Router",
+        "name": "Cisco 2800 Series"
       },
       {
-        "id": "M016",
-        "type": "HDMI cable"
+        "id": "M005",
+        "type": "Router",
+        "name": "Cisco 2800 Series"
+      }
+    ],
+    "status": "ended",
+    "timestamp": "2025-08-01T18:29:51.812Z"
+  },
+  {
+    "id": "RES1754079544607",
+    "description": "Server Execution",
+    "startDate": "2025-08-01",
+    "endDate": null,
+    "materials": [
+      {
+        "id": "M006",
+        "type": "Router",
+        "name": "Cisco 2800 Series"
       },
       {
-        "id": "M017",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M018",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M019",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M020",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M021",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M022",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M023",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M024",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M025",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M026",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M027",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M028",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M029",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M030",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M031",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M032",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M033",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M034",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M035",
-        "type": "HDMI cable"
+        "id": "L001",
+        "type": "Laptop",
+        "name": "Dell XPS 15"
       },
       {
         "id": "M036",
-        "type": "HDMI cable"
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
       },
       {
         "id": "M037",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M038",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M039",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M040",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M041",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M042",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M043",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M044",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M045",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M046",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M047",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M048",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M049",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M050",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M051",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M052",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M053",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M054",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M055",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M056",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M057",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M058",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M059",
-        "type": "HDMI cable"
-      },
-      {
-        "id": "M060",
-        "type": "HDMI cable"
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
       }
     ],
-    "timestamp": "2025-08-01T16:47:18.801Z"
+    "status": "active",
+    "timestamp": "2025-08-01T20:19:04.607Z"
   }
 ]

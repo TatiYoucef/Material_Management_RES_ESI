@@ -24,7 +24,9 @@ export class MaterialDetailsComponent implements OnInit {
   errorMessage: string = '';
 
   // For reserving materials
-  reservationData = { description: '', endDate: '' };
+  newReservationData = { description: '', endDate: '' };
+  activeReservations: any[] = [];
+  selectedExistingReservationId: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -34,6 +36,7 @@ export class MaterialDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMaterialAndRooms();
+    this.loadActiveReservations();
   }
 
   loadMaterialAndRooms(): void {
@@ -45,7 +48,7 @@ export class MaterialDetailsComponent implements OnInit {
           this.selectedRoomId = this.material.currentLocation; // Pre-select current location
           this.loadMaterialHistory(id);
         },
-        error => {
+        (error: any) => {
           console.error('Error loading material:', error);
           this.errorMessage = 'Failed to load material details.';
         }
@@ -56,11 +59,77 @@ export class MaterialDetailsComponent implements OnInit {
         this.rooms = data.data; // Access data property for paginated response
         this.rooms = this.rooms.sort((a, b) => a.name.localeCompare(b.name));
       },
-      error => {
+      (error: any) => {
         console.error('Error loading rooms:', error);
         // Don't set error message here, as material might still load
       }
     );
+  }
+
+  loadActiveReservations(): void {
+    this.dataService.getReservations('').subscribe(
+      data => {
+        this.activeReservations = data.filter((res: any) => res.status === 'active');
+      },
+      (error: any) => {
+        console.error('Error loading active reservations:', error);
+      }
+    );
+  }
+
+  reserveMaterialNew(): void {
+    this.errorMessage = '';
+    if (this.material) {
+      const materialsToReserve = [{ ids: [this.material.id] }];
+      this.dataService.createReservation({ ...this.newReservationData, materials: materialsToReserve }).subscribe(
+        () => {
+          this.loadMaterialAndRooms();
+          this.newReservationData = { description: '', endDate: '' }; // Reset form
+        },
+        (error: any) => {
+          console.error('Error reserving material:', error);
+          this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to create new reservation.';
+        }
+      );
+    }
+  }
+
+  addMaterialToExistingReservation(): void {
+    this.errorMessage = '';
+    if (!this.selectedExistingReservationId) {
+      this.errorMessage = 'Please select an existing reservation.';
+      return;
+    }
+    if (this.material) {
+      const materialsToAdd = [{ ids: [this.material.id] }];
+      this.dataService.addMaterialsToReservation(this.selectedExistingReservationId, materialsToAdd).subscribe(
+        () => {
+          this.loadMaterialAndRooms();
+          this.selectedExistingReservationId = ''; // Reset form
+        },
+        (error: any) => {
+          console.error('Error adding material to existing reservation:', error);
+          this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to add material to existing reservation.';
+        }
+      );
+    }
+  }
+
+  excludeMaterialFromReservation(): void {
+    this.errorMessage = '';
+    if (this.material && this.material.reservationDetails) {
+      if (confirm(`Are you sure you want to exclude ${this.material.name} from reservation ${this.material.reservationDetails.id}?`)) {
+        this.dataService.removeMaterialFromReservation(this.material.reservationDetails.id, this.material.id).subscribe(
+          () => {
+            this.loadMaterialAndRooms();
+          },
+          (error: any) => {
+            console.error('Error excluding material from reservation:', error);
+            this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to exclude material.';
+          }
+        );
+      }
+    }
   }
 
   loadMaterialHistory(id: string): void {
@@ -68,7 +137,7 @@ export class MaterialDetailsComponent implements OnInit {
       history => {
         this.materialHistory = history.reverse();
       },
-      error => {
+      (error: any) => {
         console.error('Error loading material history:', error);
       }
     );
@@ -87,7 +156,7 @@ export class MaterialDetailsComponent implements OnInit {
           this.loadMaterialHistory(this.material.id);
           this.errorMessage = ''; // Clear error on success
         },
-        error => {
+        (error: any) => {
           console.error('Error moving material:', error);
           this.errorMessage = 'Failed to move material.';
         }
@@ -101,29 +170,9 @@ export class MaterialDetailsComponent implements OnInit {
         () => {
           this.router.navigate(['/home']); // Navigate back to home or material types list
         },
-        error => {
+        (error: any) => {
           console.error('Error deleting material:', error);
           this.errorMessage = 'Failed to delete material.';
-        }
-      );
-    }
-  }
-
-  reserveMaterial(): void {
-    this.errorMessage = '';
-    if (this.material) {
-      const materialsToReserve = [{
-        id: this.material.id,
-        type: this.material.type,
-        quantity: 1 // Assuming one instance is reserved
-      }];
-      this.dataService.createReservation({ ...this.reservationData, materials: materialsToReserve }).subscribe(
-        () => {
-          this.loadMaterialAndRooms();
-        },
-        error => {
-          console.error('Error reserving material:', error);
-          this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to reserve material.';
         }
       );
     }

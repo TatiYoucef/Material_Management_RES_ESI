@@ -1,0 +1,47 @@
+.container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.material-request-form {
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.request-type-selector {
+  margin-bottom: 15px;
+}
+
+.request-type-selector label {
+  margin-right: 20px;
+}
+
+.added-materials {
+  margin-top: 20px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 15px;
+}

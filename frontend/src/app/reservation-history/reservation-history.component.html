@@ -1,0 +1,56 @@
+<div class="container">
+  <h2>Reservation History</h2>
+  <div class="header-controls">
+    <input type="text" [(ngModel)]="searchQuery" (input)="loadReservations()" placeholder="Search by description or ID">
+    <button (click)="createReservation()">Create New Reservation</button>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Materials</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reservation of reservations">
+        <td>{{ reservation.id }}</td>
+        <td>{{ reservation.description }}</td>
+        <td>{{ reservation.startDate | date }}</td>
+        <td>{{ (reservation.endDate | date) ?? 'None' }}</td>
+        <td><span class="status" [ngClass]="reservation.status">{{ reservation.status }}</span></td>
+        <td>
+          <div (click)="toggleDetails(reservation)" class="material-summary">
+            {{ reservation.materials.length }} item(s) 
+            <span class="arrow">{{ reservation.isExpanded ? '&#9650;' : '&#9660;' }}</span>
+          </div>
+          <div *ngIf="reservation.isExpanded">
+            <div *ngIf="reservation.aggregatedMaterials.length > 0">
+              <div *ngFor="let materialType of reservation.aggregatedMaterials">
+                <div (click)="toggleMaterialTypeDetails(materialType)" class="material-summary">
+                  {{ materialType.count }}x {{ materialType.type }}
+                  <span class="arrow">{{ materialType.isExpanded ? '&#9650;' : '&#9660;' }}</span>
+                </div>
+                <ul *ngIf="materialType.isExpanded">
+                  <li *ngFor="let instance of materialType.instances">
+                    {{ instance.name }} ({{ instance.id }})
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div *ngIf="reservation.aggregatedMaterials.length === 0">
+              No materials
+            </div>
+          </div>
+        </td>
+        <td>
+          <button (click)="viewReservation(reservation.id)">View Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

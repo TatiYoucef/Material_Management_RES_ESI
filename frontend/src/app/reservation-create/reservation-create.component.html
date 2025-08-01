@@ -1,0 +1,73 @@
+<div class="container">
+  <h2>Create New Reservation</h2>
+  <form (ngSubmit)="createReservation()">
+    <div class="form-group">
+      <label for="description">Description</label>
+      <input type="text" id="description" [(ngModel)]="newReservation.description" name="description" required>
+    </div>
+    <div class="form-group">
+      <label for="startDate">Start Date</label>
+      <input type="date" id="startDate" [(ngModel)]="newReservation.startDate" name="startDate" required>
+    </div>
+    <div class="form-group">
+      <label for="endDate">End Date (Optional)</label>
+      <input type="date" id="endDate" [(ngModel)]="newReservation.endDate" name="endDate">
+    </div>
+
+    <hr>
+
+    <h3>Add Materials</h3>
+    <div class="material-request-form">
+      <div class="request-type-selector">
+        <label><input type="radio" name="materialRequestType" value="type" [(ngModel)]="materialRequestType"> By Type & Location</label>
+        <label><input type="radio" name="materialRequestType" value="id" [(ngModel)]="materialRequestType"> By Specific IDs</label>
+      </div>
+
+      <div *ngIf="materialRequestType === 'type'">
+        <div class="form-group">
+          <label for="materialType">Material Type</label>
+          <select id="materialType" [(ngModel)]="materialRequest.type" name="materialType">
+            <option value="">-- Select a Type --</option>
+            <option *ngFor="let type of materialTypes" [value]="type.type">{{ type.type }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity</label>
+          <input type="number" id="quantity" [(ngModel)]="materialRequest.quantity" name="quantity" min="1">
+        </div>
+        <div class="form-group">
+          <label for="fromRoom">From Room</label>
+          <select id="fromRoom" [(ngModel)]="materialRequest.fromRoom" name="fromRoom">
+            <option value="">-- Select a Room --</option>
+            <option *ngFor="let room of rooms" [value]="room.id">{{ room.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div *ngIf="materialRequestType === 'id'">
+        <div class="form-group">
+          <label for="ids">Material IDs (comma-separated)</label>
+          <input type="text" id="ids" [(ngModel)]="materialRequest.ids" name="ids">
+        </div>
+      </div>
+
+      <button type="button" (click)="addMaterialRequest()">Add to Reservation</button>
+    </div>
+
+    <div class="added-materials">
+      <h4>Requested Materials:</h4>
+      <ul>
+        <li *ngFor="let item of newReservation.materials">
+          <span *ngIf="item.type">{{ item.quantity }}x {{ item.type }} from {{ item.fromRoom }}</span>
+          <span *ngIf="item.ids">IDs: {{ item.ids.join(', ') }}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <button type="submit" [disabled]="newReservation.materials.length === 0">Create Reservation</button>
+  </form>
+</div>

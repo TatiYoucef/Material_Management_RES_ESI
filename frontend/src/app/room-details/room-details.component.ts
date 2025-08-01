@@ -47,7 +47,7 @@ export class RoomDetailsComponent implements OnInit {
           this.loadRoomHistory(id);
           this.loadMaterialsInRoom(id);
         },
-        error => {
+        (error: any) => {
           console.error('Error loading room:', error);
           this.errorMessage = 'Failed to load room details.';
         }
@@ -101,7 +101,7 @@ export class RoomDetailsComponent implements OnInit {
           this.newRoom = { name: '', capacity: 0 }; // Reset form
           this.router.navigate(['/home']); // Navigate back to home or rooms list
         },
-        error => {
+        (error: any) => {
           console.error('Error creating room:', error);
           this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to create room.';
         }
@@ -116,7 +116,7 @@ export class RoomDetailsComponent implements OnInit {
         () => {
           this.router.navigate(['/home']); // Navigate back to home or rooms list
         },
-        error => {
+        (error: any) => {
           console.error('Error deleting room:', error);
           this.errorMessage = 'Failed to delete room.';
         }
@@ -131,7 +131,7 @@ export class RoomDetailsComponent implements OnInit {
         () => {
           this.loadMaterialsInRoom(this.room.id);
         },
-        error => {
+        (error: any) => {
           console.error('Error moving materials:', error);
           this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to move materials.';
         }

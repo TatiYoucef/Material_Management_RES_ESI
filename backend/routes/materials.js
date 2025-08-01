@@ -106,6 +106,23 @@ router.get('/', loadMaterials, (req, res) => {
   results.total = materials.length;
   results.page = page;
   results.limit = limit;
+  results.summary = {
+    available: materials.filter(m => m.isAvailable).length,
+    reserved: materials.filter(m => !m.isAvailable).length
+  };
+
+  results.roomSummary = materials.reduce((acc, instance) => {
+    const room = instance.currentLocation;
+    if (!acc[room]) {
+      acc[room] = { available: 0, reserved: 0 };
+    }
+    if (instance.isAvailable) {
+      acc[room].available++;
+    } else {
+      acc[room].reserved++;
+    }
+    return acc;
+  }, {});
 
   if (endIndex < materials.length) {
     results.next = {
@@ -195,6 +212,7 @@ router.get('/:id', loadMaterials, async (req, res) => {
 
     if (activeReservation) {
       material.reservationDetails = {
+        id: activeReservation.id,
         description: activeReservation.description,
         endDate: activeReservation.endDate
       };
@@ -236,44 +254,6 @@ router.post('/', loadMaterials, async (req, res) => {
   } catch (error) {
     console.error('Backend: Error creating material:', error);
     res.status(500).json({ error: error.message });
-  }
-});
-
-// Update a specific material instance
-router.put('/:id', loadMaterials, async (req, res) => {
-  const materialId = req.params.id;
-  const updatedMaterial = req.body;
-  let materials = [...req.materials];
-  const index = materials.findIndex(m => m.id === materialId);
-
-  if (index !== -1) {
-    const oldMaterial = { ...materials[index] };
-    const materialToValidate = { ...oldMaterial, ...updatedMaterial, id: materialId }; 
-
-    const errors = validateMaterialInstance(materialToValidate);
-    if (errors.length > 0) {
-      return res.status(400).json({ errors });
-    }
-
-    materials[index] = materialToValidate;
-    
-    if (!materials[index].history) {
-      materials[index].history = [];
-    }
-    materials[index].history.push({ 
-      timestamp: new Date().toISOString(), 
-      action: 'updated', 
-      changes: getChanges(oldMaterial, materials[index])
-    });
-
-    try {
-      await writeMaterials(materials);
-      res.json(materials[index]);
-    } catch (error) {
-      res.status(500).json({ error: error.message });
-    }
-  } else {
-    res.status(404).json({ error: 'Material not found' });
   }
 });
 
@@ -389,37 +369,46 @@ router.get('/:id/history', loadMaterials, (req, res) => {
   }
 });
 
-// Action: Update material ID
-router.put('/:oldId/id', loadMaterials, async (req, res) => {
-  const oldId = req.params.oldId;
-  const { newId } = req.body;
+// Update a specific material instance, including its ID
+router.put('/:id/update-with-id', loadMaterials, async (req, res) => {
+  const materialId = req.params.id;
+  const { newId, ...updatedDetails } = req.body;
   let materials = [...req.materials];
+  const index = materials.findIndex(m => m.id === materialId);
 
-  if (!newId || newId.trim() === '') {
-    return res.status(400).json({ errors: ['New ID is required.'] });
-  }
-  if (materials.some(m => m.id === newId)) {
-    return res.status(400).json({ errors: ['New ID already exists.'] });
-  }
-
-  const materialIndex = materials.findIndex(m => m.id === oldId);
-
-  if (materialIndex !== -1) {
-    const oldMaterial = { ...materials[materialIndex] };
-    materials[materialIndex].id = newId;
-
-    if (!materials[materialIndex].history) {
-      materials[materialIndex].history = [];
+  if (index !== -1) {
+    const oldMaterial = { ...materials[index] };
+    
+    // Check for ID change and validate new ID
+    if (newId && newId !== materialId) {
+      if (materials.some(m => m.id === newId)) {
+        return res.status(400).json({ errors: ['New ID already exists.'] });
+      }
+      updatedDetails.id = newId; // The new ID will be part of the updated details
+    } else {
+      updatedDetails.id = materialId; // Keep the original ID if no new one is provided
     }
-    materials[materialIndex].history.push({
-      timestamp: new Date().toISOString(),
-      action: 'id_updated',
-      changes: { id: { old: oldId, new: newId } }
+
+    const materialToValidate = { ...oldMaterial, ...updatedDetails };
+    const errors = validateMaterialInstance(materialToValidate);
+    if (errors.length > 0) {
+      return res.status(400).json({ errors });
+    }
+
+    materials[index] = materialToValidate;
+    
+    if (!materials[index].history) {
+      materials[index].history = [];
+    }
+    materials[index].history.push({ 
+      timestamp: new Date().toISOString(), 
+      action: 'updated', 
+      changes: getChanges(oldMaterial, materials[index])
     });
 
     try {
       await writeMaterials(materials);
-      res.json(materials[materialIndex]);
+      res.json(materials[index]);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
