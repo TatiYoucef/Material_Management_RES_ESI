@@ -320,6 +320,12 @@ router.post('/:id/materials', loadAndCleanData, async (req, res) => {
   }
 
   reservations[reservationIndex].materials.push(...newMaterialEntries);
+  if (!reservations[reservationIndex].history) reservations[reservationIndex].history = [];
+  reservations[reservationIndex].history.push({
+    timestamp: new Date().toISOString(),
+    action: 'add_materials',
+    materials: newMaterialEntries
+  });
 
   try {
     await writeData(reservationsFilePath, reservations);
@@ -352,7 +358,14 @@ router.patch('/:id/remove-material/:materialId', loadAndCleanData, async (req, r
   }
 
   // Remove material from reservation's materials array
-  reservation.materials.splice(materialIndexInReservation, 1);
+  const materialToRemove = reservation.materials.splice(materialIndexInReservation, 1);
+
+  if (!reservations[reservationIndex].history) reservations[reservationIndex].history = [];
+  reservations[reservationIndex].history.push({
+    timestamp: new Date().toISOString(),
+    action: 'remove_material',
+    material: materialToRemove[0]
+  });
 
   // Find the material in the global materials list and make it available
   const materialInGlobalList = materials.find(m => m.id === materialIdToRemove);
@@ -375,6 +388,46 @@ router.patch('/:id/remove-material/:materialId', loadAndCleanData, async (req, r
     await writeData(reservationsFilePath, reservations);
     await writeData(materialsFilePath, materials);
     res.status(200).json(reservation);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Delete a reservation
+router.delete('/:id/delete', loadAndCleanData, async (req, res) => {
+  let { reservations, materials } = req;
+  const reservationId = req.params.id;
+  const reservationIndex = reservations.findIndex(r => r.id === reservationId);
+
+  if (reservationIndex === -1) {
+    return res.status(404).json({ error: 'Reservation not found' });
+  }
+
+  const reservation = reservations[reservationIndex];
+
+  // Release materials if the reservation is active
+  if (reservation.status === 'active') {
+    for (const mat of reservation.materials) {
+      const material = materials.find(m => m.id === mat.id);
+      if (material) {
+        material.isAvailable = true;
+        if (!material.history) material.history = [];
+        material.history.push({ 
+          timestamp: new Date().toISOString(), 
+          action: 'unreserved', 
+          description: `Reservation deleted: ${reservation.id}` 
+        });
+      }
+    }
+  }
+
+  // Remove the reservation from the array
+  reservations.splice(reservationIndex, 1);
+
+  try {
+    await writeData(reservationsFilePath, reservations);
+    await writeData(materialsFilePath, materials);
+    res.status(204).send(); // No content
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

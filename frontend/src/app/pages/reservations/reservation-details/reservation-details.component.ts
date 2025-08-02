@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { DataService } from '../data.service';
+import { DataService } from '../../../services/data.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-reservation-details',
@@ -63,7 +66,7 @@ export class ReservationDetailsComponent implements OnInit {
 
     this.reservation.materials.forEach((m: any) => {
       if (!aggregated[m.type]) {
-        aggregated[m.type] = { type: m.type, count: 0, instances: [], isExpanded: false };
+        aggregated[m.type] = { type: m.type, count: 0, instances: [], isExpanded: true };
       }
       aggregated[m.type].count++;
       aggregated[m.type].instances.push(m);
@@ -117,5 +120,20 @@ export class ReservationDetailsComponent implements OnInit {
         ids: ''
       };
     });
+  }
+
+  exportToPDF() {
+    const content = document.getElementById('pdfContent');
+    if (content) {
+      html2canvas(content).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const imgProps = pdf.getImageProperties(imgData);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+        pdf.save(`reservation-${this.reservation.id}.pdf`);
+      });
+    }
   }
 }

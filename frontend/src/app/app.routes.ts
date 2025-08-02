@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { MaterialDetailsComponent } from './material-details/material-details.component';
-import { NotFoundComponent } from './not-found/not-found.component';
-import { RoomDetailsComponent } from './room-details/room-details.component';
-import { MaterialManagementComponent } from './material-management/material-management.component';
-import { MaterialInstancesComponent } from './material-instances/material-instances.component';
-import { RoomManagementComponent } from './room-management/room-management.component';
-import { authGuard } from './auth.guard';
-import { ReservationHistoryComponent } from './reservation-history/reservation-history.component';
-import { ReservationCreateComponent } from './reservation-create/reservation-create.component';
-import { ReservationDetailsComponent } from './reservation-details/reservation-details.component';
+import { HomeComponent } from './pages/home/home/home.component';
+import { LoginComponent } from './pages/auth/login/login.component';
+import { MaterialDetailsComponent } from './pages/materials/material-details/material-details.component';
+import { NotFoundComponent } from './pages/not-found/not-found/not-found.component';
+import { RoomDetailsComponent } from './pages/rooms/room-details/room-details.component';
+import { MaterialManagementComponent } from './pages/materials/material-management/material-management.component';
+import { MaterialInstancesComponent } from './pages/materials/material-instances/material-instances.component';
+import { RoomManagementComponent } from './pages/rooms/room-management/room-management.component';
+import { authGuard } from './services/auth.guard';
+import { ReservationHistoryComponent } from './pages/reservations/reservation-history/reservation-history.component';
+import { ReservationCreateComponent } from './pages/reservations/reservation-create/reservation-create.component';
+import { ReservationDetailsComponent } from './pages/reservations/reservation-details/reservation-details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },

@@ -1,6 +1,6 @@
 import { Component, LOCALE_ID, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { DataService } from '../data.service';
+import { DataService } from '../../../services/data.service';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import localeEnGb from '@angular/common/locales/en-GB';

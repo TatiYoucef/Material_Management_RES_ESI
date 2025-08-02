@@ -152,4 +152,8 @@ export class DataService {
   moveMaterialQuantity(materialType: string, quantity: number, fromRoom: string, toRoom: string): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}/materials/move-quantity`, { materialType, quantity, fromRoom, toRoom }, { headers: this.getHeaders() });
   }
+
+  deleteReservation(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/reservations/${id}/delete`, { headers: this.getHeaders() });
+  }
 }

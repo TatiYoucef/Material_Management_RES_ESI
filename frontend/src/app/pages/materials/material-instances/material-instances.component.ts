@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
-import { DataService } from '../data.service';
+import { DataService } from '../../../services/data.service';
 
 @Component({
   selector: 'app-material-instances',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { DataService } from '../../../services/data.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -71,5 +71,13 @@ export class ReservationHistoryComponent implements OnInit {
 
   createReservation(): void {
     this.router.navigate(['/reservations/new']);
+  }
+
+  deleteReservation(id: string): void {
+    if (confirm('Are you sure you want to delete this reservation?')) {
+      this.dataService.deleteReservation(id).subscribe(() => {
+        this.loadReservations();
+      });
+    }
   }
 }

@@ -70,22 +70,6 @@
     "timestamp": "2025-08-01T20:19:04.607Z"
   },
   {
-    "id": "RES1754080944584",
-    "description": "Test cancelation",
-    "startDate": "2025-08-01",
-    "endDate": "2025-08-01T20:51:47.835Z",
-    "materials": [
-      {
-        "id": "L002",
-        "type": "Laptop",
-        "name": "MacBook Pro 16\""
-      }
-    ],
-    "status": "cancelled",
-    "timestamp": "2025-08-01T20:42:24.584Z",
-    "cancelledAt": "2025-08-01T20:51:47.835Z"
-  },
-  {
     "id": "RES1754144303283",
     "description": "Mme.Hassiba borrow",
     "startDate": "2025-08-02T14:18:23.283Z",
