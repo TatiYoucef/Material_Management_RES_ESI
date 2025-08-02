@@ -11,6 +11,8 @@ import { authGuard } from './services/auth.guard';
 import { ReservationHistoryComponent } from './pages/reservations/reservation-history/reservation-history.component';
 import { ReservationCreateComponent } from './pages/reservations/reservation-create/reservation-create.component';
 import { ReservationDetailsComponent } from './pages/reservations/reservation-details/reservation-details.component';
+import { FileListComponent } from './file-management/file-list/file-list.component';
+import { FileDetailComponent } from './file-management/file-detail/file-detail.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -24,5 +26,7 @@ export const routes: Routes = [
   { path: 'reservations', component: ReservationHistoryComponent, canActivate: [authGuard] },
   { path: 'reservations/new', component: ReservationCreateComponent, canActivate: [authGuard] },
   { path: 'reservations/:id', component: ReservationDetailsComponent, canActivate: [authGuard] },
+  { path: 'files', component: FileListComponent, canActivate: [authGuard] },
+  { path: 'files/:id', component: FileDetailComponent, canActivate: [authGuard] },
   { path: '**', component: NotFoundComponent }
 ];

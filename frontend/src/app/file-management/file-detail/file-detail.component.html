@@ -1,0 +1,41 @@
+<div class="file-detail-container" *ngIf="file">
+  <h2 class="file-detail-title">File Details</h2>
+
+  <div class="info-section">
+    <div class="details-grid">
+      <div class="detail-item"><strong>ID:</strong> <span>{{ file.id }}</span></div>
+      <div class="detail-item"><strong>Title:</strong> <span>{{ file.title }}</span></div>
+      <div class="detail-item"><strong>Original Name:</strong> <span>{{ file.originalname }}</span></div>
+      <div class="detail-item"><strong>MIME Type:</strong> <span>{{ file.mimetype }}</span></div>
+      <div class="detail-item"><strong>Size:</strong> <span>{{ file.size }} bytes</span></div>
+      <div class="detail-item"><strong>Uploaded At:</strong> <span>{{ file.createdAt | date:'dd/MM/yyyy HH:mm' }}</span></div>
+    </div>
+    <div class="file-description">
+      <strong>Description:</strong>
+      <p>{{ file.description || 'N/A' }}</p>
+    </div>
+  </div>
+
+  <h3 class="section-subtitle">History</h3>
+  <div class="history-section">
+    <ul *ngIf="file.history && file.history.length > 0" class="history-list">
+      <li *ngFor="let event of file.history" class="history-item">
+        <strong>{{ event.timestamp | date:'dd/MM/yyyy HH:mm' }}:</strong> {{ event.action }}
+      </li>
+    </ul>
+    <p *ngIf="!file.history || file.history.length === 0" class="no-data-message">No history for this file.</p>
+  </div>
+
+  <div class="action-buttons">
+    <button (click)="downloadFile()" class="action-button download-button">Download File</button>
+    <button (click)="deleteFile()" class="action-button delete-button">Delete File</button>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>
+
+<div *ngIf="!file" class="no-data-message">
+  <p>Loading file details...</p>
+</div>

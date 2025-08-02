@@ -1,0 +1,53 @@
+<div class="file-list-container">
+  <h2 class="file-list-title">File Management</h2>
+
+  <div class="controls-section">
+    <div class="top-controls">
+      <input type="text" [(ngModel)]="searchQuery" (input)="loadFiles()" placeholder="Search by title or ID" class="form-input search-input">
+      <button (click)="toggleUploadForm()" class="action-button">{{ showUploadForm ? 'Hide Upload' : 'Upload New File' }}</button>
+    </div>
+  </div>
+
+  <div class="upload-section" *ngIf="showUploadForm">
+    <h3 class="section-subtitle">Upload New File</h3>
+    <div class="form-group file-input-group">
+      <label for="fileInput" class="form-label custom-file-upload">Choose File</label>
+      <input type="file" id="fileInput" (change)="onFileSelected($event)" class="hidden-file-input">
+      <span class="file-name-display">{{ newFile ? newFile.name : 'No file chosen' }}</span>
+    </div>
+    <div class="form-group">
+      <label for="fileTitle" class="form-label">Title:</label>
+      <input type="text" id="fileTitle" [(ngModel)]="newFileTitle" placeholder="Enter file title" class="form-input">
+    </div>
+    <div class="form-group">
+      <label for="fileDescription" class="form-label">Description (Optional):</label>
+      <textarea id="fileDescription" [(ngModel)]="newFileDescription" placeholder="Enter file description" class="form-textarea"></textarea>
+    </div>
+    <button (click)="uploadFile()" class="action-button">Upload File</button>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+  </div>
+
+  <h3 class="section-subtitle">Uploaded Files</h3>
+  <table *ngIf="files.length > 0">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Created At</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of files">
+        <td>{{ file.id }}</td>
+        <td>{{ file.title }}</td>
+        <td>{{ file.createdAt | date:'medium' }}</td>
+        <td class="action-buttons-cell">
+          <button (click)="downloadFile(file.id, file.originalname)" class="action-button">Download</button>
+          <button [routerLink]="['/files', file.id]" class="action-button">Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="files.length === 0" class="no-data-message">No files uploaded yet.</p>
+</div>
