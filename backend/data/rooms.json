@@ -62,6 +62,11 @@
             "new": "Magazin"
           }
         }
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.347Z",
+        "action": "materials_moved_out",
+        "description": "10 Switch(s) moved out to S30."
       }
     ],
     "materialCount": 35
@@ -148,6 +153,11 @@
         "timestamp": "2025-07-31T20:42:20.752Z",
         "action": "updated",
         "changes": {}
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.347Z",
+        "action": "materials_moved_in",
+        "description": "10 Switch(s) moved in from Magazin."
       }
     ],
     "materialCount": 0

@@ -1670,6 +1670,36 @@
       {
         "timestamp": "2025-07-28T10:15:00.000Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-01T20:42:24.584Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754080944584 - Test cancelation"
+      },
+      {
+        "timestamp": "2025-08-01T20:42:35.401Z",
+        "action": "unreserved",
+        "description": "Reservation cancelled: RES1754080944584"
+      },
+      {
+        "timestamp": "2025-08-01T20:42:35.413Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: Test cancelation"
+      },
+      {
+        "timestamp": "2025-08-01T20:49:45.038Z",
+        "action": "unreserved",
+        "description": "Reservation cancelled: RES1754080944584"
+      },
+      {
+        "timestamp": "2025-08-01T20:49:45.050Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: Test cancelation"
+      },
+      {
+        "timestamp": "2025-08-01T20:51:47.835Z",
+        "action": "unreserved",
+        "description": "Reservation cancelled: RES1754080944584"
       }
     ]
   },
@@ -1712,6 +1742,271 @@
       {
         "timestamp": "2025-07-15T09:45:15.789Z",
         "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 2960",
+    "details": "24 ports FE, 4 ports GEs , 16GB RAM",
+    "isAvailable": true,
+    "currentLocation": "S30",
+    "id": "M061",
+    "history": [
+      {
+        "timestamp": "2025-08-02T14:12:07.568Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-02T14:18:23.283Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754144303283 - Mme.Hassiba borrow"
+      },
+      {
+        "timestamp": "2025-08-02T14:19:36.907Z",
+        "action": "unreserved",
+        "description": "Reservation cancelled: RES1754144303283"
+      },
+      {
+        "timestamp": "2025-08-02T14:25:52.659Z",
+        "action": "unreserved",
+        "description": "Reservation cancelled: RES1754144303283"
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.346Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Switch",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 2960",
+    "details": "24 ports FE, 4 ports GEs , 16GB RAM",
+    "isAvailable": true,
+    "currentLocation": "S30",
+    "id": "M062",
+    "history": [
+      {
+        "timestamp": "2025-08-02T14:12:07.568Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.346Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Switch",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 2960",
+    "details": "24 ports FE, 4 ports GEs , 16GB RAM",
+    "isAvailable": true,
+    "currentLocation": "S30",
+    "id": "M063",
+    "history": [
+      {
+        "timestamp": "2025-08-02T14:12:07.568Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.346Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Switch",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 2960",
+    "details": "24 ports FE, 4 ports GEs , 16GB RAM",
+    "isAvailable": true,
+    "currentLocation": "S30",
+    "id": "M064",
+    "history": [
+      {
+        "timestamp": "2025-08-02T14:12:07.568Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.346Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Switch",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 2960",
+    "details": "24 ports FE, 4 ports GEs , 16GB RAM",
+    "isAvailable": true,
+    "currentLocation": "S30",
+    "id": "M065",
+    "history": [
+      {
+        "timestamp": "2025-08-02T14:12:07.568Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.346Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Switch",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 2960",
+    "details": "24 ports FE, 4 ports GEs , 16GB RAM",
+    "isAvailable": true,
+    "currentLocation": "S30",
+    "id": "M066",
+    "history": [
+      {
+        "timestamp": "2025-08-02T14:12:07.568Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.346Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Switch",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 2960",
+    "details": "24 ports FE, 4 ports GEs , 16GB RAM",
+    "isAvailable": true,
+    "currentLocation": "S30",
+    "id": "M067",
+    "history": [
+      {
+        "timestamp": "2025-08-02T14:12:07.568Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.346Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Switch",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 2960",
+    "details": "24 ports FE, 4 ports GEs , 16GB RAM",
+    "isAvailable": true,
+    "currentLocation": "S30",
+    "id": "M068",
+    "history": [
+      {
+        "timestamp": "2025-08-02T14:12:07.568Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.346Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Switch",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 2960",
+    "details": "24 ports FE, 4 ports GEs , 16GB RAM",
+    "isAvailable": true,
+    "currentLocation": "S30",
+    "id": "M069",
+    "history": [
+      {
+        "timestamp": "2025-08-02T14:12:07.568Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.346Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Switch",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      }
+    ]
+  },
+  {
+    "type": "Switch",
+    "name": "Catalyst 2960",
+    "details": "24 ports FE, 4 ports GEs , 16GB RAM",
+    "isAvailable": true,
+    "currentLocation": "S30",
+    "id": "M070",
+    "history": [
+      {
+        "timestamp": "2025-08-02T14:12:07.568Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-02T14:27:51.346Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Switch",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
       }
     ]
   }

@@ -229,6 +229,22 @@ router.post('/', loadMaterials, async (req, res) => {
   let materials = [...req.materials];
   const createdMaterials = [];
 
+  const errors = [];
+  // Validate required fields for each item
+  if (!materialData.type?.trim()) errors.push('Type is required');
+  if (!materialData.name?.trim()) errors.push('Name is required');
+  if (!materialData.currentLocation?.trim()) errors.push('Current location is required');
+
+  if (errors.length > 0) {
+    return res.status(400).json({ errors });
+  }
+
+  // Validate quantity
+  if (quantity < 1 || quantity > 100) {
+    return res.status(400).json({ error: 'Quantity must be between 1 and 100' });
+  }
+
+
   for (let i = 0; i < quantity; i++) {
     const newMaterial = { ...materialData };
 

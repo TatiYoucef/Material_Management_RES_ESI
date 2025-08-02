@@ -33,7 +33,7 @@ async function loadAndCleanData(req, res, next) {
     const activeReservations = [];
 
     for (const res of reservations) {
-      if (res.endDate && new Date(res.endDate) < now && res.status !== 'ended') {
+      if (res.endDate && new Date(res.endDate) < now && res.status === 'active') {
         res.status = 'ended'; // Mark as ended
         reservationsModified = true;
         for (const mat of res.materials) {
@@ -73,7 +73,7 @@ async function loadAndCleanData(req, res, next) {
 // Get all reservations
 router.get('/', loadAndCleanData, (req, res) => {
   let reservations = [...req.reservations];
-  const { search } = req.query;
+  const { search, status, startDate, endDate } = req.query;
 
   if (search) {
     const lowerCaseSearch = search.toLowerCase();
@@ -81,6 +81,20 @@ router.get('/', loadAndCleanData, (req, res) => {
       r.description.toLowerCase().includes(lowerCaseSearch) ||
       r.id.toLowerCase().includes(lowerCaseSearch)
     );
+  }
+
+  if (status && status !== 'all') {
+    reservations = reservations.filter(r => r.status === status);
+  }
+
+  if (startDate) {
+    const filterStartDate = new Date(startDate);
+    reservations = reservations.filter(r => new Date(r.startDate) >= filterStartDate);
+  }
+
+  if (endDate) {
+    const filterEndDate = new Date(endDate);
+    reservations = reservations.filter(r => new Date(r.endDate || r.startDate) <= filterEndDate);
   }
 
   res.json(reservations.reverse());
@@ -197,7 +211,7 @@ router.delete('/:id', loadAndCleanData, async (req, res) => {
 
   // Update reservation status instead of deleting
   reservations[reservationIndex].status = 'cancelled';
-  reservations[reservationIndex].endDate = new Date().toISOString();
+  reservations[reservationIndex].cancelledAt = new Date().toISOString();
 
   try {
     await writeData(reservationsFilePath, reservations);

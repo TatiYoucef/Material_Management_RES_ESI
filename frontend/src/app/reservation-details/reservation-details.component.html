@@ -6,6 +6,9 @@
     <div><strong>Start Date:</strong> {{ reservation.startDate | date }}</div>
     <div><strong>End Date:</strong> {{ (reservation.endDate | date) ?? 'None' }}</div>
     <div><strong>Status:</strong> <span class="status" [ngClass]="reservation.status">{{ reservation.status }}</span></div>
+    <div *ngIf="reservation.status === 'cancelled' && reservation.cancelledAt">
+      <strong>Cancelled At:</strong> {{ reservation.cancelledAt | date:'medium' }}
+    </div>
   </div>
 
   <h3>Materials</h3>

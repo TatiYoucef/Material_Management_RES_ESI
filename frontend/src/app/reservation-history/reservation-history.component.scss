@@ -2,51 +2,111 @@
   padding: 20px;
 }
 
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
 .header-controls {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  gap: 10px; /* Space between items */
 }
 
-input[type="text"] {
-  width: 300px;
-  padding: 8px;
+.filter-group {
+  display: flex;
+  gap: 10px; /* Space between filter inputs */
+  flex-wrap: wrap;
 }
 
-button {
+.header-controls input[type="text"],
+.header-controls input[type="date"],
+.header-controls select {
   padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  flex: 1; /* Allow inputs to grow and shrink */
+  min-width: 150px; /* Minimum width for inputs */
+}
+
+.create-button {
+  background-color: #28a745; /* Green */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #218838;
+  }
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 thead {
-  background-color: #f4f4f4;
+  background-color: #f2f2f2;
 }
 
 th, td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 12px 15px;
   text-align: left;
+}
+
+th {
+  font-weight: bold;
+  color: #555;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
 }
 
 .material-summary {
   cursor: pointer;
+  color: #007bff;
+  text-decoration: underline;
 }
 
 .arrow {
   display: inline-block;
   margin-left: 5px;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  padding: 3px;
+  transform: rotate(45deg); /* Down arrow */
+  -webkit-transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+.arrow.expanded {
+  transform: rotate(-135deg); /* Up arrow */
+  -webkit-transform: rotate(-135deg);
 }
 
 .status {
-  padding: 3px 8px;
+  padding: 5px 10px;
   border-radius: 4px;
   color: white;
   font-weight: bold;
+  text-transform: capitalize;
 }
 
 .status.active {
@@ -59,4 +119,79 @@ th, td {
 
 .status.cancelled {
   background-color: #dc3545;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+/* Styles for nested material lists in table */
+.material-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.material-item {
+  background-color: #fefefe;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  padding: 8px 12px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.material-type-item {
+  width: 100%;
+}
+
+.material-type-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+}
+
+.material-instances-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.material-instance-detail {
+  background-color: #e9ecef;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 6px 10px;
+  margin-bottom: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9em;
+}
+
+.material-link {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }

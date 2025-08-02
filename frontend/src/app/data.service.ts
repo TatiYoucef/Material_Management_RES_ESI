@@ -109,10 +109,14 @@ export class DataService {
     return this.http.put<any>(`${this.baseUrl}/rooms/${oldId}/id`, { newId }, { headers: this.getHeaders() });
   }
 
-  getReservations(searchQuery: string): Observable<any[]> {
+  getReservations(filters?: any): Observable<any[]> {
     let params = new HttpParams();
-    if (searchQuery) {
-      params = params.set('search', searchQuery);
+    if (filters) {
+      for (const key in filters) {
+        if (filters[key]) {
+          params = params.set(key, filters[key]);
+        }
+      }
     }
     return this.http.get<any[]>(`${this.baseUrl}/reservations`, { headers: this.getHeaders(), params });
   }
