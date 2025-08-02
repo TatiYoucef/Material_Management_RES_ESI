@@ -56,18 +56,96 @@
         "name": "Dell XPS 15"
       },
       {
-        "id": "M036",
+        "id": "M037",
         "type": "HDMI cable",
         "name": "5M HDMI cable"
       },
       {
-        "id": "M037",
+        "id": "M061",
+        "type": "Switch",
+        "name": "Catalyst 2960"
+      },
+      {
+        "id": "M036",
         "type": "HDMI cable",
         "name": "5M HDMI cable"
       }
     ],
     "status": "active",
-    "timestamp": "2025-08-01T20:19:04.607Z"
+    "timestamp": "2025-08-01T20:19:04.607Z",
+    "history": [
+      {
+        "timestamp": "2025-08-02T16:55:51.181Z",
+        "action": "add_materials",
+        "materials": [
+          {
+            "id": "M061",
+            "type": "Switch",
+            "name": "Catalyst 2960"
+          }
+        ]
+      },
+      {
+        "timestamp": "2025-08-02T17:08:16.966Z",
+        "action": "remove_material",
+        "material": {
+          "id": "M036",
+          "type": "HDMI cable",
+          "name": "5M HDMI cable"
+        }
+      },
+      {
+        "timestamp": "2025-08-02T17:09:01.479Z",
+        "action": "add_materials",
+        "materials": [
+          {
+            "id": "M036",
+            "type": "HDMI cable",
+            "name": "5M HDMI cable"
+          }
+        ]
+      },
+      {
+        "timestamp": "2025-08-02T17:22:43.776Z",
+        "action": "add_materials",
+        "materials": [
+          {
+            "id": "L002",
+            "type": "Laptop",
+            "name": "MacBook Pro 16\""
+          }
+        ]
+      },
+      {
+        "timestamp": "2025-08-02T17:23:05.754Z",
+        "action": "remove_material",
+        "material": {
+          "id": "L002",
+          "type": "Laptop",
+          "name": "MacBook Pro 16\""
+        }
+      },
+      {
+        "timestamp": "2025-08-02T17:51:00.825Z",
+        "action": "add_materials",
+        "materials": [
+          {
+            "id": "M014",
+            "type": "HDMI cable",
+            "name": "5M HDMI cable"
+          }
+        ]
+      },
+      {
+        "timestamp": "2025-08-02T17:51:18.526Z",
+        "action": "remove_material",
+        "material": {
+          "id": "M014",
+          "type": "HDMI cable",
+          "name": "5M HDMI cable"
+        }
+      }
+    ]
   },
   {
     "id": "RES1754144303283",
@@ -84,5 +162,70 @@
     "status": "cancelled",
     "timestamp": "2025-08-02T14:18:23.283Z",
     "cancelledAt": "2025-08-02T14:25:52.660Z"
+  },
+  {
+    "id": "RES1754157191206",
+    "description": "45em anniversaire ESI",
+    "startDate": "2015-12-19",
+    "endDate": "2015-12-20",
+    "materials": [
+      {
+        "id": "M041",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M042",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M043",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M044",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M045",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M046",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M047",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M048",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M049",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M050",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "L003",
+        "type": "Laptop",
+        "name": "Lenovo ThinkPad X1 Carbon"
+      }
+    ],
+    "status": "ended",
+    "timestamp": "2025-08-02T17:53:11.206Z"
   }
 ]

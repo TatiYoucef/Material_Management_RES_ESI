@@ -501,6 +501,16 @@
           "quantity": 1
         },
         "description": "Moved from DGA to DGA as part of a bulk move of 5 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:51:00.825Z",
+        "action": "reserved",
+        "description": "Added to reservation: RES1754079544607"
+      },
+      {
+        "timestamp": "2025-08-02T17:51:18.526Z",
+        "action": "unreserved",
+        "description": "Removed from reservation: RES1754079544607"
       }
     ]
   },
@@ -1176,6 +1186,16 @@
         "timestamp": "2025-08-01T20:19:04.608Z",
         "action": "reserved",
         "description": "Reserved for: RES1754079544607 - Server Execution"
+      },
+      {
+        "timestamp": "2025-08-02T17:08:16.966Z",
+        "action": "unreserved",
+        "description": "Removed from reservation: RES1754079544607"
+      },
+      {
+        "timestamp": "2025-08-02T17:09:01.479Z",
+        "action": "reserved",
+        "description": "Added to reservation: RES1754079544607"
       }
     ]
   },
@@ -1219,6 +1239,16 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:29:06.274Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754155746274 - ESI 65em anniversaire"
+      },
+      {
+        "timestamp": "2035-12-30T17:34:35.730Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: ESI 65em anniversaire"
       }
     ]
   },
@@ -1238,6 +1268,16 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:29:06.274Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754155746274 - ESI 65em anniversaire"
+      },
+      {
+        "timestamp": "2035-12-30T17:34:35.730Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: ESI 65em anniversaire"
       }
     ]
   },
@@ -1257,6 +1297,16 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:29:06.274Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754155746274 - ESI 65em anniversaire"
+      },
+      {
+        "timestamp": "2035-12-30T17:34:35.730Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: ESI 65em anniversaire"
       }
     ]
   },
@@ -1265,7 +1315,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "M041",
     "history": [
       {
@@ -1276,6 +1326,27 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.147Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:53:11.206Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754157191206 - 65em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-02T17:54:54.272Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
     ]
   },
@@ -1284,7 +1355,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "M042",
     "history": [
       {
@@ -1295,6 +1366,27 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.147Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:53:11.206Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754157191206 - 65em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-02T17:54:54.272Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
     ]
   },
@@ -1303,7 +1395,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "M043",
     "history": [
       {
@@ -1314,6 +1406,27 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.147Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:53:11.206Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754157191206 - 65em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-02T17:54:54.272Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
     ]
   },
@@ -1322,7 +1435,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "M044",
     "history": [
       {
@@ -1333,6 +1446,27 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.147Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:53:11.206Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754157191206 - 65em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-02T17:54:54.272Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
     ]
   },
@@ -1341,7 +1475,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "M045",
     "history": [
       {
@@ -1352,6 +1486,27 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.147Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:53:11.206Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754157191206 - 65em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-02T17:54:54.272Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
     ]
   },
@@ -1360,7 +1515,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "M046",
     "history": [
       {
@@ -1371,6 +1526,27 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.147Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:53:11.206Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754157191206 - 65em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-02T17:54:54.272Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
     ]
   },
@@ -1379,7 +1555,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "M047",
     "history": [
       {
@@ -1390,6 +1566,27 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.147Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:53:11.206Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754157191206 - 65em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-02T17:54:54.272Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
     ]
   },
@@ -1398,7 +1595,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "M048",
     "history": [
       {
@@ -1409,6 +1606,27 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.147Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:53:11.206Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754157191206 - 65em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-02T17:54:54.272Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
     ]
   },
@@ -1417,7 +1635,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "M049",
     "history": [
       {
@@ -1428,6 +1646,27 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.147Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:53:11.206Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754157191206 - 65em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-02T17:54:54.272Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
     ]
   },
@@ -1436,7 +1675,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "M050",
     "history": [
       {
@@ -1447,6 +1686,27 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.147Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 10 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:53:11.206Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754157191206 - 65em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-02T17:54:54.272Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
     ]
   },
@@ -1664,7 +1924,7 @@
     "name": "MacBook Pro 16\"",
     "details": "M2 Pro, 32GB RAM, 1TB SSD",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "L002",
     "history": [
       {
@@ -1700,6 +1960,37 @@
         "timestamp": "2025-08-01T20:51:47.835Z",
         "action": "unreserved",
         "description": "Reservation cancelled: RES1754080944584"
+      },
+      {
+        "timestamp": "2025-08-02T17:22:43.776Z",
+        "action": "reserved",
+        "description": "Added to reservation: RES1754079544607"
+      },
+      {
+        "timestamp": "2025-08-02T17:23:05.754Z",
+        "action": "unreserved",
+        "description": "Removed from reservation: RES1754079544607"
+      },
+      {
+        "timestamp": "2025-08-02T17:29:06.274Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754155746274 - ESI 65em anniversaire"
+      },
+      {
+        "timestamp": "2025-08-02T17:32:59.386Z",
+        "action": "unreserved",
+        "description": "Removed from reservation: RES1754155746274"
+      },
+      {
+        "timestamp": "2025-08-02T17:48:52.452Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Laptop",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 2 Laptop(s)."
       }
     ]
   },
@@ -1708,12 +1999,43 @@
     "name": "Lenovo ThinkPad X1 Carbon",
     "details": "Intel i5, 8GB RAM, 256GB SSD, 14\" FHD",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "S30",
     "id": "L003",
     "history": [
       {
         "timestamp": "2025-07-25T08:30:45.123Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-02T17:29:06.274Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754155746274 - ESI 65em anniversaire"
+      },
+      {
+        "timestamp": "2035-12-30T17:34:35.729Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: ESI 65em anniversaire"
+      },
+      {
+        "timestamp": "2025-08-02T17:48:52.452Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "S30",
+          "type": "Laptop",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to S30 as part of a bulk move of 2 Laptop(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:53:11.206Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754157191206 - 65em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-02T17:54:54.272Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
     ]
   },
@@ -1749,7 +2071,7 @@
     "type": "Switch",
     "name": "Catalyst 2960",
     "details": "24 ports FE, 4 ports GEs , 16GB RAM",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "S30",
     "id": "M061",
     "history": [
@@ -1782,6 +2104,11 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      },
+      {
+        "timestamp": "2025-08-02T16:55:51.181Z",
+        "action": "reserved",
+        "description": "Added to reservation: RES1754079544607"
       }
     ]
   },
@@ -1832,6 +2159,16 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      },
+      {
+        "timestamp": "2025-08-02T17:29:06.274Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754155746274 - ESI 65em anniversaire"
+      },
+      {
+        "timestamp": "2035-12-30T17:34:35.730Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: ESI 65em anniversaire"
       }
     ]
   },

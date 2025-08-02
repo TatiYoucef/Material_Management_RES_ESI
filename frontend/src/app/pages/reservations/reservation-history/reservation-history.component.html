@@ -1,18 +1,22 @@
 <div class="container">
   <h2>Reservation History</h2>
   <div class="header-controls">
-    <div class="filter-group">
-      <input type="text" [(ngModel)]="searchQuery" (input)="loadReservations()" placeholder="Search by description or ID">
+    <div class="top-row">
+      <input type="text" [(ngModel)]="searchQuery" (input)="loadReservations()" placeholder="Search by description or ID" class="search-bar">
       <select [(ngModel)]="statusFilter" (change)="loadReservations()">
         <option value="all">All Statuses</option>
         <option value="active">Active</option>
         <option value="ended">Ended</option>
         <option value="cancelled">Cancelled</option>
       </select>
-      <input type="date" [(ngModel)]="startDateFilter" (change)="loadReservations()" placeholder="Start Date">
-      <input type="date" [(ngModel)]="endDateFilter" (change)="loadReservations()" placeholder="End Date">
+      <button class="create-button" (click)="createReservation()">Create New Reservation</button>
     </div>
-    <button class="create-button" (click)="createReservation()">Create New Reservation</button>
+    <div class="date-filters">
+      <label for="startDateFilter">From:</label>
+      <input type="date" id="startDateFilter" [(ngModel)]="startDateFilter" (change)="loadReservations()">
+      <label for="endDateFilter">To:</label>
+      <input type="date" id="endDateFilter" [(ngModel)]="endDateFilter" (change)="loadReservations()">
+    </div>
   </div>
   <table>
     <thead>
@@ -61,7 +65,6 @@
         </td>
         <td>
           <button (click)="viewReservation(reservation.id)">View Details</button>
-          <button (click)="deleteReservation(reservation.id)" class="delete-button">Delete</button>
         </td>
       </tr>
     </tbody>

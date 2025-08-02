@@ -40,6 +40,11 @@ export class MaterialInstancesComponent implements OnInit {
       if (this.materialType) {
         this.loadMaterialInstances(this.materialType);
       }
+      this.dataService.getRooms({ all: true }).subscribe(res => {
+        this.locations = res.map((r: { id: any; }) => r.id); ;
+        console.log(this.locations);
+      });
+
     });
   }
 

@@ -67,6 +67,16 @@
         "timestamp": "2025-08-02T14:27:51.347Z",
         "action": "materials_moved_out",
         "description": "10 Switch(s) moved out to S30."
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.148Z",
+        "action": "materials_moved_out",
+        "description": "10 HDMI cable(s) moved out to S30."
+      },
+      {
+        "timestamp": "2025-08-02T17:48:52.453Z",
+        "action": "materials_moved_out",
+        "description": "2 Laptop(s) moved out to S30."
       }
     ],
     "materialCount": 35
@@ -158,6 +168,16 @@
         "timestamp": "2025-08-02T14:27:51.347Z",
         "action": "materials_moved_in",
         "description": "10 Switch(s) moved in from Magazin."
+      },
+      {
+        "timestamp": "2025-08-02T17:32:05.148Z",
+        "action": "materials_moved_in",
+        "description": "10 HDMI cable(s) moved in from Magazin."
+      },
+      {
+        "timestamp": "2025-08-02T17:48:52.453Z",
+        "action": "materials_moved_in",
+        "description": "2 Laptop(s) moved in from Magazin."
       }
     ],
     "materialCount": 0

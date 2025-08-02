@@ -1,25 +1,28 @@
-<div class="container" *ngIf="reservation">
-  <div>
-    <h2>Reservation Details</h2>
+<div class="reservation-details-container" *ngIf="reservation">
+  <h2 class="reservation-details-title">Reservation Details</h2>
+
+  <div class="info-section">
     <div class="details-grid">
-      <div><strong>ID:</strong> {{ reservation.id }}</div>
-      <div><strong>Description:</strong> {{ reservation.description }}</div>
-      <div><strong>Start Date:</strong> {{ reservation.startDate | date }}</div>
-      <div><strong>End Date:</strong> {{ (reservation.endDate | date) ?? 'None' }}</div>
-      <div><strong>Status:</strong> <span class="status" [ngClass]="reservation.status">{{ reservation.status }}</span></div>
-      <div *ngIf="reservation.status === 'cancelled' && reservation.cancelledAt">
-        <strong>Cancelled At:</strong> {{ reservation.cancelledAt | date:'medium' }}
+      <div class="detail-item"><strong>ID:</strong> <span>{{ reservation.id }}</span></div>
+      <div class="detail-item"><strong>Description:</strong> <span>{{ reservation.description }}</span></div>
+      <div class="detail-item"><strong>Start Date:</strong> <span>{{ reservation.startDate | date:'dd/MM/yyyy' }}</span></div>
+      <div class="detail-item"><strong>End Date:</strong> <span>{{ (reservation.endDate | date:'dd/MM/yyyy') ?? 'None' }}</span></div>
+      <div class="detail-item"><strong>Status:</strong> <span class="status" [ngClass]="reservation.status">{{ reservation.status }}</span></div>
+      <div class="detail-item" *ngIf="reservation.status === 'cancelled' && reservation.cancelledAt">
+        <strong>Cancelled At:</strong> <span>{{ reservation.cancelledAt | date:'dd/MM/yyyy HH:mm' }}</span>
       </div>
     </div>
+  </div>
 
-    <h3>Materials</h3>
+  <h3 class="section-subtitle">Materials</h3>
+  <div class="info-section">
     <ul *ngIf="aggregatedMaterials.length > 0" class="material-list">
       <li *ngFor="let materialType of aggregatedMaterials" class="material-item material-type-item">
         <div (click)="toggleDetails(materialType)" class="material-type-header">
           <span>{{ materialType.count }}x {{ materialType.type }}</span>
           <span class="arrow" [ngClass]="{'expanded': materialType.isExpanded}"></span>
         </div>
-        <ul class="material-instances-list">
+        <ul *ngIf="materialType.isExpanded" class="material-instances-list">
           <li *ngFor="let instance of materialType.instances" class="material-instance-detail">
             <a [routerLink]="['/materials', instance.id]" class="material-link">
               {{ instance.name }} ({{ instance.id }})
@@ -28,12 +31,14 @@
         </ul>
       </li>
     </ul>
-    <p *ngIf="aggregatedMaterials.length === 0">No materials in this reservation.</p>
+    <p *ngIf="aggregatedMaterials.length === 0" class="no-data-message">No materials in this reservation.</p>
+  </div>
 
-    <h3>History</h3>
+  <h3 class="section-subtitle">History</h3>
+  <div class="history-section">
     <ul *ngIf="reservation.history && reservation.history.length > 0" class="history-list">
       <li *ngFor="let event of reservation.history.reverse()" class="history-item">
-        <strong>{{ event.timestamp | date:'medium' }}:</strong>
+        <strong>{{ event.timestamp | date:'dd/MM/yyyy HH:mm' }}:</strong>
         <span *ngIf="event.action === 'add_materials'">Added materials:</span>
         <span *ngIf="event.action === 'remove_material'">Removed material:</span>
         <ul *ngIf="event.materials">
@@ -42,41 +47,43 @@
         <div *ngIf="event.material">{{ event.material.name }} ({{ event.material.id }})</div>
       </li>
     </ul>
-    <p *ngIf="!reservation.history || reservation.history.length === 0">No history for this reservation.</p>
+    <p *ngIf="!reservation.history || reservation.history.length === 0" class="no-data-message">No history for this reservation.</p>
   </div>
 
-  <h3>Actions</h3>
-  <button (click)="exportToPDF()">Export to PDF</button>
+  <h3 class="section-subtitle" *ngIf="reservation.status === 'active'">Actions</h3>
+  <div class="action-section">
+    <div class="action-card" *ngIf="reservation.status === 'active'">
+      <h4 class="card-title">Manage Reservation</h4>
+      <button class="action-button btn-warning" (click)="cancelReservation()">Cancel Reservation</button>
+      <button class="action-button btn-success" (click)="endReservation()">End Reservation</button>
+      <button class="action-button btn-primary" (click)="showAddMaterials = !showAddMaterials">Add Materials</button>
+    </div>
 
-  <div class="actions" *ngIf="reservation.status === 'active'">
-    <button (click)="cancelReservation()">Cancel Reservation</button>
-    <button (click)="endReservation()">End Reservation</button>
-    <button (click)="showAddMaterials = !showAddMaterials">Add Materials</button>
-  </div>
-
-  <div *ngIf="showAddMaterials" class="add-materials-form">
-    <h4>Add More Materials</h4>
-    <div class="material-request-form">
-      <div class="request-type-selector">
-        <label><input type="radio" name="materialRequestType" value="type" [(ngModel)]="materialRequestType"> By Type & Location</label>
-        <label><input type="radio" name="materialRequestType" value="id" [(ngModel)]="materialRequestType"> By Specific IDs</label>
+    <div class="action-card" *ngIf="showAddMaterials">
+      <h4 class="card-title">Add More Materials</h4>
+      <div class="form-group">
+        <label class="form-label">Request Type:</label>
+        <div class="request-type-selector">
+          <label><input type="radio" name="materialRequestType" value="type" [(ngModel)]="materialRequestType"> By Type & Location</label>
+          <label><input type="radio" name="materialRequestType" value="id" [(ngModel)]="materialRequestType"> By Specific IDs</label>
+        </div>
       </div>
 
       <div *ngIf="materialRequestType === 'type'">
         <div class="form-group">
-          <label for="materialType">Material Type</label>
-          <select id="materialType" [(ngModel)]="materialRequest.type" name="materialType">
+          <label for="materialType" class="form-label">Material Type</label>
+          <select id="materialType" [(ngModel)]="materialRequest.type" name="materialType" class="form-select">
             <option value="">-- Select a Type --</option>
             <option *ngFor="let type of materialTypes" [value]="type.type">{{ type.type }}</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="quantity">Quantity</label>
-          <input type="number" id="quantity" [(ngModel)]="materialRequest.quantity" name="quantity" min="1">
+          <label for="quantity" class="form-label">Quantity</label>
+          <input type="number" id="quantity" [(ngModel)]="materialRequest.quantity" name="quantity" min="1" class="form-input">
         </div>
         <div class="form-group">
-          <label for="fromRoom">From Room</label>
-          <select id="fromRoom" [(ngModel)]="materialRequest.fromRoom" name="fromRoom">
+          <label for="fromRoom" class="form-label">From Room</label>
+          <select id="fromRoom" [(ngModel)]="materialRequest.fromRoom" name="fromRoom" class="form-select">
             <option value="">-- Select a Room --</option>
             <option *ngFor="let room of rooms" [value]="room.id">{{ room.name }}</option>
           </select>
@@ -85,12 +92,17 @@
 
       <div *ngIf="materialRequestType === 'id'">
         <div class="form-group">
-          <label for="ids">Material IDs (comma-separated)</label>
-          <input type="text" id="ids" [(ngModel)]="materialRequest.ids" name="ids">
+          <label for="ids" class="form-label">Material IDs (comma-separated)</label>
+          <input type="text" id="ids" [(ngModel)]="materialRequest.ids" name="ids" class="form-input">
         </div>
       </div>
 
-      <button type="button" (click)="addMaterials()">Add to Reservation</button>
+      <button type="button" (click)="addMaterials()" class="action-button btn-primary">Add to Reservation</button>
+    </div>
+
+    <div class="action-card">
+      <h4 class="card-title">Delete Reservation</h4>
+      <button class="action-button delete-button" (click)="deleteReservation(reservation.id)">Delete Reservation</button>
     </div>
   </div>
 
@@ -100,6 +112,6 @@
 
 </div>
 
-<div *ngIf="!reservation">
+<div *ngIf="!reservation" class="no-data-message">
   <p>Loading reservation details...</p>
 </div>
