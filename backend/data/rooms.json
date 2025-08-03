@@ -77,6 +77,16 @@
         "timestamp": "2025-08-02T17:48:52.453Z",
         "action": "materials_moved_out",
         "description": "2 Laptop(s) moved out to S30."
+      },
+      {
+        "timestamp": "2025-08-03T20:30:26.163Z",
+        "action": "materials_moved_out",
+        "description": "1 HDMI cable (5M HDMI cable) moved out to DGA."
+      },
+      {
+        "timestamp": "2025-08-03T20:36:20.691Z",
+        "action": "materials_moved_out",
+        "description": "4 HDMI cable(s) moved out to BI."
       }
     ],
     "materialCount": 35
@@ -144,6 +154,11 @@
             "new": "DGA"
           }
         }
+      },
+      {
+        "timestamp": "2025-08-03T20:30:26.163Z",
+        "action": "materials_moved_in",
+        "description": "1 HDMI cable (5M HDMI cable) moved in from Magazin."
       }
     ],
     "materialCount": 15
@@ -198,6 +213,48 @@
         "timestamp": "2025-08-02T17:48:52.453Z",
         "action": "materials_moved_in",
         "description": "2 Laptop(s) moved in from Magazin."
+      },
+      {
+        "timestamp": "2025-08-03T20:32:56.534Z",
+        "action": "updated",
+        "changes": {
+          "name": {
+            "old": "S30",
+            "new": "S33"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-03T20:33:04.479Z",
+        "action": "updated",
+        "changes": {
+          "name": {
+            "old": "S33",
+            "new": "S30"
+          }
+        }
+      }
+    ],
+    "materialCount": 22
+  },
+  {
+    "name": "Bureau informatique",
+    "capacity": 50,
+    "id": "BI",
+    "history": [
+      {
+        "timestamp": "2025-08-03T20:33:23.224Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-03T20:33:32.846Z",
+        "action": "updated",
+        "changes": {}
+      },
+      {
+        "timestamp": "2025-08-03T20:36:20.691Z",
+        "action": "materials_moved_in",
+        "description": "4 HDMI cable(s) moved in from Magazin."
       }
     ],
     "materialCount": 0

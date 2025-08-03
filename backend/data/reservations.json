@@ -227,5 +227,67 @@
     ],
     "status": "ended",
     "timestamp": "2025-08-02T17:53:11.206Z"
+  },
+  {
+    "id": "RES1754253870217",
+    "description": "Borrow from Mr.Chebieb",
+    "startDate": "2025-08-03",
+    "endDate": "2025-08-03T20:49:02.022Z",
+    "materials": [
+      {
+        "id": "M001",
+        "type": "Router",
+        "name": "Cisco 2800 Series"
+      },
+      {
+        "id": "M039",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M040",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M062",
+        "type": "Switch",
+        "name": "Catalyst 2960"
+      },
+      {
+        "id": "M063",
+        "type": "Switch",
+        "name": "Catalyst 2960"
+      }
+    ],
+    "status": "ended",
+    "timestamp": "2025-08-03T20:44:30.217Z",
+    "history": [
+      {
+        "timestamp": "2025-08-03T20:47:13.314Z",
+        "action": "remove_material",
+        "material": {
+          "id": "L003",
+          "type": "Laptop",
+          "name": "Lenovo ThinkPad X1 Carbon"
+        }
+      },
+      {
+        "timestamp": "2025-08-03T20:48:22.476Z",
+        "action": "add_materials",
+        "materials": [
+          {
+            "id": "M062",
+            "type": "Switch",
+            "name": "Catalyst 2960"
+          },
+          {
+            "id": "M063",
+            "type": "Switch",
+            "name": "Catalyst 2960"
+          }
+        ]
+      }
+    ]
   }
 ]

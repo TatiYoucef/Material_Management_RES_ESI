@@ -70,6 +70,16 @@
         "timestamp": "2025-08-01T20:25:16.709Z",
         "action": "unreserved",
         "description": "Reservation automatically ended: Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-03T20:44:30.217Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754253870217 - Borrow from Mr.Chebieb"
+      },
+      {
+        "timestamp": "2025-08-03T20:49:02.022Z",
+        "action": "unreserved",
+        "description": "Reservation ended: RES1754253870217"
       }
     ]
   },
@@ -1238,7 +1248,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "DGA",
     "id": "M038",
     "history": [
       {
@@ -1259,6 +1269,16 @@
         "timestamp": "2035-12-30T17:34:35.730Z",
         "action": "unreserved",
         "description": "Reservation automatically ended: ESI 65em anniversaire"
+      },
+      {
+        "timestamp": "2025-08-03T20:30:26.159Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "Magazin",
+            "new": "DGA"
+          }
+        }
       }
     ]
   },
@@ -1267,7 +1287,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "M039",
     "history": [
       {
@@ -1288,6 +1308,27 @@
         "timestamp": "2035-12-30T17:34:35.730Z",
         "action": "unreserved",
         "description": "Reservation automatically ended: ESI 65em anniversaire"
+      },
+      {
+        "timestamp": "2025-08-03T20:36:20.690Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "BI",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to BI as part of a bulk move of 4 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-03T20:44:30.217Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754253870217 - Borrow from Mr.Chebieb"
+      },
+      {
+        "timestamp": "2025-08-03T20:49:02.022Z",
+        "action": "unreserved",
+        "description": "Reservation ended: RES1754253870217"
       }
     ]
   },
@@ -1296,7 +1337,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "M040",
     "history": [
       {
@@ -1317,6 +1358,27 @@
         "timestamp": "2035-12-30T17:34:35.730Z",
         "action": "unreserved",
         "description": "Reservation automatically ended: ESI 65em anniversaire"
+      },
+      {
+        "timestamp": "2025-08-03T20:36:20.690Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "BI",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to BI as part of a bulk move of 4 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-03T20:44:30.217Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754253870217 - Borrow from Mr.Chebieb"
+      },
+      {
+        "timestamp": "2025-08-03T20:49:02.022Z",
+        "action": "unreserved",
+        "description": "Reservation ended: RES1754253870217"
       }
     ]
   },
@@ -1725,7 +1787,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "M051",
     "history": [
       {
@@ -1736,6 +1798,17 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-03T20:36:20.690Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "BI",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to BI as part of a bulk move of 4 HDMI cable(s)."
       }
     ]
   },
@@ -1744,7 +1817,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "M052",
     "history": [
       {
@@ -1755,6 +1828,17 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-03T20:36:20.690Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "BI",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to BI as part of a bulk move of 4 HDMI cable(s)."
       }
     ]
   },
@@ -2001,6 +2085,16 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 2 Laptop(s)."
+      },
+      {
+        "timestamp": "2025-08-03T20:25:36.821Z",
+        "action": "updated",
+        "changes": {}
+      },
+      {
+        "timestamp": "2025-08-03T20:25:51.650Z",
+        "action": "updated",
+        "changes": {}
       }
     ]
   },
@@ -2046,6 +2140,16 @@
         "timestamp": "2025-08-02T17:54:54.272Z",
         "action": "unreserved",
         "description": "Reservation automatically ended: 45em anniversaire ESI"
+      },
+      {
+        "timestamp": "2025-08-03T20:44:30.217Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754253870217 - Borrow from Mr.Chebieb"
+      },
+      {
+        "timestamp": "2025-08-03T20:47:13.314Z",
+        "action": "unreserved",
+        "description": "Removed from reservation: RES1754253870217"
       }
     ]
   },
@@ -2144,6 +2248,16 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      },
+      {
+        "timestamp": "2025-08-03T20:48:22.476Z",
+        "action": "reserved",
+        "description": "Added to reservation: RES1754253870217"
+      },
+      {
+        "timestamp": "2025-08-03T20:49:02.022Z",
+        "action": "unreserved",
+        "description": "Reservation ended: RES1754253870217"
       }
     ]
   },
@@ -2179,6 +2293,16 @@
         "timestamp": "2035-12-30T17:34:35.730Z",
         "action": "unreserved",
         "description": "Reservation automatically ended: ESI 65em anniversaire"
+      },
+      {
+        "timestamp": "2025-08-03T20:48:22.476Z",
+        "action": "reserved",
+        "description": "Added to reservation: RES1754253870217"
+      },
+      {
+        "timestamp": "2025-08-03T20:49:02.022Z",
+        "action": "unreserved",
+        "description": "Reservation ended: RES1754253870217"
       }
     ]
   },
@@ -2354,6 +2478,76 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
+      }
+    ]
+  },
+  {
+    "type": "Modem",
+    "name": "Modem Cisco 4G",
+    "details": "100MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M071",
+    "history": [
+      {
+        "timestamp": "2025-08-03T20:26:42.163Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Modem",
+    "name": "Modem Cisco 4G",
+    "details": "100MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M072",
+    "history": [
+      {
+        "timestamp": "2025-08-03T20:26:42.163Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Modem",
+    "name": "Modem Cisco 4G",
+    "details": "100MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M073",
+    "history": [
+      {
+        "timestamp": "2025-08-03T20:26:42.163Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Modem",
+    "name": "Modem Cisco 4G",
+    "details": "100MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M074",
+    "history": [
+      {
+        "timestamp": "2025-08-03T20:26:42.164Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Modem",
+    "name": "Modem Cisco 4G",
+    "details": "100MB/S",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M075",
+    "history": [
+      {
+        "timestamp": "2025-08-03T20:26:42.164Z",
+        "action": "created"
       }
     ]
   }

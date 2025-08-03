@@ -31,6 +31,9 @@ This is a full-stack web application designed to manage materials, rooms, reserv
 - Delete files and their metadata.
 - Search files by title or ID.
 
+## Documentation
+For a detailed user guide, refer to the [User Guide](GUIDE.md).
+
 ## Technologies Used
 
 **Frontend:**
