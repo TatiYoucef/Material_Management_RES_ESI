@@ -197,6 +197,12 @@ router.put('/:id', loadData, async (req, res) => {
 
 router.delete('/:id', loadData, async (req, res) => {
   const roomId = req.params.id;
+  const materialsInRoom = req.materials.filter(m => m.currentLocation === roomId);
+
+  if (materialsInRoom.length > 0) {
+    return res.status(400).json({ error: 'Cannot delete a room that contains materials. Please move the materials first.' });
+  }
+
   let rooms = req.rooms.filter(r => r.id !== roomId);
 
   if (rooms.length < req.rooms.length) {

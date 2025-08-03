@@ -276,18 +276,24 @@ router.post('/', loadMaterials, async (req, res) => {
 // Delete a specific material instance
 router.delete('/:id', loadMaterials, async (req, res) => {
   const materialId = req.params.id;
+  const materialToDelete = req.materials.find(m => m.id === materialId);
+
+  if (!materialToDelete) {
+    return res.status(404).json({ error: 'Material not found' });
+  }
+
+  if (!materialToDelete.isAvailable) {
+    return res.status(400).json({ error: 'Cannot delete a reserved material. Please end the reservation first.' });
+  }
+
   let materials = req.materials.filter(m => m.id !== materialId);
 
-  if (materials.length < req.materials.length) {
-    try {
-      await writeMaterials(materials);
-      res.status(204).json({ message: 'Material deleted successfully.' });
-    } catch (error) {
-      console.error('Backend: Error writing materials after delete:', error);
-      res.status(500).json({ error: error.message });
-    }
-  } else {
-    res.status(404).json({ error: 'Material not found' });
+  try {
+    await writeMaterials(materials);
+    res.status(204).json({ message: 'Material deleted successfully.' });
+  } catch (error) {
+    console.error('Backend: Error writing materials after delete:', error);
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -310,6 +316,9 @@ router.post('/:id/move', loadMaterials, async (req, res) => {
   const index = materials.findIndex(m => m.id === materialId);
 
   if (index !== -1) {
+    if (!materials[index].isAvailable) {
+      return res.status(400).json({ error: 'Cannot move a reserved material.' });
+    }
     const oldMaterial = { ...materials[index] };
     if (!newLocation || newLocation.trim() === '') {
       return res.status(400).json({ errors: ['New location is required.'] });

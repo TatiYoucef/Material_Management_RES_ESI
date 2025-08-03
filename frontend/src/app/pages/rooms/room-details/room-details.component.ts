@@ -26,6 +26,7 @@ export class RoomDetailsComponent implements OnInit {
 
   moveMaterialData = { materialType: '', quantity: 1, toRoom: '' };                      
   allRooms: any[] = []; 
+  showMoveMaterialForm: boolean = false; 
 
   constructor(
     private route: ActivatedRoute,

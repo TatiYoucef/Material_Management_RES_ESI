@@ -379,9 +379,16 @@ router.patch('/:id/remove-material/:materialId', loadAndCleanData, async (req, r
     });
   }
 
-  // If no more materials in reservation, delete the reservation
+  // If no more materials in reservation, mark it as cancelled
   if (reservation.materials.length === 0) {
-    reservations.splice(reservationIndex, 1); // Remove the reservation from the array
+    reservations[reservationIndex].status = 'cancelled';
+    reservations[reservationIndex].cancelledAt = new Date().toISOString();
+    if (!reservations[reservationIndex].history) reservations[reservationIndex].history = [];
+    reservations[reservationIndex].history.push({
+      timestamp: new Date().toISOString(),
+      action: 'cancelled',
+      description: 'Reservation cancelled automatically after last material was removed.'
+    });
   }
 
   try {

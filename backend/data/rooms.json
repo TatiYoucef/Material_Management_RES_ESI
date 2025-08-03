@@ -124,9 +124,29 @@
         "timestamp": "2025-08-01T20:27:38.932Z",
         "action": "materials_moved_in",
         "description": "5 HDMI cable(s) moved in from DGA."
+      },
+      {
+        "timestamp": "2025-08-03T19:50:41.734Z",
+        "action": "updated",
+        "changes": {
+          "name": {
+            "old": "DGA",
+            "new": "DGAAA"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-03T19:50:50.193Z",
+        "action": "updated",
+        "changes": {
+          "name": {
+            "old": "DGAAA",
+            "new": "DGA"
+          }
+        }
       }
     ],
-    "materialCount": 0
+    "materialCount": 15
   },
   {
     "name": "DGB",

@@ -11,8 +11,8 @@ import { authGuard } from './services/auth.guard';
 import { ReservationHistoryComponent } from './pages/reservations/reservation-history/reservation-history.component';
 import { ReservationCreateComponent } from './pages/reservations/reservation-create/reservation-create.component';
 import { ReservationDetailsComponent } from './pages/reservations/reservation-details/reservation-details.component';
-import { FileListComponent } from './file-management/file-list/file-list.component';
-import { FileDetailComponent } from './file-management/file-detail/file-detail.component';
+import { FileListComponent } from './pages/file-management/file-list/file-list.component';
+import { FileDetailComponent } from './pages/file-management/file-detail/file-detail.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },

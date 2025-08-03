@@ -55,25 +55,28 @@
 
     <hr class="section-divider">
 
-    <h3 class="section-subtitle">Move Materials</h3>
-    <div class="move-material-section">
-      <div class="form-group">
-        <label for="materialType">Material Type:</label>
-        <select id="materialType" [(ngModel)]="moveMaterialData.materialType">
-          <option *ngFor="let mat of materialsInRoom" [value]="mat.type">{{ mat.type }}</option>
-        </select>
+    <button (click)="showMoveMaterialForm = !showMoveMaterialForm" class="btn btn-primary mb-3">{{ showMoveMaterialForm ? 'Hide Move Materials' : 'Show Move Materials' }}</button>
+    <div *ngIf="showMoveMaterialForm">
+      <h3 class="section-subtitle">Move Materials</h3>
+      <div class="move-material-section">
+        <div class="form-group">
+          <label for="materialType">Material Type:</label>
+          <select id="materialType" [(ngModel)]="moveMaterialData.materialType">
+            <option *ngFor="let mat of materialsInRoom" [value]="mat.type">{{ mat.type }}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" [(ngModel)]="moveMaterialData.quantity" min="1">
+        </div>
+        <div class="form-group">
+          <label for="toRoom">To Room:</label>
+          <select id="toRoom" [(ngModel)]="moveMaterialData.toRoom">
+            <option *ngFor="let r of allRooms" [value]="r.id">{{ r.name }}</option>
+          </select>
+        </div>
+        <button (click)="moveMaterial()">Move</button>
       </div>
-      <div class="form-group">
-        <label for="quantity">Quantity:</label>
-        <input type="number" id="quantity" [(ngModel)]="moveMaterialData.quantity" min="1">
-      </div>
-      <div class="form-group">
-        <label for="toRoom">To Room:</label>
-        <select id="toRoom" [(ngModel)]="moveMaterialData.toRoom">
-          <option *ngFor="let r of allRooms" [value]="r.id">{{ r.name }}</option>
-        </select>
-      </div>
-      <button (click)="moveMaterial()">Move</button>
     </div>
 
     <hr class="section-divider">

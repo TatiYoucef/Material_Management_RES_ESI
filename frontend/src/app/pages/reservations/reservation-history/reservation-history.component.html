@@ -3,7 +3,7 @@
   <div class="header-controls">
     <div class="top-row">
       <input type="text" [(ngModel)]="searchQuery" (input)="loadReservations()" placeholder="Search by description or ID" class="search-bar">
-      <select [(ngModel)]="statusFilter" (change)="loadReservations()">
+      <select style="margin-bottom: 15px;" [(ngModel)]="statusFilter" (change)="loadReservations()">
         <option value="all">All Statuses</option>
         <option value="active">Active</option>
         <option value="ended">Ended</option>
