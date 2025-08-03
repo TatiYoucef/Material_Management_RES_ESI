@@ -39,9 +39,8 @@ open your web browser and navigate to the frontend URL, typically `http://localh
 Upon accessing the application, you will be directed to the login page.
 
 *   **Login:** If you already have an account, enter your **Username** and **Password** and click the `Login` button.
-*   **Register:** If you are a new user, click the `Register` button. You will be prompted to create a new username and password.
 
-[VIDEO: Demonstration of accessing the application, logging in and registering a new user.](./video%20guides/Login.mp4)
+[VIDEO: Demonstration of accessing the application, logging in.](https://drive.google.com/file/d/14D_wYDqqoHLW9Xc2EROY2f1k3q-WEPgW/view?usp=sharing)
 
 ## 2. Navigating the Application
 
@@ -66,14 +65,14 @@ The Home dashboard provides a quick summary of your materials and rooms. You can
 *   **Material Type Cards:** Each card represents a material type, showing its total instances, available count, and reserved count. Clicking on a material type card will take you to the **Material Instances Page** for that specific type.
 *   **Room List:** Displays a list of rooms with their current material count. Clicking on a room will take you to the **Room Details Page**.
 
-[VIDEO: Overview of the Home Dashboard, highlighting key information displayed and navigation from cards/list.](./video%20guides/Home.mp4)
+[VIDEO: Overview of the Home Dashboard, highlighting key information displayed and navigation from cards/list.](https://drive.google.com/file/d/1OizcVu_ew4-UsF_CnjG0zZfPf5EElddA/view?usp=sharing)
 
 ## 4. Material Management
 
 ### Material Types Overview (Material Management Page)
 
 **Page Title:** Material Management
-**Navigation:** Click `Manage` > `Materials` in the navigation bar.
+**Navigation:** Click `Manage Materials` in the navigation bar.
 
 This page provides an overview of all material types in the system. You can view existing types, add new material instances, and manage material details.
 
@@ -102,7 +101,7 @@ This page provides an overview of all material types in the system. You can view
 
 If an action was ignored, you can read the error message from top screen by scrolling up
 
-[VIDEO: Demonstration of Material Management Page: searching, filtering, adding new materials, editing, and deleting.](./video%20guides/ManageMaterials.mp4)
+[VIDEO: Demonstration of Material Management Page: searching, filtering, adding new materials, editing, and deleting.](https://drive.google.com/file/d/1buBhaKZh2Px1ZViOD3p1hJEt-35eJbVt/view?usp=sharing)
 
 ### Material Instances (Material Instances Page)
 
@@ -148,14 +147,14 @@ This page provides comprehensive details about a single material instance and al
     *   `Exclude from Reservation` Button: Removes this material from its current reservation, making it available again.
 *   `Delete Material` Button: Deletes the material instance. **Note:** You cannot delete a reserved material.
 
-[VIDEO: Demonstration of Material Details Page: viewing info, moving material, reserving (new/existing), excluding from reservation, and deleting.](./video%20guides/MaterialDetail.mp4)
+[VIDEO: Demonstration of Material Details Page: viewing info, moving material, reserving (new/existing), excluding from reservation, and deleting.](https://drive.google.com/file/d/1oW_BEVFYc5MeOfjCfHHVoaite3XtsGui/view?usp=sharing)
 
 ## 5. Room Management
 
 ### Rooms Overview (Room Management Page)
 
 **Page Title:** Room Management
-**Navigation:** Click `Manage` > `Rooms` in the navigation bar.
+**Navigation:** Click `Manage Rooms` in the navigation bar.
 
 This page lists all registered rooms in the system.
 
@@ -168,7 +167,7 @@ This page lists all registered rooms in the system.
     *   `Capacity`: Enter the maximum capacity of the room (e.g., 10 for people, or a numerical value for storage).
     *   `Create Room` Button: Adds the new room to the system.
 
-[VIDEO: Demonstration of Room Management Page: searching, filtering, and adding new rooms.](./video%20guides/RoomManagement.mp4)
+[VIDEO: Demonstration of Room Management Page: searching, filtering, and adding new rooms.](https://drive.google.com/file/d/1O1aG-JuUPgzB2ZFo-DyoNRc_RlcL4knR/view?usp=sharing)
 
 ### Room Details (Room Details Page)
 
@@ -194,7 +193,7 @@ This page provides comprehensive details about a single room and allows for vari
     *   `New ID` Field: Enter the new ID for the room.
     *   `Update` Button: Applies the new ID. All materials currently in this room will automatically be updated to reflect the new room ID.
 
-[VIDEO: Demonstration of Room Details Page: viewing info, expanding material list, moving materials, deleting room, and updating room ID.](./video%20guides/RoomDetails.mp4)
+[VIDEO: Demonstration of Room Details Page: viewing info, expanding material list, moving materials, deleting room, and updating room ID.](https://drive.google.com/file/d/1fXlWIBQzb7CAOoU--P9vlXBMwNyvri90/view?usp=sharing)
 
 ## 6. Reservations
 
@@ -215,7 +214,7 @@ This page displays a list of all material reservations in the system.
 *   `Create New Reservation` Button: Navigates to the **Create New Reservation Page**.
 *   *   If a reservation reached end date or cancelled, **Materials concerned will automatically be free (reserved -> available)**
 
-[VIDEO: Demonstration of Reservations List Page: searching and filtering.](./video%20guides/ReservationHistory.mp4)
+[VIDEO: Demonstration of Reservations List Page: searching and filtering.](https://drive.google.com/file/d/133ItGuATvCyCOnPfHeWi3m8k3JfE0Pyj/view?usp=sharing)
 
 ### Create New Reservation (Reservation Create Page)
 
@@ -239,7 +238,7 @@ This page allows you to create a new material reservation.
         *   `Add Materials by Type` Button: The system will automatically reserve available instances of the specified type from the chosen room.
 *   `Create Reservation` Button: Finalizes and creates the reservation.
 
-[VIDEO: Demonstration of Create New Reservation Page: filling out form, adding materials by ID and by type/location.](./video%20guides/ReservationCreation.mp4)
+[VIDEO: Demonstration of Create New Reservation Page: filling out form, adding materials by ID and by type/location.](https://drive.google.com/file/d/17ee74tbLIR8SDuXuL7eKGgUQr_cgUwBf/view?usp=sharing)
 
 ### Reservation Details (Reservation Details Page)
 
@@ -265,7 +264,7 @@ This page provides comprehensive details about a single reservation and allows f
     *   `Add Materials by Type` Button: Adds available instances of the specified type from the chosen room to this reservation.
 *   **Remove Material Button:** Located next to each material in the "Materials in Reservation" list. Removes that specific material from the reservation. If it's the last material, the reservation is cancelled.
 
-[VIDEO: Demonstration of Reservation Details Page: viewing info, cancelling, ending, adding materials, and removing materials.](./video%20guides/ReservationDetails.mp4)
+[VIDEO: Demonstration of Reservation Details Page: viewing info, cancelling, ending, adding materials, and removing materials.](https://drive.google.com/file/d/1kA9qKnuAm38UVe18QhwoNitORsC8pFmP/view?usp=sharing)
 
 ## 7. File Management
 
@@ -287,7 +286,7 @@ This page displays a list of all uploaded files and allows for new file uploads.
 *   **Files List Table:** Displays uploaded files with their details.
     *   Clicking on a file's ID or title will navigate you to the **File Details Page**.
 
-[VIDEO: Demonstration of Files List Page: searching, toggling upload form, and uploading a new file.](./video%20guides/FileList.mp4)
+[VIDEO: Demonstration of Files List Page: searching, toggling upload form, and uploading a new file.](https://drive.google.com/file/d/1FWIuv534rNYve0MwCheOeGLh2NTtsynV/view?usp=sharing)
 
 ### File Details (File Details Page)
 
@@ -305,7 +304,7 @@ This page provides comprehensive details about a single uploaded file.
 *   `Download File` Button: Downloads the original file to your computer.
 *   `Delete File` Button: Deletes the file and its metadata from the system.
 
-[VIDEO: Demonstration of File Details Page: viewing info, downloading, and deleting.](./video%20guides/FileDetails.mp4)
+[VIDEO: Demonstration of File Details Page: viewing info, downloading, and deleting.](https://drive.google.com/file/d/1k0g1Q-ooSGMnswlbWr56oYZI4d0R8k2O/view?usp=sharing)
 
 ## 8. Logging Out
 
