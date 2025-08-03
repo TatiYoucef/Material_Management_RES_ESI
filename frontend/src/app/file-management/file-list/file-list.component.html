@@ -41,9 +41,8 @@
       <tr *ngFor="let file of files">
         <td>{{ file.id }}</td>
         <td>{{ file.title }}</td>
-        <td>{{ file.createdAt | date:'medium' }}</td>
+        <td>{{ file.createdAt | date:'dd/MM/yyyy HH:mm' }}</td>
         <td class="action-buttons-cell">
-          <button (click)="downloadFile(file.id, file.originalname)" class="action-button">Download</button>
           <button [routerLink]="['/files', file.id]" class="action-button">Details</button>
         </td>
       </tr>
