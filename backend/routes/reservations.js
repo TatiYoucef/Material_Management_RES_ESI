@@ -440,4 +440,53 @@ router.delete('/:id/delete', loadAndCleanData, async (req, res) => {
   }
 });
 
+// Update reservation end date
+router.put('/:id/update-end-date', loadAndCleanData, async (req, res) => {
+  let { reservations } = req;
+  const { newEndDate } = req.body;
+  const reservationId = req.params.id;
+  const reservationIndex = reservations.findIndex(r => r.id === reservationId);
+
+  if (reservationIndex === -1) {
+    return res.status(404).json({ error: 'Reservation not found' });
+  }
+
+  const reservation = reservations[reservationIndex];
+  if (reservation.status !== 'active') {
+    return res.status(400).json({ error: `Cannot modify an already ${reservation.status} reservation.` });
+  }
+
+  const newDate = new Date(newEndDate);
+  const startDate = new Date(reservation.startDate);
+  const now = new Date();
+
+  if (newDate < startDate) {
+    return res.status(400).json({ error: 'End date cannot be before the start date.' });
+  }
+
+  if (newDate < now) {
+    return res.status(400).json({ error: 'End date cannot be in the past.' });
+  }
+
+  const oldEndDate = reservation.endDate;
+  reservations[reservationIndex].endDate = newDate.toISOString();
+
+  if (!reservations[reservationIndex].history) {
+    reservations[reservationIndex].history = [];
+  }
+  reservations[reservationIndex].history.push({
+    timestamp: new Date().toISOString(),
+    action: 'end_date_updated',
+    oldEndDate: oldEndDate,
+    newEndDate: newDate.toISOString(),
+  });
+
+  try {
+    await writeData(reservationsFilePath, reservations);
+    res.status(200).json(reservations[reservationIndex]);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;

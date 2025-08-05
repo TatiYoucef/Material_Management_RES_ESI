@@ -41,6 +41,7 @@
         <strong>{{ event.timestamp | date:'dd/MM/yyyy HH:mm' }}:</strong>
         <span *ngIf="event.action === 'add_materials'">Added materials:</span>
         <span *ngIf="event.action === 'remove_material'">Removed material:</span>
+        <span *ngIf="event.action === 'end_date_updated'">End date updated from {{ event.oldEndDate | date:'dd/MM/yyyy' }} to {{ event.newEndDate | date:'dd/MM/yyyy' }}</span>
         <ul *ngIf="event.materials">
           <li *ngFor="let material of event.materials">{{ material.name }} ({{ material.id }})</li>
         </ul>
@@ -52,6 +53,16 @@
 
   <h3 class="section-subtitle" *ngIf="reservation.status === 'active'">Actions</h3>
   <div class="action-section">
+
+    <div class="action-card" *ngIf="reservation.status === 'active'">
+      <h4 class="card-title">Update End Date</h4>
+      <div class="form-group">
+        <label for="newEndDate" class="form-label">New End Date</label>
+        <input type="date" id="newEndDate" [(ngModel)]="newEndDate" class="form-input">
+      </div>
+      <button (click)="updateEndDate()" class="action-button btn-primary">Update End Date</button>
+    </div>
+
     <div class="action-card" *ngIf="reservation.status === 'active'">
       <h4 class="card-title">Manage Reservation</h4>
       <button class="action-button btn-warning" (click)="cancelReservation()">Cancel Reservation</button>

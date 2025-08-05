@@ -156,4 +156,8 @@ export class DataService {
   deleteReservation(id: string): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}/reservations/${id}/delete`, { headers: this.getHeaders() });
   }
+
+  updateReservationEndDate(id: string, newEndDate: string): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/reservations/${id}/update-end-date`, { newEndDate }, { headers: this.getHeaders() });
+  }
 }

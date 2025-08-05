@@ -28,6 +28,7 @@ export class ReservationDetailsComponent implements OnInit {
   };
   rooms: any[] = [];
   materialTypes: any[] = [];
+  newEndDate: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -162,5 +163,20 @@ export class ReservationDetailsComponent implements OnInit {
         this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to add materials to reservation.'), type: 'error' });
       }
     });
+  }
+
+  updateEndDate(): void {
+    if (this.newEndDate) {
+      this.dataService.updateReservationEndDate(this.reservation.id, this.newEndDate).subscribe({
+        next: () => {
+          this.loadReservation();
+          this.newEndDate = '';
+          this.notificationService.show({ message: 'Reservation end date updated successfully.', type: 'success' });
+        },
+        error: (err) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to update end date.', type: 'error' });
+        }
+      });
+    }
   }
 }
