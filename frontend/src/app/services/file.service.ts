@@ -20,19 +20,33 @@ export class FileService {
     return headers;
   }
 
-  uploadFile(file: File, title: string, description: string): Observable<any> {
+  uploadFile(file: File, title: string, description: string, type: string, supplier: string): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('title', title);
     formData.append('description', description);
+    formData.append('type', type);
+    formData.append('supplier', supplier);
 
     return this.http.post(`${this.baseUrl}/files/upload`, formData, { headers: this.getHeaders() });
   }
 
-  getFiles(search?: string): Observable<any[]> {
+  getFiles(search?: string, type?: string, supplier?: string, fromDate?: string, toDate?: string): Observable<any[]> {
     let params = new HttpParams();
     if (search) {
       params = params.set('search', search);
+    }
+    if (type) {
+      params = params.set('type', type);
+    }
+    if (supplier) {
+      params = params.set('supplier', supplier);
+    }
+    if (fromDate) {
+      params = params.set('fromDate', fromDate);
+    }
+    if (toDate) {
+      params = params.set('toDate', toDate);
     }
     return this.http.get<any[]>(`${this.baseUrl}/files`, { headers: this.getHeaders(), params });
   }

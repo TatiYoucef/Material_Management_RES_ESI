@@ -1,3 +1,25 @@
+.header-controls {
+  margin-bottom: 20px;
+}
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.search-bar {
+  flex-grow: 1;
+  margin-right: 15px;
+}
+
+.filters {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
 .file-list-container {
   padding: 20px;
   max-width: 900px;

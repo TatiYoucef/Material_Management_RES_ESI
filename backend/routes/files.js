@@ -48,7 +48,7 @@ async function loadFiles(req, res, next) {
 // Get all files metadata
 router.get('/', loadFiles, (req, res) => {
   let files = [...req.filesData];
-  const { search } = req.query;
+  const { search, type, supplier, fromDate, toDate } = req.query;
 
   if (search) {
     const lowerCaseSearch = search.toLowerCase();
@@ -57,6 +57,24 @@ router.get('/', loadFiles, (req, res) => {
       (f.title && f.title.toLowerCase().includes(lowerCaseSearch))
     );
   }
+
+  if (type) {
+    files = files.filter(f => f.type === type);
+  }
+
+  if (supplier) {
+    const lowerCaseSupplier = supplier.toLowerCase();
+    files = files.filter(f => f.supplier && f.supplier.toLowerCase().includes(lowerCaseSupplier));
+  }
+
+  if (fromDate) {
+    files = files.filter(f => new Date(f.createdAt) >= new Date(fromDate));
+  }
+
+  if (toDate) {
+    files = files.filter(f => new Date(f.createdAt) <= new Date(toDate));
+  }
+
   res.json(files);
 });
 
@@ -88,7 +106,7 @@ router.get('/download/:id', loadFiles, (req, res) => {
 
 // Upload a new file
 router.post('/upload', upload.single('file'), loadFiles, async (req, res) => {
-  const { title, description } = req.body;
+  const { title, description, type, supplier } = req.body;
   const uploadedFile = req.file;
 
   if (!uploadedFile) {
@@ -109,7 +127,9 @@ router.post('/upload', upload.single('file'), loadFiles, async (req, res) => {
     mimetype: uploadedFile.mimetype,
     size: uploadedFile.size,
     createdAt: new Date().toISOString(),
-    history: [{ timestamp: new Date().toISOString(), action: 'uploaded' }]
+    history: [{ timestamp: new Date().toISOString(), action: 'uploaded' }],
+    type: type || 'Facture',
+    supplier: supplier || null
   };
 
   req.filesData.push(newFile);

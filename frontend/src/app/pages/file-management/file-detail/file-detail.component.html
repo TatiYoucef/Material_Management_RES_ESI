@@ -5,6 +5,8 @@
     <div class="details-grid">
       <div class="detail-item"><strong>ID:</strong> <span>{{ file.id }}</span></div>
       <div class="detail-item"><strong>Title:</strong> <span>{{ file.title }}</span></div>
+      <div class="detail-item"><strong>Type:</strong> <span>{{ file.type }}</span></div>
+      <div class="detail-item"><strong>Supplier:</strong> <span>{{ file.supplier || 'None' }}</span></div>
       <div class="detail-item"><strong>Original Name:</strong> <span>{{ file.originalname }}</span></div>
       <div class="detail-item"><strong>MIME Type:</strong> <span>{{ file.mimetype }}</span></div>
       <div class="detail-item"><strong>Size:</strong> <span>{{ file.size }} bytes</span></div>

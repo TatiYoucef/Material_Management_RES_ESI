@@ -17,8 +17,14 @@ export class FileListComponent implements OnInit {
   newFile: File | null = null;
   newFileTitle: string = '';
   newFileDescription: string = '';
+  newFileType: string = 'Facture'; // Default type
+  newFileSupplier: string = '';
   showUploadForm: boolean = false; // Control visibility of upload form
   searchQuery: string = ''; // For search functionality
+  fileType: string = ''; // For filtering
+  supplier: string = ''; // For filtering
+  fromDate: string = '';
+  toDate: string = '';
 
   constructor(private fileService: FileService, private notificationService: NotificationService) { }
 
@@ -27,7 +33,7 @@ export class FileListComponent implements OnInit {
   }
 
   loadFiles(): void {
-    this.fileService.getFiles(this.searchQuery).subscribe({
+    this.fileService.getFiles(this.searchQuery, this.fileType, this.supplier, this.fromDate, this.toDate).subscribe({
       next: data => {
         this.files = data.reverse();
       },
@@ -43,13 +49,15 @@ export class FileListComponent implements OnInit {
 
   uploadFile(): void {
     if (this.newFile && this.newFileTitle) {
-      this.fileService.uploadFile(this.newFile, this.newFileTitle, this.newFileDescription).subscribe({
+      this.fileService.uploadFile(this.newFile, this.newFileTitle, this.newFileDescription, this.newFileType, this.newFileSupplier).subscribe({
         next: response => {
           this.notificationService.show({ message: 'File uploaded successfully.', type: 'success' });
           this.loadFiles();
           this.newFile = null;
           this.newFileTitle = '';
           this.newFileDescription = '';
+          this.newFileType = 'Facture';
+          this.newFileSupplier = '';
           this.showUploadForm = false; // Hide form after successful upload
         },
         error: err => {
