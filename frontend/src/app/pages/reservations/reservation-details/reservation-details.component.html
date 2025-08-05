@@ -37,7 +37,7 @@
   <h3 class="section-subtitle">History</h3>
   <div class="history-section">
     <ul *ngIf="reservation.history && reservation.history.length > 0" class="history-list">
-      <li *ngFor="let event of reservation.history.reverse()" class="history-item">
+      <li *ngFor="let event of reservation.history.reverse()" class="history-item" [ngClass]="'history-item-' + event.action">
         <strong>{{ event.timestamp | date:'dd/MM/yyyy HH:mm' }}:</strong>
         <span *ngIf="event.action === 'add_materials'">Added materials:</span>
         <span *ngIf="event.action === 'remove_material'">Removed material:</span>

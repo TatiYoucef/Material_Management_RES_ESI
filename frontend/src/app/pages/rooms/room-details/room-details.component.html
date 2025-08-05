@@ -43,6 +43,7 @@
           <span *ngIf="entry.action === 'id_updated'" [ngClass]="'history-id-updated'">ID changed from {{ entry.changes?.id?.old }} to {{ entry.changes?.id?.new }}.</span>
           <span *ngIf="entry.action === 'materials_moved_out'" [ngClass]="'history-moved-out'">Materials moved out: {{ entry.description }}</span>
           <span *ngIf="entry.action === 'materials_moved_in'" [ngClass]="'history-moved-in'">Materials moved in: {{ entry.description }}</span>
+          <span *ngIf="entry.action === 'materials_added'" [ngClass]="'history-created'">Materials created here: {{ entry.description }}</span>
           <div *ngIf="entry.changes" class="history-changes">
             <span *ngFor="let key of (entry.changes | keyvalue)" class="change-item">
               {{ key.key }}: <span class="old-value">{{ $any(key.value).old }}</span> → <span class="new-value">{{ $any(key.value).new }}</span>; 

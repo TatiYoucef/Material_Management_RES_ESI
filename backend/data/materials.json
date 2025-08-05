@@ -2682,5 +2682,421 @@
         "action": "created"
       }
     ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2900 Series",
+    "details": "4 GigaEthernet ports , 10 Fe",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M076",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:51:01.634Z",
+        "action": "created"
+      },
+      {
+        "timestamp": "2025-08-05T17:51:34.000Z",
+        "action": "updated",
+        "changes": {}
+      },
+      {
+        "timestamp": "2025-08-05T17:51:42.166Z",
+        "action": "updated",
+        "changes": {}
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2900 Series",
+    "details": "4 GigaEthernet ports , 10 Fe",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M077",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:51:01.634Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2900 Series",
+    "details": "4 GigaEthernet ports , 10 Fe",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M078",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:51:01.634Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2900 Series",
+    "details": "4 GigaEthernet ports , 10 Fe",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M079",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:51:01.634Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2900 Series",
+    "details": "4 GigaEthernet ports , 10 Fe",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M080",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:51:01.634Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2900 Series",
+    "details": "4 GigaEthernet ports , 10 Fe",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M081",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:51:01.634Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2900 Series",
+    "details": "4 GigaEthernet ports , 10 Fe",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M082",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:51:01.634Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2900 Series",
+    "details": "4 GigaEthernet ports , 10 Fe",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M083",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:51:01.634Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2900 Series",
+    "details": "4 GigaEthernet ports , 10 Fe",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M084",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:51:01.634Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Router",
+    "name": "Cisco 2900 Series",
+    "details": "4 GigaEthernet ports , 10 Fe",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "M085",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:51:01.634Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Printer",
+    "name": "Brother dcp-t720dw",
+    "details": "Laser printer with capacity of printing 200 papers per ink",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "12174",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:55:38.277Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Printer",
+    "name": "Brother dcp-t720dw",
+    "details": "Laser printer with capacity of printing 200 papers per ink",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "12175",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:55:38.277Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Printer",
+    "name": "Brother dcp-t720dw",
+    "details": "Laser printer with capacity of printing 200 papers per ink",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "12176",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:55:38.277Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Printer",
+    "name": "Brother dcp-t720dw",
+    "details": "Laser printer with capacity of printing 200 papers per ink",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "12177",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:55:38.277Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Printer",
+    "name": "Brother dcp-t720dw",
+    "details": "Laser printer with capacity of printing 200 papers per ink",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "12178",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:55:38.277Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Printer",
+    "name": "Brother dcp-t720dw",
+    "details": "Laser printer with capacity of printing 200 papers per ink",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "12179",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:55:38.277Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Printer",
+    "name": "Brother dcp-t720dw",
+    "details": "Laser printer with capacity of printing 200 papers per ink",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "12180",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:55:38.277Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Printer",
+    "name": "Brother dcp-t720dw",
+    "details": "Laser printer with capacity of printing 200 papers per ink",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "12181",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:55:38.277Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Printer",
+    "name": "Brother dcp-t720dw",
+    "details": "Laser printer with capacity of printing 200 papers per ink",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "12182",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:55:38.277Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Printer",
+    "name": "Brother dcp-t720dw",
+    "details": "Laser printer with capacity of printing 200 papers per ink",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "12183",
+    "history": [
+      {
+        "timestamp": "2025-08-05T17:55:38.277Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Monitor",
+    "name": "LCD Monitor HD 3268x2257",
+    "details": "HD monitor with 220V power supply",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "Mo1",
+    "history": [
+      {
+        "timestamp": "2025-08-05T18:23:30.050Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Monitor",
+    "name": "LCD Monitor HD 3268x2257",
+    "details": "HD monitor with 220V power supply",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "Mo2",
+    "history": [
+      {
+        "timestamp": "2025-08-05T18:23:30.050Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Monitor",
+    "name": "LCD Monitor HD 3268x2257",
+    "details": "HD monitor with 220V power supply",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "Mo3",
+    "history": [
+      {
+        "timestamp": "2025-08-05T18:23:30.050Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Air conditioner",
+    "name": "Cecotec Climatiseur portatif ForceClima 7350 Touch Smart. 7000 BTU",
+    "details": "A really cold portable conditioner",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "C1",
+    "history": [
+      {
+        "timestamp": "2025-08-05T18:40:06.676Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Air conditioner",
+    "name": "Cecotec Climatiseur portatif ForceClima 7350 Touch Smart. 7000 BTU",
+    "details": "A really cold portable conditioner",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "C2",
+    "history": [
+      {
+        "timestamp": "2025-08-05T18:40:06.676Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Air conditioner",
+    "name": "Cecotec Climatiseur portatif ForceClima 7350 Touch Smart. 7000 BTU",
+    "details": "A really cold portable conditioner",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "C3",
+    "history": [
+      {
+        "timestamp": "2025-08-05T18:40:06.676Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Air conditioner",
+    "name": "Cecotec Climatiseur portatif ForceClima 7350 Touch Smart. 7000 BTU",
+    "details": "A really cold portable conditioner",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "C4",
+    "history": [
+      {
+        "timestamp": "2025-08-05T18:40:06.676Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Air conditioner",
+    "name": "Cecotec Climatiseur portatif ForceClima 7350 Touch Smart. 7000 BTU",
+    "details": "",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "C5",
+    "history": [
+      {
+        "timestamp": "2025-08-05T18:53:46.871Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Air conditioner",
+    "name": "Cecotec Climatiseur portatif ForceClima 7350 Touch Smart. 7000 BTU",
+    "details": "",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "id": "C6",
+    "history": [
+      {
+        "timestamp": "2025-08-05T18:53:46.871Z",
+        "action": "created"
+      }
+    ]
   }
 ]

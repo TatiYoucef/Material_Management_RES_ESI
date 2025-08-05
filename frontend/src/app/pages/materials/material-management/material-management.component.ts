@@ -19,6 +19,13 @@ export class MaterialManagementComponent implements OnInit {
   editingMaterial: any = null;
   originalMaterialId: string | null = null; // Store original ID for modification
 
+  showCustomIds: boolean = false;
+  customIds: string[] = [];
+  idStart: number | null = null;
+  idEnd: number | null = null;
+  idCommas: string = '';
+  idInputMode: 'none' | 'enumerated' | 'commaSeparated' = 'none';
+
   // Pagination and Filtering
   currentPage: number = 1;
   totalPages: number = 1;
@@ -31,6 +38,9 @@ export class MaterialManagementComponent implements OnInit {
   // For filter dropdowns (optional, could be fetched from backend if dynamic)
   materialTypes: string[] = [];
   locations: string[] = [];
+  selectedType: string = ''; // For dropdown selection
+  newTypeName: string = ''; // For new type input
+  showNewTypeInput: boolean = false;
 
   constructor(private dataService: DataService, private notificationService: NotificationService) { }
 
@@ -118,13 +128,112 @@ export class MaterialManagementComponent implements OnInit {
     }
   }
 
+  toggleCustomIds(): void {
+    this.showCustomIds = !this.showCustomIds;
+    if (!this.showCustomIds) {
+      this.clearCustomIds();
+      this.idInputMode = 'none';
+    }
+  }
+
+  addEnumeratedIds(): void {
+    if (this.idStart !== null && this.idEnd !== null && this.idStart <= this.idEnd) {
+      for (let i = this.idStart; i <= this.idEnd; i++) {
+        const id = i.toString();
+        if (!this.customIds.includes(id)) {
+          this.customIds.push(id);
+        }
+      }
+      this.idStart = null;
+      this.idEnd = null;
+      this.updateNewMaterialQuantity();
+    }
+  }
+
+  addCommaSeparatedIds(): void {
+    if (this.idCommas) {
+      const ids = this.idCommas.split(',').map(id => id.trim()).filter(id => id);
+      for (const id of ids) {
+        if (!this.customIds.includes(id)) {
+          this.customIds.push(id);
+        }
+      }
+      this.idCommas = '';
+      this.updateNewMaterialQuantity();
+    }
+  }
+
+  selectIdInputMode(mode: 'enumerated' | 'commaSeparated'): void {
+    this.idInputMode = mode;
+    this.clearCustomIds(); // Clear any previously added IDs when changing mode
+  }
+
+  clearCustomIds(): void {
+    this.customIds = [];
+    this.idStart = null;
+    this.idEnd = null;
+    this.idCommas = '';
+    this.updateNewMaterialQuantity();
+  }
+
+  updateNewMaterialQuantity(): void {
+    if (this.showCustomIds) {
+      this.newMaterial.quantity = this.customIds.length;
+    } else {
+      this.newMaterial.quantity = 1; // Default quantity
+    }
+  }
+
+  handleTypeChange(): void {
+    if (this.selectedType === '__new__') {
+      this.showNewTypeInput = true;
+      this.newTypeName = ''; // Clear previous new type input
+    } else {
+      this.showNewTypeInput = false;
+      this.newTypeName = '';
+      this.newMaterial.type = this.selectedType; // Set type from selected existing type
+    }
+  }
+
   addMaterial(): void {
-    this.notificationService.show({ message: 'Material added successfully.', type: 'success' });
-    this.dataService.createMaterial(this.newMaterial).subscribe({
+    if (!this.newMaterial.name || !this.newMaterial.currentLocation) {
+      this.notificationService.show({ message: 'Please fill in all required fields.', type: 'warning' });
+      return;
+    }
+
+    if (this.showNewTypeInput) {
+      if (!this.newTypeName.trim()) {
+        this.notificationService.show({ message: 'Please enter a new material type.', type: 'warning' });
+        return;
+      }
+      this.newMaterial.type = this.newTypeName.trim();
+    } else if (!this.selectedType) {
+      this.notificationService.show({ message: 'Please select an existing material type or add a new one.', type: 'warning' });
+      return;
+    }
+
+    const materialToCreate = { ...this.newMaterial };
+
+    if (this.showCustomIds) {
+      if (this.customIds.length === 0) {
+        this.notificationService.show({ message: 'Please add at least one custom ID or disable custom IDs.', type: 'warning' });
+        return;
+      }
+      materialToCreate.customIds = this.customIds;
+      materialToCreate.quantity = this.customIds.length; // Ensure quantity matches custom IDs
+    }
+
+    this.dataService.createMaterial(materialToCreate).subscribe({
       next: (response: any) => {
         this.currentPage = 1; // Reset to first page to see newly added materials
         this.loadMaterials();
         this.newMaterial = { type: '', name: '', details: '', isAvailable: true, currentLocation: '', quantity: 1 };
+        this.clearCustomIds();
+        this.showCustomIds = false; // Reset toggle
+        this.selectedType = ''; // Reset selected type
+        this.newTypeName = ''; // Reset new type name
+        this.showNewTypeInput = false; // Reset new type input visibility
+        this.notificationService.show({ message: 'Material added successfully.', type: 'success' });
       },
       error: (err: any) => {
         this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to add material.'), type: 'error' });
@@ -134,11 +243,33 @@ export class MaterialManagementComponent implements OnInit {
 
   editMaterial(material: any): void {
     this.editingMaterial = { ...material };
-    this.originalMaterialId = material.id ;
+    this.originalMaterialId = material.id;
+    // Set selectedType for editing existing material
+    this.selectedType = material.type;
+    this.showNewTypeInput = false; // Hide new type input when editing
   }
 
   updateMaterial(): void {
     if (this.editingMaterial) {
+      if (!this.editingMaterial.name || !this.editingMaterial.currentLocation) {
+        this.notificationService.show({ message: 'Please fill in all required fields for editing.', type: 'warning' });
+        return;
+      }
+
+      // If editing and a new type is being entered
+      if (this.showNewTypeInput) {
+        if (!this.newTypeName.trim()) {
+          this.notificationService.show({ message: 'Please enter a new material type.', type: 'warning' });
+          return;
+        }
+        this.editingMaterial.type = this.newTypeName.trim();
+      } else if (!this.selectedType) {
+        this.notificationService.show({ message: 'Please select an existing material type or add a new one.', type: 'warning' });
+        return;
+      } else {
+        this.editingMaterial.type = this.selectedType;
+      }
+
       const updatedMaterial = {
         ...this.editingMaterial,
         newId: this.editingMaterial.id
@@ -149,6 +280,9 @@ export class MaterialManagementComponent implements OnInit {
           this.loadMaterials();
           this.editingMaterial = null;
           this.originalMaterialId = null;
+          this.selectedType = ''; // Reset selected type
+          this.newTypeName = ''; // Reset new type name
+          this.showNewTypeInput = false; // Reset new type input visibility
           this.notificationService.show({ message: 'Material updated successfully.', type: 'success' });
         },
         error: (err: any) => {
@@ -174,6 +308,9 @@ export class MaterialManagementComponent implements OnInit {
 
   cancelEdit(): void {
     this.editingMaterial = null;
+    this.selectedType = ''; // Reset selected type
+    this.newTypeName = ''; // Reset new type name
+    this.showNewTypeInput = false; // Reset new type input visibility
   }
 
   get currentMaterial() {

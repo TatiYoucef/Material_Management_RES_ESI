@@ -225,7 +225,7 @@ router.get('/:id', loadMaterials, async (req, res) => {
 
 // Create a new specific material instance
 router.post('/', loadMaterials, async (req, res) => {
-  const { quantity = 1, ...materialData } = req.body;
+  const { quantity = 1, customIds, ...materialData } = req.body;
   let materials = [...req.materials];
   const createdMaterials = [];
 
@@ -239,25 +239,48 @@ router.post('/', loadMaterials, async (req, res) => {
     return res.status(400).json({ errors });
   }
 
+  let idsToUse = [];
+  if (customIds && customIds.length > 0) {
+    const existingMaterialIds = new Set(materials.map(m => m.id));
+    const uniqueCustomIds = [...new Set(customIds)]; // Ensure uniqueness within provided customIds
+
+    for (const customId of uniqueCustomIds) {
+      if (existingMaterialIds.has(customId)) {
+        errors.push(`Custom ID '${customId}' already exists.`);
+      } else {
+        idsToUse.push(customId);
+      }
+    }
+    if (errors.length > 0) {
+      return res.status(400).json({ errors });
+    }
+  }
+
+  const effectiveQuantity = customIds ? idsToUse.length : quantity;
+
   // Validate quantity
-  if (quantity < 1 || quantity > 100) {
+  if (effectiveQuantity < 1 || effectiveQuantity > 100) {
     return res.status(400).json({ error: 'Quantity must be between 1 and 100' });
   }
 
-
-  for (let i = 0; i < quantity; i++) {
+  for (let i = 0; i < effectiveQuantity; i++) {
     const newMaterial = { ...materialData };
 
     // Automatically set availability
     newMaterial.isAvailable = true;
 
-    // Generate a unique ID
-    let nextIdNum = 1;
-    const existingIds = new Set(materials.map(m => parseInt(m.id.substring(1))));
-    while (existingIds.has(nextIdNum)) {
-      nextIdNum++;
+    // Assign custom ID or generate a new one
+    if (idsToUse.length > 0) {
+      newMaterial.id = idsToUse.shift(); // Use a custom ID if available
+    } else {
+      // Generate a unique ID if custom IDs are exhausted or not provided
+      let nextIdNum = 1;
+      const existingIds = new Set(materials.map(m => parseInt(m.id.substring(1))));
+      while (existingIds.has(nextIdNum) || idsToUse.includes(`M${nextIdNum.toString().padStart(3, '0')}`)) {
+        nextIdNum++;
+      }
+      newMaterial.id = `M${nextIdNum.toString().padStart(3, '0')}`;
     }
-    newMaterial.id = `M${nextIdNum.toString().padStart(3, '0')}`;
 
     newMaterial.history = [{ timestamp: new Date().toISOString(), action: 'created' }];
     materials.push(newMaterial);
@@ -266,6 +289,43 @@ router.post('/', loadMaterials, async (req, res) => {
 
   try {
     await writeMaterials(materials);
+
+    // Update room histories for newly created materials
+    const roomsFilePath = path.join(__dirname, '../data/rooms.json');
+    const releaseRooms = await acquireLock(roomsFilePath);
+    try {
+      const roomsData = await fs.readFile(roomsFilePath, 'utf8');
+      let rooms = JSON.parse(roomsData);
+
+      const materialsByRoomAndType = createdMaterials.reduce((acc, mat) => {
+        const key = `${mat.currentLocation}-${mat.type}`;
+        if (!acc[key]) {
+          acc[key] = { room: mat.currentLocation, type: mat.type, count: 0, ids: [] };
+        }
+        acc[key].count++;
+        acc[key].ids.push(mat.id);
+        return acc;
+      }, {});
+
+      for (const key in materialsByRoomAndType) {
+        const { room, type, count, ids } = materialsByRoomAndType[key];
+        const roomObj = rooms.find(r => r.id === room);
+        if (roomObj) {
+          if (!roomObj.history) roomObj.history = [];
+          roomObj.history.push({
+            timestamp: new Date().toISOString(),
+            action: 'materials_added',
+            description: `${count} new material(s) of type '${type}' (IDs: ${ids.join(', ')}) added to this room.`
+          });
+        }
+      }
+      await writeRooms(rooms);
+    } catch (error) {
+      console.error('Error updating room histories for material creation:', error);
+    } finally {
+      releaseRooms();
+    }
+
     res.status(201).json(createdMaterials);
   } catch (error) {
     console.error('Backend: Error creating material:', error);

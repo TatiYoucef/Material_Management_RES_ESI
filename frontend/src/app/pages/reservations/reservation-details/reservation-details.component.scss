@@ -170,6 +170,36 @@
   }
 }
 
+.history-item-created {
+  background-color: #e6ffe6; /* Light green for creation */
+  border-color: #a3e9a4;
+}
+
+.history-item-cancelled {
+  background-color: #ffe6e6; /* Light red for cancellation */
+  border-color: #e9a3a3;
+}
+
+.history-item-ended {
+  background-color: #f0f0f0; /* Light grey for ending */
+  border-color: #d0d0d0;
+}
+
+.history-item-add_materials {
+  background-color: #e6f7ff; /* Light blue for adding materials */
+  border-color: #a3d9f7;
+}
+
+.history-item-remove_material {
+  background-color: #fff0e6; /* Light orange for removing materials */
+  border-color: #f7d9a3;
+}
+
+.history-item-end_date_updated {
+  background-color: #f9f9e6; /* Light yellow for date updates */
+  border-color: #e9e9a3;
+}
+
 .action-section {
   margin-top: 20px;
   padding: 20px;

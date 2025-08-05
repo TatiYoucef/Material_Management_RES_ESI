@@ -1,8 +1,6 @@
 <div class="material-management-container">
   <h2>Material Management</h2>
 
-  
-
   <h3>{{ editingMaterial ? 'Edit Material' : 'Add New Material' }}</h3>
   <div class="material-form">
     <div *ngIf="editingMaterial">
@@ -10,7 +8,16 @@
       <input type="text" id="id" [(ngModel)]="currentMaterial.id" required>
     </div>
     <label for="type">Type:</label>
-    <input type="text" id="type" [(ngModel)]="currentMaterial.type" required>
+    <select id="type" [(ngModel)]="selectedType" (change)="handleTypeChange()" required>
+      <option value="">-- Select Type --</option>
+      <option value="__new__">Add New Type</option>
+      <option *ngFor="let type of materialTypes" [value]="type">{{ type }}</option>
+    </select>
+
+    <div *ngIf="showNewTypeInput">
+      <label for="newType">New Type Name:</label>
+      <input type="text" id="newType" [(ngModel)]="newTypeName" required>
+    </div>
 
     <label for="name">Name:</label>
     <input type="text" id="name" [(ngModel)]="currentMaterial.name" required>
@@ -26,7 +33,49 @@
 
     <div *ngIf="!editingMaterial">
       <label for="quantity">Quantity:</label>
-      <input type="number" id="quantity" [(ngModel)]="currentMaterial.quantity" min="1">
+      <input type="number" id="quantity" [(ngModel)]="newMaterial.quantity" min="1" [disabled]="showCustomIds">
+    </div>
+
+    <div *ngIf="!editingMaterial" class="form-group">
+      <button style="background-color: blue;" type="button" (click)="toggleCustomIds()">
+        {{ showCustomIds ? 'Hide Custom IDs' : 'Add Custom IDs' }}
+      </button>
+    </div>
+
+    <div *ngIf="showCustomIds && !editingMaterial" class="custom-ids-section">
+      <h3>Custom IDs</h3>
+      <div class="id-input-mode-selection">
+        <label>
+          <input type="radio" name="idMode" [value]="'enumerated'" [(ngModel)]="idInputMode" (change)="selectIdInputMode('enumerated')" [ngModelOptions]="{standalone: true}">
+          Enumerated IDs
+        </label>
+        <label>
+          <input type="radio" name="idMode" [value]="'commaSeparated'" [(ngModel)]="idInputMode" (change)="selectIdInputMode('commaSeparated')" [ngModelOptions]="{standalone: true}">
+          Comma Separated IDs
+        </label>
+      </div>
+
+      <div *ngIf="idInputMode === 'enumerated'" class="form-group">
+        <label for="idStart">Start ID (Enumerated):</label>
+        <input type="number" id="idStart" [(ngModel)]="idStart" [ngModelOptions]="{standalone: true}" />
+        <label for="idEnd">End ID (Enumerated):</label>
+        <input type="number" id="idEnd" [(ngModel)]="idEnd" [ngModelOptions]="{standalone: true}" />
+        <button type="button" (click)="addEnumeratedIds()">Add Enumerated IDs</button>
+      </div>
+
+      <div *ngIf="idInputMode === 'commaSeparated'" class="form-group">
+        <label for="idCommas">Comma Separated IDs:</label>
+        <input type="text" id="idCommas" [(ngModel)]="idCommas" [ngModelOptions]="{standalone: true}" />
+        <button type="button" (click)="addCommaSeparatedIds()">Add Comma Separated IDs</button>
+      </div>
+
+      <div *ngIf="customIds.length > 0" class="added-ids">
+        <h4>Added IDs:</h4>
+        <ul>
+          <li *ngFor="let id of customIds">{{ id }}</li>
+        </ul>
+        <button style="margin-bottom: 20px; background-color: red;" type="button" (click)="clearCustomIds()">Clear All Custom IDs</button>
+      </div>
     </div>
 
     <button *ngIf="!editingMaterial" (click)="addMaterial()">Add Material</button>

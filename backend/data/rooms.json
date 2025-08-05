@@ -97,6 +97,11 @@
         "timestamp": "2025-08-04T21:33:39.169Z",
         "action": "materials_moved_out",
         "description": "5 Router(s) moved out to BI."
+      },
+      {
+        "timestamp": "2025-08-05T18:53:46.875Z",
+        "action": "materials_added",
+        "description": "2 new material(s) of type 'Air conditioner' (IDs: C5, C6) added to this room."
       }
     ],
     "materialCount": 35
