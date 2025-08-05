@@ -4,6 +4,7 @@ import { DataService } from '../../../services/data.service';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import localeEnGb from '@angular/common/locales/en-GB';
+import { NotificationService } from '../../../components/notification/notification.service';
 
 @Component({
   selector: 'app-room-details',
@@ -19,7 +20,6 @@ export class RoomDetailsComponent implements OnInit {
   room: any;
   materialsInRoom: any[] = []; // This will now store aggregated material types and their counts
   roomHistory: any[] = [];
-  errorMessage: string = '';
 
   // For adding new room
   newRoom: any = { name: '', capacity: 0 }; // Removed materials array
@@ -31,34 +31,39 @@ export class RoomDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private dataService: DataService
+    private dataService: DataService,
+    private notificationService: NotificationService
   ) {  registerLocaleData(localeEnGb);  }
 
   ngOnInit(): void {
     this.loadRoomDetails();
-    this.dataService.getRooms({ all: true }).subscribe(res => this.allRooms = res);
+    this.dataService.getRooms({ all: true }).subscribe({
+      next: res => this.allRooms = res,
+      error: (err) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load rooms.', type: 'error' });
+      }
+    });
   }
 
   loadRoomDetails(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.dataService.getRoom(id).subscribe(
-        roomData => {
+      this.dataService.getRoom(id).subscribe({
+        next: roomData => {
           this.room = roomData;
           this.loadRoomHistory(id);
           this.loadMaterialsInRoom(id);
         },
-        (error: any) => {
-          console.error('Error loading room:', error);
-          this.errorMessage = 'Failed to load room details.';
+        error: (err: any) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to load room details.', type: 'error' });
         }
-      );
+      });
     }
   }
 
   loadMaterialsInRoom(roomId: string): void {
-    this.dataService.getMaterials({ location: roomId ,  limit: 1000  }).subscribe(
-      (response: any) => {
+    this.dataService.getMaterials({ location: roomId ,  limit: 1000  }).subscribe({
+      next: (response: any) => {
         const materials = response.data; // These are specific material instances
         const aggregatedMaterials: { [key: string]: { type: string, count: number, instances: any[], isExpanded: boolean } } = {};
 
@@ -72,22 +77,21 @@ export class RoomDetailsComponent implements OnInit {
 
         this.materialsInRoom = Object.values(aggregatedMaterials);
       },
-      error => {
-        console.error('Error loading materials in room:', error);
-        this.errorMessage = 'Failed to load materials in this room.';
+      error: (err: any) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load materials in this room.', type: 'error' });
       }
-    );
+    });
   }
 
   loadRoomHistory(id: string): void {
-    this.dataService.getRoomHistory(id).subscribe(
-      history => {
+    this.dataService.getRoomHistory(id).subscribe({
+      next: history => {
         this.roomHistory = history.reverse();
       },
-      error => {
-        console.error('Error loading room history:', error);
+      error: (err: any) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load room history.', type: 'error' });
       }
-    );
+    });
   }
 
   toggleDetails(materialType: any): void {
@@ -95,48 +99,45 @@ export class RoomDetailsComponent implements OnInit {
   }
 
   createRoom(): void {
-    this.errorMessage = '';
     if (confirm(`Are you sure you want to create a new room: ${this.newRoom.name}?`)) {
-      this.dataService.createRoom(this.newRoom).subscribe(
-        () => {
+      this.dataService.createRoom(this.newRoom).subscribe({
+        next: () => {
           this.newRoom = { name: '', capacity: 0 }; // Reset form
           this.router.navigate(['/home']); // Navigate back to home or rooms list
+          this.notificationService.show({ message: 'Room created successfully.', type: 'success' });
         },
-        (error: any) => {
-          console.error('Error creating room:', error);
-          this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to create room.';
+        error: (err: any) => {
+          this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to create room.'), type: 'error' });
         }
-      );
+      });
     }
   }
 
   deleteRoom(): void {
-    this.errorMessage = '';
     if (confirm(`Are you sure you want to delete ${this.room.name}? This action cannot be undone.`)) {
-      this.dataService.deleteRoom(this.room.id).subscribe(
-        () => {
+      this.dataService.deleteRoom(this.room.id).subscribe({
+        next: () => {
           this.router.navigate(['/home']); // Navigate back to home or rooms list
+          this.notificationService.show({ message: 'Room deleted successfully.', type: 'success' });
         },
-        (error: any) => {
-          console.error('Error deleting room:', error);
-          this.errorMessage = 'Failed to delete room.';
+        error: (err: any) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to delete room.', type: 'error' });
         }
-      );
+      });
     }
   }
 
   moveMaterial(): void {
-    this.errorMessage = '';
     if (this.room) {
-      this.dataService.moveMaterialQuantity(this.moveMaterialData.materialType, this.moveMaterialData.quantity, this.room.id, this.moveMaterialData.toRoom).subscribe(
-        () => {
+      this.dataService.moveMaterialQuantity(this.moveMaterialData.materialType, this.moveMaterialData.quantity, this.room.id, this.moveMaterialData.toRoom).subscribe({
+        next: () => {
           this.loadMaterialsInRoom(this.room.id);
+          this.notificationService.show({ message: 'Materials moved successfully.', type: 'success' });
         },
-        (error: any) => {
-          console.error('Error moving materials:', error);
-          this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to move materials.';
+        error: (err: any) => {
+          this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to move materials.'), type: 'error' });
         }
-      );
+      });
     }
   }
 }

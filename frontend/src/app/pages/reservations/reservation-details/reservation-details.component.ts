@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DataService } from '../../../services/data.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { NotificationService } from '../../../components/notification/notification.service';
 
 
 @Component({
@@ -16,7 +17,6 @@ import { FormsModule } from '@angular/forms';
 export class ReservationDetailsComponent implements OnInit {
   reservation: any;
   aggregatedMaterials: any[] = []; // New property for aggregated materials
-  errorMessage: string = '';
   showAddMaterials = false;
 
   materialRequestType: 'type' | 'id' = 'type';
@@ -32,31 +32,42 @@ export class ReservationDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private dataService: DataService
+    private dataService: DataService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
     this.loadReservation();
-    this.dataService.getRooms({ all: true }).subscribe(data => {
-      this.rooms = data;
+    this.dataService.getRooms({ all: true }).subscribe({
+      next: data => {
+        this.rooms = data;
+      },
+      error: (err) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load rooms.', type: 'error' });
+      }
     });
-    this.dataService.getMaterialTypes().subscribe((data: any) => {
-      this.materialTypes = data.data;
+    this.dataService.getMaterialTypes().subscribe({
+      next: (data: any) => {
+        this.materialTypes = data.data;
+      },
+      error: (err) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load material types.', type: 'error' });
+      }
     });
   }
 
   loadReservation(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.dataService.getReservation(id).subscribe(
-        data => {
+      this.dataService.getReservation(id).subscribe({
+        next: data => {
           this.reservation = data;
           this.aggregateMaterials();
         },
-        error => {
-          this.errorMessage = 'Failed to load reservation details.';
+        error: (err) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to load reservation details.', type: 'error' });
         }
-      );
+      });
     }
   }
 
@@ -80,24 +91,42 @@ export class ReservationDetailsComponent implements OnInit {
 
   cancelReservation(): void {
     if (confirm('Are you sure you want to cancel this reservation?')) {
-      this.dataService.cancelReservation(this.reservation.id).subscribe(() => {
-        this.loadReservation();
+      this.dataService.cancelReservation(this.reservation.id).subscribe({
+        next: () => {
+          this.loadReservation();
+          this.notificationService.show({ message: 'Reservation cancelled successfully.', type: 'success' });
+        },
+        error: (err) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to cancel reservation.', type: 'error' });
+        }
       });
     }
   }
 
   endReservation(): void {
     if (confirm('Are you sure you want to end this reservation?')) {
-      this.dataService.endReservation(this.reservation.id).subscribe(() => {
-        this.loadReservation();
+      this.dataService.endReservation(this.reservation.id).subscribe({
+        next: () => {
+          this.loadReservation();
+          this.notificationService.show({ message: 'Reservation ended successfully.', type: 'success' });
+        },
+        error: (err) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to end reservation.', type: 'error' });
+        }
       });
     }
   }
 
   deleteReservation(id: string): void {
     if (confirm('Are you sure you want to delete this reservation?')) {
-      this.dataService.deleteReservation(id).subscribe(() => {
-        this.router.navigate(['/reservations']); // Navigate back to reservation history
+      this.dataService.deleteReservation(id).subscribe({
+        next: () => {
+          this.router.navigate(['/reservations']); // Navigate back to reservation history
+          this.notificationService.show({ message: 'Reservation deleted successfully.', type: 'success' });
+        },
+        error: (err) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to delete reservation.', type: 'error' });
+        }
       });
     }
   }
@@ -116,16 +145,22 @@ export class ReservationDetailsComponent implements OnInit {
       }];
     }
 
-    this.dataService.addMaterialsToReservation(this.reservation.id, materialsToAdd).subscribe(() => {
-      this.loadReservation();
-      this.showAddMaterials = false;
-      // Reset form
-      this.materialRequest = {
-        type: '',
-        quantity: 1,
-        fromRoom: '',
-        ids: ''
-      };
+    this.dataService.addMaterialsToReservation(this.reservation.id, materialsToAdd).subscribe({
+      next: () => {
+        this.loadReservation();
+        this.showAddMaterials = false;
+        // Reset form
+        this.materialRequest = {
+          type: '',
+          quantity: 1,
+          fromRoom: '',
+          ids: ''
+        };
+        this.notificationService.show({ message: 'Materials added to reservation successfully.', type: 'success' });
+      },
+      error: (err: any) => {
+        this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to add materials to reservation.'), type: 'error' });
+      }
     });
   }
 }

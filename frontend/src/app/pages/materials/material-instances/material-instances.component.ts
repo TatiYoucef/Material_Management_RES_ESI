@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 import { DataService } from '../../../services/data.service';
+import { NotificationService } from '../../../components/notification/notification.service';
 
 @Component({
   selector: 'app-material-instances',
@@ -16,7 +17,6 @@ export class MaterialInstancesComponent implements OnInit {
   materialInstances: any[] = [];
   summary = { available: 0, reserved: 0 };
   roomSummary: any = {};
-  errorMessage: string = '';
 
   // Pagination and Filtering
   currentPage: number = 1;
@@ -31,7 +31,8 @@ export class MaterialInstancesComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -40,16 +41,18 @@ export class MaterialInstancesComponent implements OnInit {
       if (this.materialType) {
         this.loadMaterialInstances(this.materialType);
       }
-      this.dataService.getRooms({ all: true }).subscribe(res => {
-        this.locations = res.map((r: { id: any; }) => r.id); ;
-        console.log(this.locations);
+      this.dataService.getRooms({ all: true }).subscribe({
+        next: res => {
+          this.locations = res.map((r: { id: any; }) => r.id);
+        },
+        error: (err: any) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to load locations.', type: 'error' });
+        }
       });
-
     });
   }
 
   loadMaterialInstances(type: string): void {
-    this.errorMessage = '';
     const params: any = {
       page: this.currentPage,
       limit: this.limit,
@@ -66,18 +69,17 @@ export class MaterialInstancesComponent implements OnInit {
       params.location = this.filterLocation;
     }
 
-    this.dataService.getMaterials(params).subscribe(
-      (response: any) => {
+    this.dataService.getMaterials(params).subscribe({
+      next: (response: any) => {
         this.materialInstances = response.data;
         this.totalPages = Math.ceil(response.total / this.limit);
         this.summary = response.summary;
         this.roomSummary = response.roomSummary;
       },
-      (error: any) => {
-        console.error('Error loading material instances:', error);
-        this.errorMessage = 'Failed to load material instances.';
+      error: (err: any) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load material instances.', type: 'error' });
       }
-    );
+    });
   }
 
   onSearch(): void {

@@ -87,6 +87,16 @@
         "timestamp": "2025-08-03T20:36:20.691Z",
         "action": "materials_moved_out",
         "description": "4 HDMI cable(s) moved out to BI."
+      },
+      {
+        "timestamp": "2025-08-04T15:10:43.376Z",
+        "action": "materials_moved_out",
+        "description": "2 Modem(s) moved out to BI."
+      },
+      {
+        "timestamp": "2025-08-04T21:33:39.169Z",
+        "action": "materials_moved_out",
+        "description": "5 Router(s) moved out to BI."
       }
     ],
     "materialCount": 35
@@ -255,8 +265,28 @@
         "timestamp": "2025-08-03T20:36:20.691Z",
         "action": "materials_moved_in",
         "description": "4 HDMI cable(s) moved in from Magazin."
+      },
+      {
+        "timestamp": "2025-08-04T15:10:43.376Z",
+        "action": "materials_moved_in",
+        "description": "2 Modem(s) moved in from Magazin."
+      },
+      {
+        "timestamp": "2025-08-04T18:22:05.715Z",
+        "action": "updated",
+        "changes": {}
+      },
+      {
+        "timestamp": "2025-08-04T18:22:13.197Z",
+        "action": "updated",
+        "changes": {}
+      },
+      {
+        "timestamp": "2025-08-04T21:33:39.169Z",
+        "action": "materials_moved_in",
+        "description": "5 Router(s) moved in from Magazin."
       }
     ],
-    "materialCount": 0
+    "materialCount": 6
   }
 ]

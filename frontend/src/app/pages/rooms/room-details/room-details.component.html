@@ -86,20 +86,5 @@
 
   </div>
 
-  <div *ngIf="!room" class="room-not-found">
-    <p class="no-data-message">Room not found or has been deleted.</p>
-    <hr class="section-divider">
-    <h3 class="section-subtitle">Create New Room</h3>
-    <div class="create-room-section">
-      <div class="form-group">
-        <label for="newName" class="form-label">Name:</label>
-        <input type="text" id="newName" [(ngModel)]="newRoom.name" required class="form-input">
-      </div>
-      <div class="form-group">
-        <label for="newCapacity" class="form-label">Capacity:</label>
-        <input type="number" id="newCapacity" [(ngModel)]="newRoom.capacity" min="0" class="form-input">
-      </div>
-      <button class="btn btn-success action-button" (click)="createRoom()">Create Room</button>
-    </div>
-  </div>
+  
 </div>

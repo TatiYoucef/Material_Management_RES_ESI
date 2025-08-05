@@ -3,6 +3,7 @@ import { DataService } from '../../../services/data.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { NotificationService } from '../../../components/notification/notification.service';
 
 @Component({
   selector: 'app-reservation-history',
@@ -17,9 +18,8 @@ export class ReservationHistoryComponent implements OnInit {
   statusFilter: string = 'all'; // 'all', 'active', 'ended', 'cancelled'
   startDateFilter: string = '';
   endDateFilter: string = '';
-  errorMessage: string = '';
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.loadReservations();
@@ -33,12 +33,17 @@ export class ReservationHistoryComponent implements OnInit {
       endDate: this.endDateFilter
     };
 
-    this.dataService.getReservations(filters).subscribe(data => {
-      this.reservations = data.map(r => ({
-        ...r,
-        isExpanded: false, // For the overall reservation row
-        aggregatedMaterials: this.aggregateMaterials(r.materials) // New: Aggregate materials
-      }));
+    this.dataService.getReservations(filters).subscribe({
+      next: data => {
+        this.reservations = data.map(r => ({
+          ...r,
+          isExpanded: false, // For the overall reservation row
+          aggregatedMaterials: this.aggregateMaterials(r.materials) // New: Aggregate materials
+        }));
+      },
+      error: (err) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load reservations.', type: 'error' });
+      }
     });
   }
 
@@ -75,8 +80,14 @@ export class ReservationHistoryComponent implements OnInit {
 
   deleteReservation(id: string): void {
     if (confirm('Are you sure you want to delete this reservation?')) {
-      this.dataService.deleteReservation(id).subscribe(() => {
-        this.loadReservations();
+      this.dataService.deleteReservation(id).subscribe({
+        next: () => {
+          this.loadReservations();
+          this.notificationService.show({ message: 'Reservation deleted successfully.', type: 'success' });
+        },
+        error: (err) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to delete reservation.', type: 'error' });
+        }
       });
     }
   }

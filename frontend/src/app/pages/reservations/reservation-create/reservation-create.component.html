@@ -64,9 +64,7 @@
       </ul>
     </div>
 
-    <div *ngIf="errorMessage" class="error-message">
-      {{ errorMessage }}
-    </div>
+    
 
     <button type="submit" [disabled]="newReservation.materials.length === 0">Create Reservation</button>
   </form>

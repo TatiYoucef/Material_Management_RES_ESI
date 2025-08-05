@@ -1,0 +1,62 @@
+.notification-container {
+  position: fixed;
+  top: 20px;
+  left: 40%;
+  transform: translateX(-50%) translateY(0); // Add translateY(0) for clarity
+  z-index: 1000;
+  padding: 15px 25px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 250px;
+  max-width: calc(100% - 40px); // Better responsive handling
+  width: max-content; // Prevent width shrinkage
+  box-sizing: border-box; // Include padding in width calculations
+  margin: 0 auto; // Additional centering safeguard
+}
+
+.notification-container.success {
+  background-color: #4CAF50; /* Green */
+}
+
+.notification-container.error {
+  background-color: #f44336; /* Red */
+}
+
+.notification-container.info {
+  background-color: #2196F3; /* Blue */
+}
+
+.notification-container.warning {
+  background-color: #ff9800; /* Orange */
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.notification-content p {
+  margin: 0;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.dismiss-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-left: 15px;
+  padding: 0 5px;
+}
+
+.dismiss-button:hover {
+  opacity: 0.8;
+}

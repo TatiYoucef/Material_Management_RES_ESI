@@ -7,9 +7,7 @@
     <p>Total Quantity: {{ summary.reserved + summary.available }}</p>
   </div>
 
-  <div *ngIf="errorMessage" class="error-message">
-    {{ errorMessage }}
-  </div>
+  
 
   <h3>Summary by Room</h3>
   <table>
@@ -57,7 +55,7 @@
     </div>
   </div>
 
-  <div *ngIf="materialInstances.length === 0 && !errorMessage" class="no-instances-message">
+  <div *ngIf="materialInstances.length === 0" class="no-instances-message">
     <p>No instances found for {{ materialType }}.</p>
   </div>
 

@@ -289,5 +289,30 @@
         ]
       }
     ]
+  },
+  {
+    "id": "RES1754343522209",
+    "description": "Borrow to Mr.Guerrout",
+    "startDate": "2025-08-04",
+    "endDate": "2025-08-10",
+    "materials": [
+      {
+        "id": "M053",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "M054",
+        "type": "HDMI cable",
+        "name": "5M HDMI cable"
+      },
+      {
+        "id": "L002",
+        "type": "Laptop",
+        "name": "MacBook Pro 16\""
+      }
+    ],
+    "status": "active",
+    "timestamp": "2025-08-04T21:38:42.211Z"
   }
 ]

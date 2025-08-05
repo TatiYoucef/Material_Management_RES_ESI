@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../../../services/data.service';
+import { NotificationService } from '../../../components/notification/notification.service';
 
 @Component({
   selector: 'app-room-management',
@@ -15,7 +16,6 @@ export class RoomManagementComponent implements OnInit {
   newRoom: any = { name: '', capacity: 0 };
   editingRoom: any = null;
   originalRoomId: string | null = null; // Store original ID for modification
-  errorMessage: string = '';
 
   // Pagination and Filtering
   currentPage: number = 1;
@@ -24,14 +24,13 @@ export class RoomManagementComponent implements OnInit {
   searchQuery: string = '';
   filterCapacity: number | null = null;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.loadRooms();
   }
 
   loadRooms(): void {
-    this.errorMessage = '';
     const params: any = {
       page: this.currentPage,
       limit: this.limit
@@ -44,16 +43,15 @@ export class RoomManagementComponent implements OnInit {
       params.capacity = this.filterCapacity;
     }
 
-    this.dataService.getRooms(params).subscribe(
-      (response: any) => {
+    this.dataService.getRooms(params).subscribe({
+      next: (response: any) => {
         this.rooms = response.data;
         this.totalPages = Math.ceil(response.total / this.limit);
       },
-      (error: any) => {
-        console.error('Error loading rooms:', error);
-        this.errorMessage = 'Failed to load rooms.';
+      error: (err: any) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load rooms.', type: 'error' });
       }
-    );
+    });
   }
 
   onSearch(): void {
@@ -81,17 +79,16 @@ export class RoomManagementComponent implements OnInit {
   }
 
   addRoom(): void {
-    this.errorMessage = '';
-    this.dataService.createRoom(this.newRoom).subscribe(
-      (room: any) => {
+    this.dataService.createRoom(this.newRoom).subscribe({
+      next: (room: any) => {
         this.loadRooms(); 
         this.newRoom = { id: '', name: '', capacity: 0 };
+        this.notificationService.show({ message: 'Room added successfully.', type: 'success' });
       },
-      (error: any) => {
-        console.error('Error adding room:', error);
-        this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to add room.';
+      error: (err: any) => {
+        this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to add room.'), type: 'error' });
       }
-    );
+    });
   }
 
   editRoom(room: any): void {
@@ -100,58 +97,55 @@ export class RoomManagementComponent implements OnInit {
   }
 
   updateRoom(): void {
-    this.errorMessage = '';
     if (this.editingRoom) {
       if (this.editingRoom.id !== this.originalRoomId) {
         // ID has changed, update ID first
-        this.dataService.updateRoomId(this.originalRoomId!, this.editingRoom.id).subscribe(
-          () => {
+        this.dataService.updateRoomId(this.originalRoomId!, this.editingRoom.id).subscribe({
+          next: () => {
             // After ID is updated, proceed with updating other room details
-            this.dataService.updateRoom(this.editingRoom.id, this.editingRoom).subscribe(
-              (room: any) => {
+            this.dataService.updateRoom(this.editingRoom.id, this.editingRoom).subscribe({
+              next: (room: any) => {
                 this.loadRooms();
                 this.editingRoom = null;
                 this.originalRoomId = null;
+                this.notificationService.show({ message: 'Room updated successfully.', type: 'success' });
               },
-              (error: any) => {
-                console.error('Error updating room details after ID change:', error);
-                this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to update room details.';
+              error: (err: any) => {
+                this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to update room details.'), type: 'error' });
               }
-            );
+            });
           },
-          (error: any) => {
-            console.error('Error updating room ID:', error);
-            this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to update room ID.';
+          error: (err: any) => {
+            this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to update room ID.'), type: 'error' });
           }
-        );
+        });
       } else {
         // No ID change, just update room details
-        this.dataService.updateRoom(this.editingRoom.id, this.editingRoom).subscribe(
-          (room: any) => {
+        this.dataService.updateRoom(this.editingRoom.id, this.editingRoom).subscribe({
+          next: (room: any) => {
             this.loadRooms();
             this.editingRoom = null;
             this.originalRoomId = null;
+            this.notificationService.show({ message: 'Room updated successfully.', type: 'success' });
           },
-          (error: any) => {
-            console.error('Error updating room:', error);
-            this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to update room.';
+          error: (err: any) => {
+            this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to update room.'), type: 'error' });
           }
-        );
+        });
       }
     }
   }
 
   deleteRoom(id: string): void {
-    this.errorMessage = '';
-    this.dataService.deleteRoom(id).subscribe(
-      () => {
+    this.dataService.deleteRoom(id).subscribe({
+      next: () => {
         this.loadRooms();
+        this.notificationService.show({ message: 'Room deleted successfully.', type: 'success' });
       },
-      (error: any) => {
-        console.error('Error deleting room:', error);
-        this.errorMessage = 'Failed to delete room.';
+      error: (err: any) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to delete room.', type: 'error' });
       }
-    );
+    });
   }
 
   cancelEdit(): void {

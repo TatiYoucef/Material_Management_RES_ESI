@@ -3,6 +3,7 @@ import { FileService } from '../../../services/file.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { NotificationService } from '../../../components/notification/notification.service';
 
 @Component({
   selector: 'app-file-list',
@@ -16,26 +17,24 @@ export class FileListComponent implements OnInit {
   newFile: File | null = null;
   newFileTitle: string = '';
   newFileDescription: string = '';
-  errorMessage: string = '';
   showUploadForm: boolean = false; // Control visibility of upload form
   searchQuery: string = ''; // For search functionality
 
-  constructor(private fileService: FileService) { }
+  constructor(private fileService: FileService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.loadFiles();
   }
 
   loadFiles(): void {
-    this.fileService.getFiles(this.searchQuery).subscribe(
-      data => {
+    this.fileService.getFiles(this.searchQuery).subscribe({
+      next: data => {
         this.files = data.reverse();
       },
-      error => {
-        this.errorMessage = 'Failed to load files.';
-        console.error('Error loading files:', error);
+      error: err => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load files.', type: 'error' });
       }
-    );
+    });
   }
 
   onFileSelected(event: any): void {
@@ -44,36 +43,40 @@ export class FileListComponent implements OnInit {
 
   uploadFile(): void {
     if (this.newFile && this.newFileTitle) {
-      this.fileService.uploadFile(this.newFile, this.newFileTitle, this.newFileDescription).subscribe(
-        response => {
-          console.log('File uploaded successfully:', response);
+      this.fileService.uploadFile(this.newFile, this.newFileTitle, this.newFileDescription).subscribe({
+        next: response => {
+          this.notificationService.show({ message: 'File uploaded successfully.', type: 'success' });
           this.loadFiles();
           this.newFile = null;
           this.newFileTitle = '';
           this.newFileDescription = '';
-          this.errorMessage = '';
           this.showUploadForm = false; // Hide form after successful upload
         },
-        error => {
-          this.errorMessage = error.error.error || 'Failed to upload file.';
-          console.error('Error uploading file:', error);
+        error: err => {
+          this.notificationService.show({ message: err.error.error || 'Failed to upload file.', type: 'error' });
         }
-      );
+      });
     } else {
-      this.errorMessage = 'Please select a file and provide a title.';
+      this.notificationService.show({ message: 'Please select a file and provide a title.', type: 'warning' });
     }
   }
 
   downloadFile(id: string, filename: string): void {
-    this.fileService.downloadFile(id).subscribe(blob => {
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
+    this.fileService.downloadFile(id).subscribe({
+      next: blob => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+        this.notificationService.show({ message: 'File downloaded successfully.', type: 'success' });
+      },
+      error: err => {
+        this.notificationService.show({ message: err.error.error || 'Failed to download file.', type: 'error' });
+      }
     });
   }
 

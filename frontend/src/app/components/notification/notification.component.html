@@ -1,0 +1,6 @@
+<div *ngIf="currentNotification" [@notificationAnimation] class="notification-container" [ngClass]="currentNotification.type">
+  <div class="notification-content">
+    <p>{{ currentNotification.message }}</p>
+    <button *ngIf="currentNotification.dismissible" (click)="clearNotification()" class="dismiss-button">X</button>
+  </div>
+</div>

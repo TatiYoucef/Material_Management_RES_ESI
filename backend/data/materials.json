@@ -4,7 +4,7 @@
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "M001",
     "history": [
       {
@@ -80,6 +80,17 @@
         "timestamp": "2025-08-03T20:49:02.022Z",
         "action": "unreserved",
         "description": "Reservation ended: RES1754253870217"
+      },
+      {
+        "timestamp": "2025-08-04T21:33:39.168Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "BI",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to BI as part of a bulk move of 5 Router(s)."
       }
     ]
   },
@@ -88,7 +99,7 @@
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "M002",
     "history": [
       {
@@ -109,6 +120,17 @@
         "timestamp": "2025-08-01T20:25:16.710Z",
         "action": "unreserved",
         "description": "Reservation automatically ended: Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-04T21:33:39.168Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "BI",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to BI as part of a bulk move of 5 Router(s)."
       }
     ]
   },
@@ -117,7 +139,7 @@
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "M003",
     "history": [
       {
@@ -138,6 +160,17 @@
         "timestamp": "2025-08-01T20:25:16.710Z",
         "action": "unreserved",
         "description": "Reservation automatically ended: Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-04T21:33:39.168Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "BI",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to BI as part of a bulk move of 5 Router(s)."
       }
     ]
   },
@@ -146,7 +179,7 @@
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "M004",
     "history": [
       {
@@ -167,6 +200,17 @@
         "timestamp": "2025-08-01T20:25:16.710Z",
         "action": "unreserved",
         "description": "Reservation automatically ended: Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-04T21:33:39.168Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "BI",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to BI as part of a bulk move of 5 Router(s)."
       }
     ]
   },
@@ -175,7 +219,7 @@
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "M005",
     "history": [
       {
@@ -217,6 +261,17 @@
         "timestamp": "2025-08-01T20:25:16.710Z",
         "action": "unreserved",
         "description": "Reservation automatically ended: Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-04T21:33:39.168Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "BI",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to BI as part of a bulk move of 5 Router(s)."
       }
     ]
   },
@@ -1846,7 +1901,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M053",
     "history": [
@@ -1858,6 +1913,11 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-04T21:38:42.211Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754343522209 - Borrow to Mr.Guerrout"
       }
     ]
   },
@@ -1865,7 +1925,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M054",
     "history": [
@@ -1877,6 +1937,11 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-04T21:38:42.211Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754343522209 - Borrow to Mr.Guerrout"
       }
     ]
   },
@@ -2017,7 +2082,7 @@
     "type": "Laptop",
     "name": "MacBook Pro 16\"",
     "details": "M2 Pro, 32GB RAM, 1TB SSD",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "S30",
     "id": "L002",
     "history": [
@@ -2095,6 +2160,11 @@
         "timestamp": "2025-08-03T20:25:51.650Z",
         "action": "updated",
         "changes": {}
+      },
+      {
+        "timestamp": "2025-08-04T21:38:42.211Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754343522209 - Borrow to Mr.Guerrout"
       }
     ]
   },
@@ -2150,6 +2220,16 @@
         "timestamp": "2025-08-03T20:47:13.314Z",
         "action": "unreserved",
         "description": "Removed from reservation: RES1754253870217"
+      },
+      {
+        "timestamp": "2025-08-04T15:16:23.937Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754320583937 - Borrow to Amira"
+      },
+      {
+        "timestamp": "2025-08-04T21:05:38.334Z",
+        "action": "unreserved",
+        "description": "Reservation deleted: RES1754320583937"
       }
     ]
   },
@@ -2486,12 +2566,33 @@
     "name": "Modem Cisco 4G",
     "details": "100MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "M071",
     "history": [
       {
         "timestamp": "2025-08-03T20:26:42.163Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-04T15:10:43.374Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "BI",
+          "type": "Modem",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to BI as part of a bulk move of 2 Modem(s)."
+      },
+      {
+        "timestamp": "2025-08-04T15:16:23.937Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754320583937 - Borrow to Amira"
+      },
+      {
+        "timestamp": "2025-08-04T21:05:38.334Z",
+        "action": "unreserved",
+        "description": "Reservation deleted: RES1754320583937"
       }
     ]
   },
@@ -2500,12 +2601,33 @@
     "name": "Modem Cisco 4G",
     "details": "100MB/S",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "M072",
     "history": [
       {
         "timestamp": "2025-08-03T20:26:42.163Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-04T15:10:43.376Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "BI",
+          "type": "Modem",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to BI as part of a bulk move of 2 Modem(s)."
+      },
+      {
+        "timestamp": "2025-08-04T15:16:23.937Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754320583937 - Borrow to Amira"
+      },
+      {
+        "timestamp": "2025-08-04T21:05:38.334Z",
+        "action": "unreserved",
+        "description": "Reservation deleted: RES1754320583937"
       }
     ]
   },

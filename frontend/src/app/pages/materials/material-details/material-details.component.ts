@@ -4,6 +4,7 @@ import { DataService } from '../../../services/data.service';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import localeEnGb from '@angular/common/locales/en-GB';
+import { NotificationService } from '../../../components/notification/notification.service';
 
 
 @Component({
@@ -21,7 +22,6 @@ export class MaterialDetailsComponent implements OnInit {
   rooms: any[] = [];
   materialHistory: any[] = [];
   selectedRoomId: string = '';
-  errorMessage: string = '';
 
   // For reserving materials
   newReservationData = { description: '', endDate: '' };
@@ -31,7 +31,8 @@ export class MaterialDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private dataService: DataService
+    private dataService: DataService,
+    private notificationService: NotificationService
   ) { registerLocaleData(localeEnGb); }
 
   ngOnInit(): void {
@@ -42,139 +43,133 @@ export class MaterialDetailsComponent implements OnInit {
   loadMaterialAndRooms(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.dataService.getMaterial(id).subscribe(
-        data => {
+      this.dataService.getMaterial(id).subscribe({
+        next: data => {
           this.material = data;
           this.selectedRoomId = this.material.currentLocation; // Pre-select current location
           this.loadMaterialHistory(id);
         },
-        (error: any) => {
-          console.error('Error loading material:', error);
-          this.errorMessage = 'Failed to load material details.';
+        error: (err: any) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to load material details.', type: 'error' });
         }
-      );
+      });
     }
-    this.dataService.getRooms().subscribe(
-      data => {
+    this.dataService.getRooms().subscribe({
+      next: data => {
         this.rooms = data.data; // Access data property for paginated response
         this.rooms = this.rooms.sort((a, b) => a.name.localeCompare(b.name));
       },
-      (error: any) => {
-        console.error('Error loading rooms:', error);
-        // Don't set error message here, as material might still load
+      error: (err: any) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load rooms.', type: 'error' });
       }
-    );
+    });
   }
 
   loadActiveReservations(): void {
-    this.dataService.getReservations('').subscribe(
-      data => {
+    this.dataService.getReservations('').subscribe({
+      next: data => {
         this.activeReservations = data.filter((res: any) => res.status === 'active');
       },
-      (error: any) => {
-        console.error('Error loading active reservations:', error);
+      error: (err: any) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load active reservations.', type: 'error' });
       }
-    );
+    });
   }
 
   reserveMaterialNew(): void {
-    this.errorMessage = '';
     if (this.material) {
       const materialsToReserve = [{ ids: [this.material.id] }];
-      this.dataService.createReservation({ ...this.newReservationData, materials: materialsToReserve }).subscribe(
-        () => {
+      this.dataService.createReservation({ ...this.newReservationData, materials: materialsToReserve }).subscribe({
+        next: () => {
           this.loadMaterialAndRooms();
           this.newReservationData = { description: '', endDate: '' }; // Reset form
+          this.notificationService.show({ message: 'Material reserved successfully.', type: 'success' });
         },
-        (error: any) => {
-          console.error('Error reserving material:', error);
-          this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to create new reservation.';
+        error: (err: any) => {
+          this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to create new reservation.'), type: 'error' });
         }
-      );
+      });
     }
   }
 
   addMaterialToExistingReservation(): void {
-    this.errorMessage = '';
     if (!this.selectedExistingReservationId) {
-      this.errorMessage = 'Please select an existing reservation.';
+      this.notificationService.show({ message: 'Please select an existing reservation.', type: 'warning' });
       return;
     }
     if (this.material) {
       const materialsToAdd = [{ ids: [this.material.id] }];
-      this.dataService.addMaterialsToReservation(this.selectedExistingReservationId, materialsToAdd).subscribe(
-        () => {
+      this.dataService.addMaterialsToReservation(this.selectedExistingReservationId, materialsToAdd).subscribe({
+        next: () => {
           this.loadMaterialAndRooms();
           this.selectedExistingReservationId = ''; // Reset form
+          this.notificationService.show({ message: 'Material added to reservation successfully.', type: 'success' });
         },
-        (error: any) => {
-          console.error('Error adding material to existing reservation:', error);
-          this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to add material to existing reservation.';
+        error: (err: any) => {
+          this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to add material to existing reservation.'), type: 'error' });
         }
-      );
+      });
     }
   }
 
   excludeMaterialFromReservation(): void {
-    this.errorMessage = '';
     if (this.material && this.material.reservationDetails) {
       if (confirm(`Are you sure you want to exclude ${this.material.name} from reservation ${this.material.reservationDetails.id}?`)) {
-        this.dataService.removeMaterialFromReservation(this.material.reservationDetails.id, this.material.id).subscribe(
-          () => {
+        this.dataService.removeMaterialFromReservation(this.material.reservationDetails.id, this.material.id).subscribe({
+          next: () => {
             this.loadMaterialAndRooms();
+            this.notificationService.show({ message: 'Material excluded from reservation successfully.', type: 'success' });
           },
-          (error: any) => {
-            console.error('Error excluding material from reservation:', error);
-            this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to exclude material.';
+          error: (err: any) => {
+            this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to exclude material.'), type: 'error' });
           }
-        );
+        });
       }
     }
   }
 
   loadMaterialHistory(id: string): void {
-    this.dataService.getMaterialHistory(id).subscribe(
-      history => {
+    this.dataService.getMaterialHistory(id).subscribe({
+      next: history => {
         this.materialHistory = history.reverse();
       },
-      (error: any) => {
-        console.error('Error loading material history:', error);
+      error: (err: any) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load material history.', type: 'error' });
       }
-    );
+    });
   }
 
   moveMaterial(): void {
     if (!this.selectedRoomId || this.selectedRoomId === this.material.currentLocation) {
-      this.errorMessage = 'Please select a different room to move the material.';
+      this.notificationService.show({ message: 'Please select a different room to move the material.', type: 'warning' });
       return;
     }
 
     if (confirm(`Are you sure you want to move ${this.material.name} to ${this.selectedRoomId}?`)) {
-      this.dataService.moveMaterial(this.material.id, this.selectedRoomId).subscribe(
-        updatedMaterial => {
+      this.dataService.moveMaterial(this.material.id, this.selectedRoomId).subscribe({
+        next: updatedMaterial => {
           this.material = updatedMaterial;
           this.loadMaterialHistory(this.material.id);
-          this.errorMessage = ''; // Clear error on success
+          this.notificationService.show({ message: 'Material moved successfully.', type: 'success' });
         },
-        (error: any) => {
-          console.error('Error moving material:', error);
-          this.errorMessage = 'Failed to move material.';
+        error: (err: any) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to move material.', type: 'error' });
         }
-      );
+      });
     }
   }
 
   deleteMaterial(): void {
     if (confirm(`Are you sure you want to delete ${this.material.name}? This action cannot be undone.`)) {
-      this.dataService.deleteMaterial(this.material.id).subscribe(
-        () => {
+      this.dataService.deleteMaterial(this.material.id).subscribe({
+        next: () => {
           this.router.navigate(['/home']); // Navigate back to home or material types list
+          this.notificationService.show({ message: 'Material deleted successfully.', type: 'success' });
         },
-        (error: any) => {
-          console.error('Error deleting material:', error);
-          this.errorMessage = 'Failed to delete material.';
+        error: (err: any) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to delete material.', type: 'error' });
         }
-      );
+      });
     }
   }
 }

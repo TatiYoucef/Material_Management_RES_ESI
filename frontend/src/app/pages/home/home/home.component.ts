@@ -3,6 +3,7 @@ import { DataService } from '../../../services/data.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { NotificationService } from '../../../components/notification/notification.service';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
   roomCapacityFilter: number | null = null;
   viewMode: 'materialTypes' | 'rooms' = 'materialTypes'; // Default view
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
     this.loadMaterialTypes();
@@ -33,8 +34,13 @@ export class HomeComponent implements OnInit {
     if (this.searchQuery && this.viewMode === 'materialTypes') {
       params.search = this.searchQuery;
     }
-    this.dataService.getMaterialTypes(params).subscribe(response => {
-      this.materialTypes = response;
+    this.dataService.getMaterialTypes(params).subscribe({
+      next: response => {
+        this.materialTypes = response;
+      },
+      error: (err) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load material types.', type: 'error' });
+      }
     });
   }
 
@@ -50,8 +56,13 @@ export class HomeComponent implements OnInit {
       params.capacity = this.roomCapacityFilter;
     }
 
-    this.dataService.getRooms(params).subscribe(response => {
-      this.rooms = response;
+    this.dataService.getRooms(params).subscribe({
+      next: response => {
+        this.rooms = response;
+      },
+      error: (err) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load rooms.', type: 'error' });
+      }
     });
   }
 

@@ -3,6 +3,7 @@ import { DataService } from '../../../services/data.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NotificationService } from '../../../components/notification/notification.service';
 
 @Component({
   selector: 'app-reservation-create',
@@ -27,16 +28,25 @@ export class ReservationCreateComponent implements OnInit {
   };
   rooms: any[] = [];
   materialTypes: any[] = [];
-  errorMessage: string = '';
 
-  constructor(private dataService: DataService, private router: Router) { }
+  constructor(private dataService: DataService, private router: Router, private notificationService: NotificationService) { }
 
   ngOnInit(): void {
-    this.dataService.getRooms({ all: true }).subscribe(data => {
-      this.rooms = data;
+    this.dataService.getRooms({ all: true }).subscribe({
+      next: data => {
+        this.rooms = data;
+      },
+      error: (err) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load rooms.', type: 'error' });
+      }
     });
-    this.dataService.getMaterialTypes().subscribe((data: any) => {
-      this.materialTypes = data.data;
+    this.dataService.getMaterialTypes().subscribe({
+      next: (data: any) => {
+        this.materialTypes = data.data;
+      },
+      error: (err) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to load material types.', type: 'error' });
+      }
     });
   }
 
@@ -62,14 +72,14 @@ export class ReservationCreateComponent implements OnInit {
   }
 
   createReservation(): void {
-    this.errorMessage = '';
-    this.dataService.createReservation(this.newReservation).subscribe(
-      (res) => {
+    this.dataService.createReservation(this.newReservation).subscribe({
+      next: (res) => {
         this.router.navigate(['/reservations', res.id]);
+        this.notificationService.show({ message: 'Reservation created successfully.', type: 'success' });
       },
-      (error) => {
-        this.errorMessage = error.error.errors ? error.error.errors.join(', ') : 'Failed to create reservation.';
+      error: (err) => {
+        this.notificationService.show({ message: err.error.errors ? err.error.errors.join(', ') : (err.error.error || 'Failed to create reservation.'), type: 'error' });
       }
-    );
+    });
   }
 }

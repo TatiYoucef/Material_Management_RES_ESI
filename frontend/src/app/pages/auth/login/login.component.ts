@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { NotificationService } from '../../../components/notification/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -14,23 +15,21 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   username!: string;
   password!: string;
-  loginError: boolean = false;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private notificationService: NotificationService) { }
 
   // In your login component
   login(): void {
-    this.loginError = false; // Reset error state
     this.authService.login(this.username, this.password).subscribe({
       next: success => {
         if (success) {
           this.router.navigate(['/home']);
         } else {
-          this.loginError = true;
+          this.notificationService.show({ message: 'Login failed', type: 'error' });
         }
       },
       error: err => {
-        this.loginError = true;
+        this.notificationService.show({ message: err.error.error || 'An unknown error occurred', type: 'error' });
         console.error('Subscription error:', err);
       }
     });
