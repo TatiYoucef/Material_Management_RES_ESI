@@ -14,6 +14,7 @@ const materialsRouter = require('./routes/materials');
 const roomsRouter = require('./routes/rooms');
 const reservationsRouter = require('./routes/reservations');
 const filesRouter = require('./routes/files');
+const scheduler = require('./scheduler');
 
 app.use('/auth', authRouter);
 
@@ -22,6 +23,7 @@ app.use('/rooms', authenticateToken, roomsRouter);
 app.use('/reservations', authenticateToken, reservationsRouter);
 app.use('/files', authenticateToken, filesRouter);
 
+scheduler.checkAndSendNotifications(); // Run once on startup
 
 app.listen(port, () => {
   console.log(`Backend app listening at http://localhost:${port}`);

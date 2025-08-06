@@ -1,10 +1,7 @@
 [
   {
     "username": "youcef",
-    "password": "$2b$10$AhxBQO4WcS8BNeb1rQgxe.uOdwT.F7VRZCSXX1ZICXWk0Bc98tP5m"
-  },
-  {
-    "username": "islam",
-    "password": "$2b$10$vDowzGRUAPxzfwpjX5eqJOUTicok8KQetLXKNAN8izYym4pFMkJ06"
+    "password": "$2b$10$AhxBQO4WcS8BNeb1rQgxe.uOdwT.F7VRZCSXX1ZICXWk0Bc98tP5m",
+    "gmail": "youcef.tati04@gmail.com"
   }
 ]

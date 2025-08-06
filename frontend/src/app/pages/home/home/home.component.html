@@ -18,8 +18,8 @@
       <div class="card material-card" *ngFor="let materialType of materialTypes.data" [routerLink]="['/material-instances', materialType.type]">
         <h4>{{ materialType.type }}</h4>
         <p>Available: {{ materialType.available }}</p>
-        <p>Reserved: {{ materialType.reserved }}</p>
         <p>Serving: {{ materialType.serving }}</p>
+        <p>Reserved: {{ materialType.reserved }}</p>
         <p>Total Instances: {{ materialType.totalInstances }}</p>
       </div>
     </div>

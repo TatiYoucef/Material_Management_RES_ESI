@@ -37,7 +37,8 @@
       }
     ],
     "status": "ended",
-    "timestamp": "2025-08-01T18:29:51.812Z"
+    "timestamp": "2025-08-01T18:29:51.812Z",
+    "notified": false
   },
   {
     "id": "RES1754079544607",
@@ -171,7 +172,8 @@
         "oldEndDate": null,
         "newEndDate": "2025-08-30T00:00:00.000Z"
       }
-    ]
+    ],
+    "notified": false
   },
   {
     "id": "RES1754144303283",
@@ -187,7 +189,8 @@
     ],
     "status": "cancelled",
     "timestamp": "2025-08-02T14:18:23.283Z",
-    "cancelledAt": "2025-08-02T14:25:52.660Z"
+    "cancelledAt": "2025-08-02T14:25:52.660Z",
+    "notified": false
   },
   {
     "id": "RES1754157191206",
@@ -252,7 +255,8 @@
       }
     ],
     "status": "ended",
-    "timestamp": "2025-08-02T17:53:11.206Z"
+    "timestamp": "2025-08-02T17:53:11.206Z",
+    "notified": false
   },
   {
     "id": "RES1754253870217",
@@ -314,13 +318,14 @@
           }
         ]
       }
-    ]
+    ],
+    "notified": false
   },
   {
     "id": "RES1754343522209",
     "description": "Borrow to Mr.Guerrout",
     "startDate": "2025-08-04",
-    "endDate": "2025-08-08T00:00:00.000Z",
+    "endDate": "2025-08-07T00:00:00.000Z",
     "materials": [
       {
         "id": "M053",
@@ -364,7 +369,14 @@
         "action": "end_date_updated",
         "oldEndDate": "2025-08-11T00:00:00.000Z",
         "newEndDate": "2025-08-08T00:00:00.000Z"
+      },
+      {
+        "timestamp": "2025-08-06T18:47:43.665Z",
+        "action": "end_date_updated",
+        "oldEndDate": "2025-08-08T00:00:00.000Z",
+        "newEndDate": "2025-08-07T00:00:00.000Z"
       }
-    ]
+    ],
+    "notified": true
   }
 ]

@@ -129,6 +129,7 @@ router.post('/', loadAndCleanData, async (req, res) => {
     endDate: endDate || null,
     materials: [],
     status: 'active', // active, ended, cancelled
+    notified: false,
     timestamp: new Date().toISOString()
   };
 
