@@ -15,7 +15,7 @@ import { NotificationService } from '../../../components/notification/notificati
 export class MaterialInstancesComponent implements OnInit {
   materialType: string | null = null;
   materialInstances: any[] = [];
-  summary = { available: 0, reserved: 0 };
+  summary = { available: 0, reserved: 0, serving: 0 };
   roomSummary: any = {};
 
   // Pagination and Filtering
@@ -23,7 +23,7 @@ export class MaterialInstancesComponent implements OnInit {
   totalPages: number = 1;
   limit: number = 6; // Items per page
   searchQuery: string = '';
-  filterAvailability: string = ''; // 'true', 'false', or ''
+  filterStatus: string = '';
   filterLocation: string = '';
 
   // For filter dropdowns (optional, could be fetched from backend if dynamic)
@@ -62,8 +62,14 @@ export class MaterialInstancesComponent implements OnInit {
     if (this.searchQuery) {
       params.search = this.searchQuery;
     }
-    if (this.filterAvailability !== '') {
-      params.isAvailable = this.filterAvailability;
+    if (this.filterStatus === 'available') {
+      params.isAvailable = true;
+      params.isServing = false;
+    } else if (this.filterStatus === 'reserved') {
+      params.isAvailable = false;
+    } else if (this.filterStatus === 'serving') {
+      params.isAvailable = true;
+      params.isServing = true;
     }
     if (this.filterLocation) {
       params.location = this.filterLocation;

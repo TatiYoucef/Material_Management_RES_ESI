@@ -93,10 +93,11 @@
       <option *ngFor="let type of materialTypes" [value]="type">{{ type }}</option>
     </select>
 
-    <select [(ngModel)]="filterAvailability" (change)="onFilterChange()">
+    <select [(ngModel)]="filterStatus" (change)="onFilterChange()">
       <option value="">All Statuses</option>
-      <option value="true">Available</option>
-      <option value="false">Reserved</option>
+      <option value="available">Available</option>
+      <option value="reserved">Reserved</option>
+      <option value="serving">Serving</option>
     </select>
 
     <select [(ngModel)]="filterLocation" (change)="onFilterChange()">
@@ -110,7 +111,13 @@
       <div>
         <h4>{{ material.name }} ({{ material.id }})</h4>
         <p>Type: {{ material.type }}</p>
-        <p>Status: <span [class.available]="material.isAvailable" [class.reserved]="!material.isAvailable">{{ material.isAvailable ? 'Available' : 'Reserved' }}</span></p>
+        <p>Status: 
+  <span [class.available]="material.isAvailable && !material.isServing" 
+        [class.reserved]="!material.isAvailable" 
+        [class.serving]="material.isAvailable && material.isServing">
+    {{ !material.isAvailable ? 'Reserved' : (material.isServing ? 'Serving' : 'Available') }}
+  </span>
+</p>
         <p>Location: {{ material.currentLocation }}</p>
       </div>
       <div class="actions">

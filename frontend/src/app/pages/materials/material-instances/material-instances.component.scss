@@ -46,7 +46,7 @@ table th,
 table td {
   border: 1px solid #ddd;
   padding: 8px;
-  text-align: left;
+  text-align: center;
 }
 
 table th {
@@ -103,7 +103,12 @@ table tr:hover {
 }
 
 .reserved {
-  color: orange;
+  color: #dc3545;
+  font-weight: bold;
+}
+
+.serving {
+  color: #f39c12; /* orange for serving */
   font-weight: bold;
 }
 

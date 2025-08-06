@@ -160,4 +160,8 @@ export class DataService {
   updateReservationEndDate(id: string, newEndDate: string): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/reservations/${id}/update-end-date`, { newEndDate }, { headers: this.getHeaders() });
   }
+
+  toggleServingStatus(id: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/materials/${id}/toggle-serving`, {}, { headers: this.getHeaders() });
+  }
 }

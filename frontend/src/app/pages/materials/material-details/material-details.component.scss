@@ -41,6 +41,11 @@
     color: #dc3545; /* Red for reserved */
     font-weight: bold;
   }
+
+  .serving {
+    color: #f39c12; /* orange for serving */
+    font-weight: bold;
+  }
   
 }
 
@@ -106,6 +111,23 @@
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.action-card hr {
+  width: 100%;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+
+.action-card .form-group:last-of-type {
+  margin-bottom: 0;
+}
+
+.action-card .action-button {
+  margin-top: auto; /* Pushes the button to the bottom of the card */
 }
 
 .card-title {
@@ -128,7 +150,8 @@
 }
 
 .form-input,
-.form-select {
+.form-select,
+.form-input-date {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid #a7b9c9;

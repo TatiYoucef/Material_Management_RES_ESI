@@ -61,6 +61,9 @@ function validateMaterialInstance(material) {
   if (typeof material.isAvailable !== 'boolean') {
     errors.push('isAvailable must be a boolean.');
   }
+  if (typeof material.isServing !== 'boolean') {
+    errors.push('isServing must be a boolean.');
+  }
   if (!material.currentLocation || typeof material.currentLocation !== 'string' || material.currentLocation.trim() === '') {
     errors.push('Current location is required and must be a string.');
   }
@@ -76,7 +79,7 @@ router.get('/', loadMaterials, (req, res) => {
   let materials = [...req.materials];
 
   // Filtering for specific instances
-  const { search, isAvailable, type, location } = req.query;
+  const { search, isAvailable, isServing, type, location } = req.query;
   if (search) {
     const lowerCaseSearch = search.toLowerCase();
     materials = materials.filter(m => 
@@ -88,6 +91,9 @@ router.get('/', loadMaterials, (req, res) => {
   }
   if (isAvailable !== undefined) {
     materials = materials.filter(m => m.isAvailable === (isAvailable === 'true'));
+  }
+  if (isServing !== undefined) {
+    materials = materials.filter(m => m.isServing === (isServing === 'true'));
   }
   if (type) {
     materials = materials.filter(m => m.type && m.type.toLowerCase() === type.toLowerCase());
@@ -107,20 +113,26 @@ router.get('/', loadMaterials, (req, res) => {
   results.page = page;
   results.limit = limit;
   results.summary = {
-    available: materials.filter(m => m.isAvailable).length,
-    reserved: materials.filter(m => !m.isAvailable).length
+    available: materials.filter(m => m.isAvailable && !m.isServing).length,
+    reserved: materials.filter(m => !m.isAvailable).length,
+    serving: materials.filter(m => m.isAvailable && m.isServing).length
   };
 
   results.roomSummary = materials.reduce((acc, instance) => {
     const room = instance.currentLocation;
     if (!acc[room]) {
-      acc[room] = { available: 0, reserved: 0 };
+      acc[room] = { available: 0, reserved: 0, serving: 0 };
     }
-    if (instance.isAvailable) {
-      acc[room].available++;
-    } else {
+
+    if (!instance.isAvailable) {
       acc[room].reserved++;
+    } else if((instance.isServing)) {
+      acc[room].serving++;
     }
+    else {
+      acc[room].available++;
+    }
+
     return acc;
   }, {});
 
@@ -152,14 +164,19 @@ router.get('/types', loadMaterials, (req, res) => {
         type: m.type,
         available: 0,
         reserved: 0,
+        serving: 0,
         totalInstances: 0
       };
     }
     materialTypes[m.type].totalInstances++;
-    if (m.isAvailable) {
-      materialTypes[m.type].available++;
-    } else {
+    
+    if (!m.isAvailable) {
       materialTypes[m.type].reserved++;
+    } else if((m.isServing)) {
+      materialTypes[m.type].serving++;
+    }
+    else {
+      materialTypes[m.type].available++;
     }
   });
 
@@ -266,8 +283,9 @@ router.post('/', loadMaterials, async (req, res) => {
   for (let i = 0; i < effectiveQuantity; i++) {
     const newMaterial = { ...materialData };
 
-    // Automatically set availability
+    // Automatically set availability and serving status
     newMaterial.isAvailable = true;
+    newMaterial.isServing = newMaterial.currentLocation !== 'Magazin';
 
     // Assign custom ID or generate a new one
     if (idsToUse.length > 0) {
@@ -384,6 +402,7 @@ router.post('/:id/move', loadMaterials, async (req, res) => {
       return res.status(400).json({ errors: ['New location is required.'] });
     }
     materials[index].currentLocation = newLocation;
+    materials[index].isServing = newLocation !== 'Magazin';
 
     if (!materials[index].history) {
       materials[index].history = [];
@@ -502,8 +521,6 @@ router.put('/:id/update-with-id', loadMaterials, async (req, res) => {
   }
 });
 
-module.exports = router;
-
 // Action: Move a quantity of a material type from one room to another
 router.post('/move-quantity', loadMaterials, async (req, res) => {
   const { materialType, quantity, fromRoom, toRoom } = req.body;
@@ -523,6 +540,7 @@ router.post('/move-quantity', loadMaterials, async (req, res) => {
     const index = materials.findIndex(m => m.id === instance.id);
     const oldLocation = materials[index].currentLocation;
     materials[index].currentLocation = toRoom;
+    materials[index].isServing = toRoom !== 'Magazin';
 
     // Add history entry for each moved instance
     if (!materials[index].history) materials[index].history = [];
@@ -573,5 +591,91 @@ router.post('/move-quantity', loadMaterials, async (req, res) => {
     res.json({ message: `Successfully moved ${quantity} instances of ${materialType} from ${fromRoom} to ${toRoom}.` });
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+// Get a summary of materials by room
+router.get('/summary/by-room', loadMaterials, (req, res) => {
+  const summary = req.materials.reduce((acc, material) => {
+    const room = material.currentLocation;
+    if (!acc[room]) {
+      acc[room] = {};
+    }
+    if (!acc[room][material.type]) {
+      acc[room][material.type] = { available: 0, reserved: 0, serving: 0 };
+    }
+
+    if (!material.isAvailable) {
+      acc[room][material.type].reserved++;
+    } else if((m.isServing)) {
+      acc[room][material.type].serving++;
+    }
+    else {
+      acc[room][material.type].available++;
+    }
+  
+    return acc;
+  }, {});
+  res.json(summary);
+});
+
+// Get a summary of materials by type
+router.get('/summary/by-type', loadMaterials, (req, res) => {
+  const summary = req.materials.reduce((acc, material) => {
+    const type = material.type;
+    if (!acc[type]) {
+      acc[type] = {};
+    }
+    if (!acc[type][material.currentLocation]) {
+      acc[type][material.currentLocation] = { available: 0, reserved: 0, serving: 0 };
+    }
+
+    if (!m.isAvailable) {
+      acc[type][material.currentLocation].reserved++;
+    } else if((m.isServing)) {
+      acc[type][material.currentLocation].serving++;
+    }
+    else {
+      acc[type][material.currentLocation].available++;
+    }
+
+    return acc;
+  }, {});
+  res.json(summary);
+});
+
+module.exports = router;
+
+// Action: Toggle serving status
+router.post('/:id/toggle-serving', loadMaterials, async (req, res) => {
+  const materialId = req.params.id;
+  let materials = [...req.materials];
+  const index = materials.findIndex(m => m.id === materialId);
+
+  if (index !== -1) {
+    if (!materials[index].isAvailable) {
+      return res.status(400).json({ error: 'Cannot change serving status of a reserved material.' });
+    }
+
+    materials[index].isServing = !materials[index].isServing;
+
+    if (!materials[index].history) {
+      materials[index].history = [];
+    }
+    materials[index].history.push({
+      timestamp: new Date().toISOString(),
+      action: 'serving_status_changed',
+      description: `Serving status changed to ${materials[index].isServing ? 'active' : 'inactive'}.`,
+      changes: { isServing: { old: !materials[index].isServing, new: materials[index].isServing } }
+    });
+
+    try {
+      await writeMaterials(materials);
+      res.json(materials[index]);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  } else {
+    res.status(404).json({ error: 'Material not found' });
   }
 });

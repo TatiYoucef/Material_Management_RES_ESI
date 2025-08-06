@@ -144,6 +144,26 @@
           "type": "HDMI cable",
           "name": "5M HDMI cable"
         }
+      },
+      {
+        "timestamp": "2025-08-06T17:28:41.346Z",
+        "action": "add_materials",
+        "materials": [
+          {
+            "id": "12178",
+            "type": "Printer",
+            "name": "Brother dcp-t720dw"
+          }
+        ]
+      },
+      {
+        "timestamp": "2025-08-06T17:30:35.324Z",
+        "action": "remove_material",
+        "material": {
+          "id": "12178",
+          "type": "Printer",
+          "name": "Brother dcp-t720dw"
+        }
       }
     ]
   },

@@ -65,13 +65,21 @@ export class RoomDetailsComponent implements OnInit {
     this.dataService.getMaterials({ location: roomId ,  limit: 1000  }).subscribe({
       next: (response: any) => {
         const materials = response.data; // These are specific material instances
-        const aggregatedMaterials: { [key: string]: { type: string, count: number, instances: any[], isExpanded: boolean } } = {};
+        const aggregatedMaterials: { [key: string]: { type: string, count: number, available: number, reserved: number, serving: number, instances: any[], isExpanded: boolean } } = {};
 
         materials.forEach((m: any) => {
           if (!aggregatedMaterials[m.type]) {
-            aggregatedMaterials[m.type] = { type: m.type, count: 0, instances: [], isExpanded: false };
+            aggregatedMaterials[m.type] = { type: m.type, count: 0, available: 0, reserved: 0, serving: 0, instances: [], isExpanded: false };
           }
           aggregatedMaterials[m.type].count++;
+          if (m.isAvailable) {
+            aggregatedMaterials[m.type].available++;
+          } else {
+            aggregatedMaterials[m.type].reserved++;
+          }
+          if (m.isServing) {
+            aggregatedMaterials[m.type].serving++;
+          }
           aggregatedMaterials[m.type].instances.push(m);
         });
 

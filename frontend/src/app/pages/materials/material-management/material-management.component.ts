@@ -32,7 +32,7 @@ export class MaterialManagementComponent implements OnInit {
   limit: number = 10; // Items per page
   searchQuery: string = '';
   filterType: string = '';
-  filterAvailability: string = ''; // 'true', 'false', or ''
+  filterStatus: string = '';
   filterLocation: string = '';
 
   // For filter dropdowns (optional, could be fetched from backend if dynamic)
@@ -61,8 +61,14 @@ export class MaterialManagementComponent implements OnInit {
     if (this.filterType) {
       params.type = this.filterType;
     }
-    if (this.filterAvailability !== '') {
-      params.isAvailable = this.filterAvailability;
+    if (this.filterStatus === 'available') {
+      params.isAvailable = true;
+      params.isServing = false;
+    } else if (this.filterStatus === 'reserved') {
+      params.isAvailable = false;
+    } else if (this.filterStatus === 'serving') {
+      params.isAvailable = true;
+      params.isServing = true;
     }
     if (this.filterLocation) {
       params.location = this.filterLocation;
@@ -302,6 +308,18 @@ export class MaterialManagementComponent implements OnInit {
       },
       error: (err: any) => {
         this.notificationService.show({ message: err.error.error || 'Failed to delete material.', type: 'error' });
+      }
+    });
+  }
+
+  toggleServingStatus(id: string): void {
+    this.dataService.toggleServingStatus(id).subscribe({
+      next: () => {
+        this.loadMaterials();
+        this.notificationService.show({ message: 'Serving status updated successfully.', type: 'success' });
+      },
+      error: (err: any) => {
+        this.notificationService.show({ message: err.error.error || 'Failed to update serving status.', type: 'error' });
       }
     });
   }

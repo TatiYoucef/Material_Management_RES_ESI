@@ -172,4 +172,18 @@ export class MaterialDetailsComponent implements OnInit {
       });
     }
   }
+
+  toggleServingStatus(): void {
+    if (this.material) {
+      this.dataService.toggleServingStatus(this.material.id).subscribe({
+        next: () => {
+          this.loadMaterialAndRooms();
+          this.notificationService.show({ message: 'Serving status updated successfully.', type: 'success' });
+        },
+        error: (err: any) => {
+          this.notificationService.show({ message: err.error.error || 'Failed to update serving status.', type: 'error' });
+        }
+      });
+    }
+  }
 }

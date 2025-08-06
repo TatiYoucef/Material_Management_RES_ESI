@@ -12,6 +12,7 @@
     </div>
     <div class="detail-item">
       <strong>Maximum Capacity:</strong> <span>{{ room.capacity }}</span>
+    
     </div>
 
     <h4 class="section-subtitle">Materials in this room:</h4>
@@ -24,7 +25,12 @@
         <ul *ngIf="materialType.isExpanded" class="material-instances-list">
           <li *ngFor="let instance of materialType.instances" class="material-instance-detail">
             <a [routerLink]="['/materials', instance.id]">{{ instance.name }} ({{ instance.id }})</a>
-            <span [class.available]="instance.isAvailable" [class.reserved]="!instance.isAvailable">{{ instance.isAvailable ? 'Available' : 'Reserved' }}</span>
+            <p><span [class.available]="instance.isAvailable && !instance.isServing" 
+                        [class.reserved]="!instance.isAvailable" 
+                        [class.serving]="instance.isAvailable && instance.isServing">
+                    {{ !instance.isAvailable ? 'Reserved' : (instance.isServing ? 'Serving' : 'Available') }}
+                  </span>
+                </p>
           </li>
         </ul>
       </li>
@@ -89,3 +95,77 @@
 
   
 </div>
+
+<style>
+  .material-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .material-type-item {
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .material-type-header {
+    padding: 10px;
+    background-color: #f5f5f5;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .material-instances-list {
+    list-style: none;
+    padding: 10px;
+    background-color: #fff;
+    border-top: 1px solid #eee;
+  }
+
+  .material-instance-detail {
+    margin-bottom: 5px;
+  }
+
+  .arrow {
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transition: transform 0.3s ease;
+  }
+
+  .arrow.expanded {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+
+  .material-link {
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .material-link:hover {
+    text-decoration: underline;
+  }
+
+  .available {
+    color: #28a745;
+    font-weight: bold;
+  }
+
+  .reserved {
+    color: #dc3545;
+    font-weight: bold;
+  }
+
+  .serving {
+    color: #ffc107;
+    font-weight: bold;
+  }
+</style>

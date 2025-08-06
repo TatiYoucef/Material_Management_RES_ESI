@@ -4,7 +4,7 @@
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
     "isAvailable": true,
-    "currentLocation": "BI",
+    "currentLocation": "Magazin",
     "id": "M001",
     "history": [
       {
@@ -91,8 +91,63 @@
           "quantity": 1
         },
         "description": "Moved from Magazin to BI as part of a bulk move of 5 Router(s)."
+      },
+      {
+        "timestamp": "2025-08-06T15:07:23.974Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to inactive.",
+        "changes": {
+          "isServing": {
+            "old": true,
+            "new": false
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-06T15:07:32.700Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to active.",
+        "changes": {
+          "isServing": {
+            "old": false,
+            "new": true
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-06T15:09:27.848Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to inactive.",
+        "changes": {
+          "isServing": {
+            "old": true,
+            "new": false
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-06T15:09:51.422Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to active.",
+        "changes": {
+          "isServing": {
+            "old": false,
+            "new": true
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-06T15:10:18.866Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "BI",
+            "new": "Magazin"
+          }
+        }
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -132,7 +187,8 @@
         },
         "description": "Moved from Magazin to BI as part of a bulk move of 5 Router(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Router",
@@ -172,7 +228,8 @@
         },
         "description": "Moved from Magazin to BI as part of a bulk move of 5 Router(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Router",
@@ -212,7 +269,8 @@
         },
         "description": "Moved from Magazin to BI as part of a bulk move of 5 Router(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Router",
@@ -273,7 +331,8 @@
         },
         "description": "Moved from Magazin to BI as part of a bulk move of 5 Router(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Router",
@@ -307,7 +366,8 @@
         "action": "updated",
         "changes": {}
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -326,7 +386,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -345,7 +406,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -364,7 +426,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -403,7 +466,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "HDMI cable",
@@ -443,8 +507,31 @@
           "quantity": 1
         },
         "description": "Moved from DGA to DGA as part of a bulk move of 5 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-06T16:10:19.688Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to inactive.",
+        "changes": {
+          "isServing": {
+            "old": true,
+            "new": false
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-06T16:10:30.209Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to active.",
+        "changes": {
+          "isServing": {
+            "old": false,
+            "new": true
+          }
+        }
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -485,7 +572,8 @@
         },
         "description": "Moved from DGA to DGA as part of a bulk move of 5 HDMI cable(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -526,7 +614,8 @@
         },
         "description": "Moved from DGA to DGA as part of a bulk move of 5 HDMI cable(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -587,7 +676,8 @@
         "action": "unreserved",
         "description": "Removed from reservation: RES1754079544607"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -628,7 +718,8 @@
         },
         "description": "Moved from DGA to DGA as part of a bulk move of 5 HDMI cable(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -658,7 +749,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -688,7 +780,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -718,7 +811,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -748,7 +842,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -788,7 +883,8 @@
         "action": "unreserved",
         "description": "Removed from reservation: RES1754075164861"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -818,7 +914,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -848,7 +945,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -878,7 +976,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -908,7 +1007,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -938,7 +1038,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -968,7 +1069,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -998,7 +1100,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1028,7 +1131,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1058,7 +1162,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1088,7 +1193,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1118,7 +1224,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1148,7 +1255,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1178,7 +1286,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1208,7 +1317,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1238,7 +1348,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1272,7 +1383,8 @@
         "action": "reserved",
         "description": "Added to reservation: RES1754079544607"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "HDMI cable",
@@ -1296,7 +1408,8 @@
         "action": "reserved",
         "description": "Reserved for: RES1754079544607 - Server Execution"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "HDMI cable",
@@ -1335,7 +1448,8 @@
           }
         }
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1385,7 +1499,8 @@
         "action": "unreserved",
         "description": "Reservation ended: RES1754253870217"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1435,7 +1550,8 @@
         "action": "unreserved",
         "description": "Reservation ended: RES1754253870217"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1475,7 +1591,8 @@
         "action": "unreserved",
         "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1515,7 +1632,8 @@
         "action": "unreserved",
         "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1555,7 +1673,8 @@
         "action": "unreserved",
         "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1595,7 +1714,8 @@
         "action": "unreserved",
         "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1635,7 +1755,8 @@
         "action": "unreserved",
         "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1675,7 +1796,8 @@
         "action": "unreserved",
         "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1715,7 +1837,8 @@
         "action": "unreserved",
         "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1755,7 +1878,8 @@
         "action": "unreserved",
         "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1795,7 +1919,8 @@
         "action": "unreserved",
         "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1835,7 +1960,8 @@
         "action": "unreserved",
         "description": "Reservation automatically ended: 45em anniversaire ESI"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1865,7 +1991,8 @@
         },
         "description": "Moved from Magazin to BI as part of a bulk move of 4 HDMI cable(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1895,7 +2022,8 @@
         },
         "description": "Moved from Magazin to BI as part of a bulk move of 4 HDMI cable(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "HDMI cable",
@@ -1919,7 +2047,8 @@
         "action": "reserved",
         "description": "Reserved for: RES1754343522209 - Borrow to Mr.Guerrout"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "HDMI cable",
@@ -1943,7 +2072,8 @@
         "action": "reserved",
         "description": "Reserved for: RES1754343522209 - Borrow to Mr.Guerrout"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "HDMI cable",
@@ -1962,7 +2092,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "HDMI cable",
@@ -1980,8 +2111,31 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-06T17:22:08.007Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to active.",
+        "changes": {
+          "isServing": {
+            "old": false,
+            "new": true
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-06T17:23:12.544Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to inactive.",
+        "changes": {
+          "isServing": {
+            "old": true,
+            "new": false
+          }
+        }
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "HDMI cable",
@@ -2000,7 +2154,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "HDMI cable",
@@ -2019,7 +2174,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "HDMI cable",
@@ -2038,7 +2194,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "HDMI cable",
@@ -2057,7 +2214,8 @@
         "action": "reserved",
         "description": "Borrow from CACE"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Laptop",
@@ -2076,7 +2234,8 @@
         "action": "reserved",
         "description": "Reserved for: RES1754079544607 - Server Execution"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Laptop",
@@ -2166,7 +2325,8 @@
         "action": "reserved",
         "description": "Reserved for: RES1754343522209 - Borrow to Mr.Guerrout"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Laptop",
@@ -2240,8 +2400,42 @@
         "timestamp": "2025-08-05T16:48:06.112Z",
         "action": "unreserved",
         "description": "Reservation deleted: RES1754411868458"
+      },
+      {
+        "timestamp": "2025-08-06T16:33:03.683Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to inactive.",
+        "changes": {
+          "isServing": {
+            "old": true,
+            "new": false
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-06T16:33:08.929Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to active.",
+        "changes": {
+          "isServing": {
+            "old": false,
+            "new": true
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-06T16:59:01.411Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to inactive.",
+        "changes": {
+          "isServing": {
+            "old": true,
+            "new": false
+          }
+        }
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Laptop",
@@ -2255,7 +2449,8 @@
         "timestamp": "2025-07-20T14:20:30.456Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Laptop",
@@ -2269,7 +2464,8 @@
         "timestamp": "2025-07-15T09:45:15.789Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Switch",
@@ -2314,7 +2510,8 @@
         "action": "reserved",
         "description": "Added to reservation: RES1754079544607"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Switch",
@@ -2349,7 +2546,8 @@
         "action": "unreserved",
         "description": "Reservation ended: RES1754253870217"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Switch",
@@ -2394,7 +2592,8 @@
         "action": "unreserved",
         "description": "Reservation ended: RES1754253870217"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Switch",
@@ -2419,7 +2618,8 @@
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Switch",
@@ -2444,7 +2644,8 @@
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Switch",
@@ -2469,7 +2670,8 @@
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Switch",
@@ -2494,7 +2696,8 @@
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Switch",
@@ -2519,7 +2722,8 @@
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Switch",
@@ -2544,7 +2748,8 @@
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Switch",
@@ -2569,7 +2774,8 @@
         },
         "description": "Moved from Magazin to S30 as part of a bulk move of 10 Switch(s)."
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Modem",
@@ -2604,7 +2810,8 @@
         "action": "unreserved",
         "description": "Reservation deleted: RES1754320583937"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Modem",
@@ -2639,7 +2846,8 @@
         "action": "unreserved",
         "description": "Reservation deleted: RES1754320583937"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Modem",
@@ -2653,7 +2861,8 @@
         "timestamp": "2025-08-03T20:26:42.163Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Modem",
@@ -2667,7 +2876,8 @@
         "timestamp": "2025-08-03T20:26:42.164Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Modem",
@@ -2681,7 +2891,8 @@
         "timestamp": "2025-08-03T20:26:42.164Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -2705,7 +2916,8 @@
         "action": "updated",
         "changes": {}
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -2719,7 +2931,8 @@
         "timestamp": "2025-08-05T17:51:01.634Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -2733,7 +2946,8 @@
         "timestamp": "2025-08-05T17:51:01.634Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -2747,7 +2961,8 @@
         "timestamp": "2025-08-05T17:51:01.634Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -2761,7 +2976,8 @@
         "timestamp": "2025-08-05T17:51:01.634Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -2775,7 +2991,8 @@
         "timestamp": "2025-08-05T17:51:01.634Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -2789,7 +3006,8 @@
         "timestamp": "2025-08-05T17:51:01.634Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -2803,7 +3021,8 @@
         "timestamp": "2025-08-05T17:51:01.634Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -2817,7 +3036,8 @@
         "timestamp": "2025-08-05T17:51:01.634Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Router",
@@ -2831,7 +3051,8 @@
         "timestamp": "2025-08-05T17:51:01.634Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Printer",
@@ -2845,7 +3066,8 @@
         "timestamp": "2025-08-05T17:55:38.277Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Printer",
@@ -2859,7 +3081,8 @@
         "timestamp": "2025-08-05T17:55:38.277Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Printer",
@@ -2873,7 +3096,8 @@
         "timestamp": "2025-08-05T17:55:38.277Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Printer",
@@ -2887,21 +3111,43 @@
         "timestamp": "2025-08-05T17:55:38.277Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Printer",
     "name": "Brother dcp-t720dw",
     "details": "Laser printer with capacity of printing 200 papers per ink",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "BI",
     "id": "12178",
     "history": [
       {
         "timestamp": "2025-08-05T17:55:38.277Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-06T17:14:47.882Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "Magazin",
+            "new": "BI"
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-06T17:28:41.346Z",
+        "action": "reserved",
+        "description": "Added to reservation: RES1754079544607"
+      },
+      {
+        "timestamp": "2025-08-06T17:30:35.324Z",
+        "action": "unreserved",
+        "description": "Removed from reservation: RES1754079544607"
       }
-    ]
+    ],
+    "isServing": true
   },
   {
     "type": "Printer",
@@ -2915,7 +3161,8 @@
         "timestamp": "2025-08-05T17:55:38.277Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Printer",
@@ -2929,7 +3176,8 @@
         "timestamp": "2025-08-05T17:55:38.277Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Printer",
@@ -2943,7 +3191,8 @@
         "timestamp": "2025-08-05T17:55:38.277Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Printer",
@@ -2957,7 +3206,8 @@
         "timestamp": "2025-08-05T17:55:38.277Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Printer",
@@ -2971,7 +3221,8 @@
         "timestamp": "2025-08-05T17:55:38.277Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Monitor",
@@ -2985,7 +3236,8 @@
         "timestamp": "2025-08-05T18:23:30.050Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Monitor",
@@ -2999,7 +3251,8 @@
         "timestamp": "2025-08-05T18:23:30.050Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Monitor",
@@ -3013,7 +3266,8 @@
         "timestamp": "2025-08-05T18:23:30.050Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Air conditioner",
@@ -3027,7 +3281,8 @@
         "timestamp": "2025-08-05T18:40:06.676Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Air conditioner",
@@ -3041,7 +3296,8 @@
         "timestamp": "2025-08-05T18:40:06.676Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Air conditioner",
@@ -3055,7 +3311,8 @@
         "timestamp": "2025-08-05T18:40:06.676Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Air conditioner",
@@ -3069,7 +3326,8 @@
         "timestamp": "2025-08-05T18:40:06.676Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Air conditioner",
@@ -3083,7 +3341,8 @@
         "timestamp": "2025-08-05T18:53:46.871Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   },
   {
     "type": "Air conditioner",
@@ -3097,6 +3356,7 @@
         "timestamp": "2025-08-05T18:53:46.871Z",
         "action": "created"
       }
-    ]
+    ],
+    "isServing": false
   }
 ]

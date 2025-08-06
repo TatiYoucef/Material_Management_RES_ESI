@@ -197,6 +197,21 @@ h3 {
       }
     }
   }
+
+  .available {
+    color: #2ecc71;
+    font-weight: bold;
+  }
+
+  .reserved {
+    color: #e74c3c;
+    font-weight: bold;
+  }
+
+  .serving {
+    color: #f39c12;
+    font-weight: bold;
+  }
 }
 
 .pagination-controls {

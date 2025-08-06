@@ -15,7 +15,12 @@
       <strong>Details:</strong> <span>{{ material.details }}</span>
     </div>
     <div class="detail-item">
-      <strong>Status:</strong> <span [ngClass]="{'available' : material.isAvailable, 'reserved': !material.isAvailable}">{{ material.isAvailable ? 'Available' : 'Reserved' }}</span>
+      <strong>Status:</strong> 
+      <span [class.available]="material.isAvailable && !material.isServing" 
+            [class.reserved]="!material.isAvailable" 
+            [class.serving]="material.isAvailable && material.isServing">
+        {{ !material.isAvailable ? 'Reserved ('+material.reservationDetails.description+')' : (material.isServing ? 'Serving...' : 'Available (free to use)') }}
+      </span>
     </div>
     <div class="detail-item">
       <strong>Current Location:</strong> <a [routerLink]="['/rooms', material.currentLocation]" class="room-link">{{ material.currentLocation }}</a>
@@ -37,42 +42,60 @@
         <button class="btn btn-primary action-button" (click)="moveMaterial()">Move Material</button>
       </div>
 
-      <div class="action-card" *ngIf="material.isAvailable">
-        <h4 class="card-title">Reserve Material</h4>
-        <div class="form-group">
-          <label for="newDescription">New Reservation Description:</label>
-          <input type="text" id="newDescription" [(ngModel)]="newReservationData.description">
+      @if (material.isAvailable) {
+        <div class="action-card">
+          <h4 class="card-title">Toggle Serving Status</h4>
+          <hr>
+          <button class="btn action-button" [ngClass]="material.isServing ? 'btn-info' : 'btn-success'" (click)="toggleServingStatus()" >{{ material.isServing ? 'Mark as Available' : 'Mark as Serving' }}</button>
         </div>
-        <div class="form-group">
-          <label for="newEndDate">End Date (Optional):</label>
-          <input type="date" id="newEndDate" [(ngModel)]="newReservationData.endDate">
-        </div>
-        <button class="btn btn-warning action-button" (click)="reserveMaterialNew()">Create New Reservation</button>
 
-        <hr>
+        <div class="action-card" *ngIf="material.isAvailable">
+          <h4 class="card-title">Reserve Material</h4>
+          <div class="form-group">
+            <label for="newDescription" class="form-label">New Reservation Description:</label>
+            <input type="text" id="newDescription" [(ngModel)]="newReservationData.description">
+          </div>
+          <div class="form-group">
+            <label for="newEndDate" class="form-label">End Date (Optional):</label>
+            <input type="date" id="newEndDate" [(ngModel)]="newReservationData.endDate" class="form-input-date">
+          </div>
+          <button style="color: white;" class="btn btn-warning action-button" (click)="reserveMaterialNew()">Create New Reservation</button>
 
-        <h4 class="card-title">Add to Existing Reservation</h4>
-        <div class="form-group">
-          <label for="existingReservation">Select Reservation:</label>
-          <select id="existingReservation" [(ngModel)]="selectedExistingReservationId">
-            <option value="">-- Select an active reservation --</option>
-            <option *ngFor="let res of activeReservations" [value]="res.id">{{ res.description }} ({{ res.id }})</option>
-          </select>
-        </div>
-        <button class="btn btn-info action-button" (click)="addMaterialToExistingReservation()" [disabled]="!selectedExistingReservationId">Add to Selected Reservation</button>
-      </div>
+          <hr>
 
-      <div class="action-card" *ngIf="!material.isAvailable && material.reservationDetails">
-        <h4 class="card-title">Reserved Details</h4>
-        <div class="detail-item">
-          <strong>Reservation ID:</strong> <a [routerLink]="['/reservations', material.reservationDetails.id]">{{ material.reservationDetails.id }}</a>
+          <h4 class="card-title">Add to Existing Reservation</h4>
+          <div class="form-group">
+            <label for="existingReservation">Select Reservation:</label>
+            <select id="existingReservation" [(ngModel)]="selectedExistingReservationId">
+              <option value="">-- Select an active reservation --</option>
+              <option *ngFor="let res of activeReservations" [value]="res.id">{{ res.description }} ({{ res.id }})</option>
+            </select>
+          </div>
+          <button class="btn btn-info action-button" (click)="addMaterialToExistingReservation()" [disabled]="!selectedExistingReservationId">Add to Selected Reservation</button>
         </div>
-        <div class="detail-item">
-          <strong>Description:</strong> {{ material.reservationDetails.description }}
+
+      }@else {
+
+        <div class="action-card" *ngIf="material.reservationDetails">
+          <h4 class="card-title">Reserved Details</h4>
+          <div class="detail-item">
+            <strong>Reservation ID:</strong> <a [routerLink]="['/reservations', material.reservationDetails.id]">{{ material.reservationDetails.id }}</a>
+          </div>
+          <div class="detail-item">
+            <strong>Description:</strong> {{ material.reservationDetails.description }}
+          </div>
+          <div class="detail-item"><strong>End Date:</strong> {{ (material.reservationDetails?.endDate | date) ?? 'None' }}</div>
+          <button class="btn btn-danger action-button" (click)="excludeMaterialFromReservation()">Exclude from Reservation</button>
         </div>
-        <div><strong>End Date:</strong> {{ (material.reservationDetails?.endDate | date) ?? 'None' }}</div>
-        <button class="btn btn-danger action-button" (click)="excludeMaterialFromReservation()">Exclude from Reservation</button>
-      </div>
+
+        <div class="action-card">
+          <h4 class="card-title">Toggle Serving Status</h4>
+          <hr>
+          <button class="btn action-button" [ngClass]="material.isServing ? 'btn-info' : 'btn-success'" (click)="toggleServingStatus()" >{{ material.isServing ? 'Mark as Available' : 'Mark as Serving' }}</button>
+        </div>
+        
+      }
+
     </div>
 
     <hr class="section-divider">
@@ -84,11 +107,12 @@
           <strong>{{ entry.timestamp | date:'short':'':'en-GB' }}</strong>: 
           <span *ngIf="entry.action === 'created'" [ngClass]="'history-created'">Material created.</span>
           <span *ngIf="entry.action === 'updated'" [ngClass]="'history-updated'">Material updated.</span>
-          <span *ngIf="entry.action === 'moved'" [ngClass]="'history-moved'">Material moved to {{ entry.changes?.currentLocation?.new }}.</span>
+          <span *ngIf="entry.action === 'moved'" [ngClass]="'history-updated'">Material moved to {{ entry.changes?.currentLocation?.new }}.</span>
           <span *ngIf="entry.action === 'id_updated'" [ngClass]="'history-id-updated'">ID changed from {{ entry.changes?.id?.old }} to {{ entry.changes?.id?.new }}.</span>
           <span *ngIf="entry.action === 'reserved'" [ngClass]="'history-reserved'">Material reserved<span *ngIf="entry.description">: {{ entry.description }}</span>.</span>
           <span *ngIf="entry.action === 'unreserved'" [ngClass]="'history-unreserved'">Material made available<span *ngIf="entry.description">: {{ entry.description }}</span>.</span>
           <span *ngIf="entry.action === 'moved_bulk'" [ngClass]="'history-moved-bulk'">{{ entry.description }}</span>
+          <span *ngIf="entry.action === 'serving_status_changed'" [ngClass]="'history-moved'">{{ entry.description }}</span>
           <div *ngIf="entry.changes && entry.action !== 'moved_bulk'" class="history-changes">
             <span *ngFor="let key of (entry.changes | keyvalue)" class="change-item">
               {{ key.key }}: <span class="old-value">{{ $any(key.value).old }}</span> → <span class="new-value">{{ $any(key.value).new }}</span>; 

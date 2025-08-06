@@ -3,8 +3,8 @@
 
   <div class="summary-card">
     <h3>Summary</h3>
-    <p>Available: {{ summary.available }} | Reserved: {{ summary.reserved }}</p>
-    <p>Total Quantity: {{ summary.reserved + summary.available }}</p>
+    <p><span class="available">Available: {{ summary.available }}</span> | <span class="serving">Serving: {{ summary.serving }}</span> | <span class="reserved"> Reserved: {{ summary.reserved }} </span></p>
+    <p style="color: blue;">Total Quantity: {{ summary.reserved + summary.available + summary.serving }}</p>
   </div>
 
   
@@ -14,17 +14,19 @@
     <thead>
       <tr>
         <th>Room</th>
-        <th>Quantity Available</th>
-        <th>Quantity Reserved</th>
-        <th>Total Quantity</th>
+        <th style="color: blue;">Total Quantity</th>
+        <th style="color: green;">Quantity Available</th>
+        <th style="color: #f39c12;">Quantity Serving</th>
+        <th style="color: #dc3545;">Quantity Reserved</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let room of getRoomNames()">
-        <td><a [routerLink]="['/rooms', room]" class="room-link">{{ room }}</a></td>
+        <td style="font-weight: bold;"><a [routerLink]="['/rooms', room]" class="room-link">{{ room }}</a></td>
+        <td style="font-weight: bold;">{{roomSummary[room].available + roomSummary[room].reserved + roomSummary[room].serving  }}</td>
         <td>{{ roomSummary[room].available }}</td>
+        <td>{{ roomSummary[room].serving }}</td>
         <td>{{ roomSummary[room].reserved }}</td>
-        <td>{{ roomSummary[room].available + roomSummary[room].reserved }}</td>
       </tr>
     </tbody>
   </table>
@@ -34,10 +36,11 @@
   <div class="filter-section">
     <input type="text" [(ngModel)]="searchQuery" (input)="onSearch()" placeholder="Search instances..." class="search-input">
 
-    <select [(ngModel)]="filterAvailability" (change)="onFilterChange()">
+    <select [(ngModel)]="filterStatus" (change)="onFilterChange()">
       <option value="">All Statuses</option>
-      <option value="true">Available</option>
-      <option value="false">Reserved</option>
+      <option value="available">Available</option>
+      <option value="reserved">Reserved</option>
+      <option value="serving">Serving</option>
     </select>
 
     <select [(ngModel)]="filterLocation" (change)="onFilterChange()">
@@ -50,7 +53,13 @@
     <div class="card material-instance-card" *ngFor="let instance of materialInstances" [routerLink]="['/materials', instance.id]">
       <h4>{{ instance.name }} ({{ instance.id }})</h4>
       <p>Details: {{ instance.details }}</p>
-      <p>Status: <span [class.available]="instance.isAvailable" [class.reserved]="!instance.isAvailable">{{ instance.isAvailable ? 'Available' : 'Reserved' }}</span></p>
+      <p>Status: 
+  <span [class.available]="instance.isAvailable && !instance.isServing" 
+        [class.reserved]="!instance.isAvailable" 
+        [class.serving]="instance.isAvailable && instance.isServing">
+    {{ !instance.isAvailable ? 'Reserved' : (instance.isServing ? 'Serving' : 'Available') }}
+  </span>
+</p>
       <p>Location: {{ instance.currentLocation }}</p>
     </div>
   </div>
