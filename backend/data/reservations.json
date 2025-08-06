@@ -43,7 +43,7 @@
     "id": "RES1754079544607",
     "description": "ADE borrow",
     "startDate": "2025-08-01",
-    "endDate": null,
+    "endDate": "2025-08-30T00:00:00.000Z",
     "materials": [
       {
         "id": "M006",
@@ -164,6 +164,12 @@
           "type": "Printer",
           "name": "Brother dcp-t720dw"
         }
+      },
+      {
+        "timestamp": "2025-08-06T17:56:08.085Z",
+        "action": "end_date_updated",
+        "oldEndDate": null,
+        "newEndDate": "2025-08-30T00:00:00.000Z"
       }
     ]
   },

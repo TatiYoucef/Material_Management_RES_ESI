@@ -40,6 +40,7 @@ export class ReservationHistoryComponent implements OnInit {
           isExpanded: false, // For the overall reservation row
           aggregatedMaterials: this.aggregateMaterials(r.materials) // New: Aggregate materials
         }));
+        this.reservations.sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
       },
       error: (err) => {
         this.notificationService.show({ message: err.error.error || 'Failed to load reservations.', type: 'error' });
