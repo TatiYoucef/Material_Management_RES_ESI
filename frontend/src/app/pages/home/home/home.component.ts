@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
   loadRooms(page: number = 1): void {
     const params: any = {
       page: page,
-      limit: 5
+      limit: 6
     };
     if (this.searchQuery && this.viewMode === 'rooms') {
       params.search = this.searchQuery;

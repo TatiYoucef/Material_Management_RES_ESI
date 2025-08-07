@@ -9,6 +9,10 @@
       <label for="id">ID:</label>
       <input type="text" id="id" [(ngModel)]="currentRoom.id" required>
     </div>
+    <div *ngIf="!editingRoom">
+      <label for="newRoomId">ID (Optional):</label>
+      <input type="text" id="newRoomId" [(ngModel)]="newRoom.id">
+    </div>
     <label for="name">Name:</label>
     <input type="text" id="name" [(ngModel)]="currentRoom.name" required>
 

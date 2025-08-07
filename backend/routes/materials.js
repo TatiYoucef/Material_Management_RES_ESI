@@ -5,6 +5,7 @@ const { acquireLock } = require('../file-lock');
 const path = require('path');
 
 const materialsFilePath = path.join(__dirname, '../data/materials.json');
+const roomsFilePath = path.join(__dirname, '../data/rooms.json');
 
 // Middleware to load materials data
 async function loadMaterials(req, res, next) {
@@ -36,7 +37,6 @@ async function writeMaterials(data) {
 
 // Helper to write rooms data
 async function writeRooms(data) {
-  const roomsFilePath = path.join(__dirname, '../data/rooms.json');
   const release = await acquireLock(roomsFilePath);
   try {
     await fs.writeFile(roomsFilePath, JSON.stringify(data, null, 2));
@@ -46,6 +46,38 @@ async function writeRooms(data) {
   } finally {
     release();
   }
+}
+
+// Helper to read rooms data
+async function readRooms() {
+  const release = await acquireLock(roomsFilePath);
+  try {
+    const data = await fs.readFile(roomsFilePath, 'utf8');
+    return JSON.parse(data);
+  } catch (error) {
+    console.error('Error reading rooms file:', error);
+    throw new Error('Error loading room data.');
+  } finally {
+    release();
+  }
+}
+
+// Helper to check room capacity
+async function checkRoomCapacity(roomId, materialsToAddCount) {
+  const rooms = await readRooms();
+  const room = rooms.find(r => r.id === roomId);
+  if (!room) {
+    return { success: false, error: `Room ${roomId} not found.` };
+  }
+
+  const materialsData = await fs.readFile(materialsFilePath, 'utf8');
+  const materials = JSON.parse(materialsData);
+  const currentMaterialCount = materials.filter(m => m.currentLocation === roomId).length;
+
+  if (currentMaterialCount + materialsToAddCount > room.capacity) {
+    return { success: false, error: `Adding ${materialsToAddCount} material(s) would exceed the capacity of room ${roomId} (current: ${currentMaterialCount}, capacity: ${room.capacity}).` };
+  }
+  return { success: true };
 }
 
 // Helper function for material instance validation
@@ -280,6 +312,12 @@ router.post('/', loadMaterials, async (req, res) => {
     return res.status(400).json({ error: 'Quantity must be between 1 and 100' });
   }
 
+  // Check room capacity before creating materials
+  const capacityCheck = await checkRoomCapacity(materialData.currentLocation, effectiveQuantity);
+  if (!capacityCheck.success) {
+    return res.status(400).json({ errors: [capacityCheck.error] });
+  }
+
   for (let i = 0; i < effectiveQuantity; i++) {
     const newMaterial = { ...materialData };
 
@@ -401,6 +439,13 @@ router.post('/:id/move', loadMaterials, async (req, res) => {
     if (!newLocation || newLocation.trim() === '') {
       return res.status(400).json({ errors: ['New location is required.'] });
     }
+
+    // Check room capacity before moving material
+    const capacityCheck = await checkRoomCapacity(newLocation, 1);
+    if (!capacityCheck.success) {
+      return res.status(400).json({ errors: [capacityCheck.error] });
+    }
+
     materials[index].currentLocation = newLocation;
     materials[index].isServing = newLocation !== 'Magazin';
 
@@ -528,6 +573,12 @@ router.post('/move-quantity', loadMaterials, async (req, res) => {
 
   if (!materialType || !quantity || !fromRoom || !toRoom) {
     return res.status(400).json({ errors: ['Missing required fields.'] });
+  }
+
+  // Check room capacity before moving materials
+  const capacityCheck = await checkRoomCapacity(toRoom, quantity);
+  if (!capacityCheck.success) {
+    return res.status(400).json({ errors: [capacityCheck.error] });
   }
 
   const available = materials.filter(m => m.type === materialType && m.currentLocation === fromRoom && m.isAvailable);

@@ -19,7 +19,7 @@
     <ul *ngIf="materialsInRoom.length > 0" class="material-list">
       <li *ngFor="let materialType of materialsInRoom" class="material-item material-type-item">
         <div class="material-type-header" (click)="toggleDetails(materialType)">
-          <span class="material-link">{{ materialType.type }}</span> - Quantity: {{ materialType.count }}
+          <span class="material-link"><a [routerLink]="['/material-instances', materialType.type]">{{ materialType.type }}</a></span> - Quantity: {{ materialType.count }}
           <i class="arrow" [class.expanded]="materialType.isExpanded"></i>
         </div>
         <ul *ngIf="materialType.isExpanded" class="material-instances-list">

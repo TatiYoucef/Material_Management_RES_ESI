@@ -4,7 +4,7 @@
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "DATA",
     "id": "M001",
     "history": [
       {
@@ -145,9 +145,31 @@
             "new": "Magazin"
           }
         }
+      },
+      {
+        "timestamp": "2025-08-07T16:21:38.889Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGA",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGA as part of a bulk move of 4 Router(s)."
+      },
+      {
+        "timestamp": "2025-08-07T16:33:54.775Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "DGA",
+          "to": "DATA",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from DGA to DATA as part of a bulk move of 2 Router(s)."
       }
     ],
-    "isServing": false
+    "isServing": true
   },
   {
     "type": "Router",
@@ -374,7 +396,7 @@
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "DATA",
     "id": "M007",
     "history": [
       {
@@ -385,16 +407,38 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-07T16:21:38.889Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGA",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGA as part of a bulk move of 4 Router(s)."
+      },
+      {
+        "timestamp": "2025-08-07T16:33:54.775Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "DGA",
+          "to": "DATA",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from DGA to DATA as part of a bulk move of 2 Router(s)."
       }
     ],
-    "isServing": false
+    "isServing": true
   },
   {
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "DGA",
     "id": "M008",
     "history": [
       {
@@ -405,16 +449,27 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-07T16:21:38.889Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGA",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGA as part of a bulk move of 4 Router(s)."
       }
     ],
-    "isServing": false
+    "isServing": true
   },
   {
     "type": "Router",
     "name": "Cisco 2800 Series",
     "details": "8GB RAM, 16 FE, 2GE",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "DGA",
     "id": "M009",
     "history": [
       {
@@ -425,9 +480,20 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-07T16:21:38.889Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DGA",
+          "type": "Router",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DGA as part of a bulk move of 4 Router(s)."
       }
     ],
-    "isServing": false
+    "isServing": true
   },
   {
     "type": "Router",
@@ -474,7 +540,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "DGA",
+    "currentLocation": "DATA",
     "id": "M011",
     "history": [
       {
@@ -529,6 +595,17 @@
             "new": true
           }
         }
+      },
+      {
+        "timestamp": "2025-08-07T16:30:17.642Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "DGA",
+          "to": "DATA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from DGA to DATA as part of a bulk move of 6 HDMI cable(s)."
       }
     ],
     "isServing": true
@@ -538,7 +615,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "DGA",
+    "currentLocation": "DATA",
     "id": "M012",
     "history": [
       {
@@ -571,6 +648,17 @@
           "quantity": 1
         },
         "description": "Moved from DGA to DGA as part of a bulk move of 5 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-07T16:30:17.642Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "DGA",
+          "to": "DATA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from DGA to DATA as part of a bulk move of 6 HDMI cable(s)."
       }
     ],
     "isServing": true
@@ -580,7 +668,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "DGA",
+    "currentLocation": "DATA",
     "id": "M013",
     "history": [
       {
@@ -613,6 +701,17 @@
           "quantity": 1
         },
         "description": "Moved from DGA to DGA as part of a bulk move of 5 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-07T16:30:17.642Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "DGA",
+          "to": "DATA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from DGA to DATA as part of a bulk move of 6 HDMI cable(s)."
       }
     ],
     "isServing": true
@@ -622,7 +721,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "DGA",
+    "currentLocation": "DATA",
     "id": "M014",
     "history": [
       {
@@ -675,6 +774,17 @@
         "timestamp": "2025-08-02T17:51:18.526Z",
         "action": "unreserved",
         "description": "Removed from reservation: RES1754079544607"
+      },
+      {
+        "timestamp": "2025-08-07T16:30:17.642Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "DGA",
+          "to": "DATA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from DGA to DATA as part of a bulk move of 6 HDMI cable(s)."
       }
     ],
     "isServing": true
@@ -684,7 +794,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "DGA",
+    "currentLocation": "DATA",
     "id": "M015",
     "history": [
       {
@@ -717,6 +827,17 @@
           "quantity": 1
         },
         "description": "Moved from DGA to DGA as part of a bulk move of 5 HDMI cable(s)."
+      },
+      {
+        "timestamp": "2025-08-07T16:30:17.642Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "DGA",
+          "to": "DATA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from DGA to DATA as part of a bulk move of 6 HDMI cable(s)."
       }
     ],
     "isServing": true
@@ -726,7 +847,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "DGA",
+    "currentLocation": "DATA",
     "id": "M016",
     "history": [
       {
@@ -748,6 +869,17 @@
         "timestamp": "2025-08-01T16:47:18.803Z",
         "action": "reserved",
         "description": "Borrow from CACE"
+      },
+      {
+        "timestamp": "2025-08-07T16:30:17.642Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "DGA",
+          "to": "DATA",
+          "type": "HDMI cable",
+          "quantity": 1
+        },
+        "description": "Moved from DGA to DATA as part of a bulk move of 6 HDMI cable(s)."
       }
     ],
     "isServing": true
@@ -1456,7 +1588,7 @@
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
     "isAvailable": true,
-    "currentLocation": "BI",
+    "currentLocation": "DGB",
     "id": "M039",
     "history": [
       {
@@ -1498,6 +1630,38 @@
         "timestamp": "2025-08-03T20:49:02.022Z",
         "action": "unreserved",
         "description": "Reservation ended: RES1754253870217"
+      },
+      {
+        "timestamp": "2025-08-07T16:09:54.197Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to inactive.",
+        "changes": {
+          "isServing": {
+            "old": true,
+            "new": false
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-07T16:09:59.452Z",
+        "action": "serving_status_changed",
+        "description": "Serving status changed to active.",
+        "changes": {
+          "isServing": {
+            "old": false,
+            "new": true
+          }
+        }
+      },
+      {
+        "timestamp": "2025-08-07T16:10:19.612Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "BI",
+            "new": "DGB"
+          }
+        }
       }
     ],
     "isServing": true
@@ -2029,7 +2193,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": false,
+    "isAvailable": true,
     "currentLocation": "Magazin",
     "id": "M053",
     "history": [
@@ -2046,6 +2210,11 @@
         "timestamp": "2025-08-04T21:38:42.211Z",
         "action": "reserved",
         "description": "Reserved for: RES1754343522209 - Borrow to Mr.Guerrout"
+      },
+      {
+        "timestamp": "2025-08-07T15:40:00.462Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: Borrow to Mr.Guerrout"
       }
     ],
     "isServing": false
@@ -2054,7 +2223,7 @@
     "type": "HDMI cable",
     "name": "5M HDMI cable",
     "details": "5 meters , 16 FT , 300MB/S",
-    "isAvailable": false,
+    "isAvailable": true,
     "currentLocation": "Magazin",
     "id": "M054",
     "history": [
@@ -2071,6 +2240,11 @@
         "timestamp": "2025-08-04T21:38:42.211Z",
         "action": "reserved",
         "description": "Reserved for: RES1754343522209 - Borrow to Mr.Guerrout"
+      },
+      {
+        "timestamp": "2025-08-07T15:40:00.462Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: Borrow to Mr.Guerrout"
       }
     ],
     "isServing": false
@@ -2241,7 +2415,7 @@
     "type": "Laptop",
     "name": "MacBook Pro 16\"",
     "details": "M2 Pro, 32GB RAM, 1TB SSD",
-    "isAvailable": false,
+    "isAvailable": true,
     "currentLocation": "S30",
     "id": "L002",
     "history": [
@@ -2324,6 +2498,21 @@
         "timestamp": "2025-08-04T21:38:42.211Z",
         "action": "reserved",
         "description": "Reserved for: RES1754343522209 - Borrow to Mr.Guerrout"
+      },
+      {
+        "timestamp": "2025-08-07T15:29:16.216Z",
+        "action": "updated",
+        "changes": {}
+      },
+      {
+        "timestamp": "2025-08-07T15:29:31.079Z",
+        "action": "updated",
+        "changes": {}
+      },
+      {
+        "timestamp": "2025-08-07T15:40:00.462Z",
+        "action": "unreserved",
+        "description": "Reservation automatically ended: Borrow to Mr.Guerrout"
       }
     ],
     "isServing": true
@@ -2441,13 +2630,18 @@
     "type": "Laptop",
     "name": "HP EliteBook 840",
     "details": "Intel i7, 16GB RAM, 512GB SSD, Fingerprint reader",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "L004",
     "history": [
       {
         "timestamp": "2025-07-20T14:20:30.456Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-07T17:10:05.025Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754586605023 - ESI cup 2025"
       }
     ],
     "isServing": false
@@ -2853,13 +3047,18 @@
     "type": "Modem",
     "name": "Modem Cisco 4G",
     "details": "100MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M073",
     "history": [
       {
         "timestamp": "2025-08-03T20:26:42.163Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-07T17:10:05.025Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754586605023 - ESI cup 2025"
       }
     ],
     "isServing": false
@@ -2868,13 +3067,18 @@
     "type": "Modem",
     "name": "Modem Cisco 4G",
     "details": "100MB/S",
-    "isAvailable": true,
+    "isAvailable": false,
     "currentLocation": "Magazin",
     "id": "M074",
     "history": [
       {
         "timestamp": "2025-08-03T20:26:42.164Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-07T17:10:05.025Z",
+        "action": "reserved",
+        "description": "Reserved for: RES1754586605023 - ESI cup 2025"
       }
     ],
     "isServing": false
@@ -3059,15 +3263,25 @@
     "name": "Brother dcp-t720dw",
     "details": "Laser printer with capacity of printing 200 papers per ink",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "DATA",
     "id": "12174",
     "history": [
       {
         "timestamp": "2025-08-05T17:55:38.277Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-07T16:34:13.132Z",
+        "action": "moved",
+        "changes": {
+          "currentLocation": {
+            "old": "Magazin",
+            "new": "DATA"
+          }
+        }
       }
     ],
-    "isServing": false
+    "isServing": true
   },
   {
     "type": "Printer",
@@ -3274,45 +3488,78 @@
     "name": "Cecotec Climatiseur portatif ForceClima 7350 Touch Smart. 7000 BTU",
     "details": "A really cold portable conditioner",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "DATA",
     "id": "C1",
     "history": [
       {
         "timestamp": "2025-08-05T18:40:06.676Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-07T16:34:49.293Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DATA",
+          "type": "Air conditioner",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DATA as part of a bulk move of 3 Air conditioner(s)."
       }
     ],
-    "isServing": false
+    "isServing": true
   },
   {
     "type": "Air conditioner",
     "name": "Cecotec Climatiseur portatif ForceClima 7350 Touch Smart. 7000 BTU",
     "details": "A really cold portable conditioner",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "DATA",
     "id": "C2",
     "history": [
       {
         "timestamp": "2025-08-05T18:40:06.676Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-07T16:34:49.293Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DATA",
+          "type": "Air conditioner",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DATA as part of a bulk move of 3 Air conditioner(s)."
       }
     ],
-    "isServing": false
+    "isServing": true
   },
   {
     "type": "Air conditioner",
     "name": "Cecotec Climatiseur portatif ForceClima 7350 Touch Smart. 7000 BTU",
     "details": "A really cold portable conditioner",
     "isAvailable": true,
-    "currentLocation": "Magazin",
+    "currentLocation": "DATA",
     "id": "C3",
     "history": [
       {
         "timestamp": "2025-08-05T18:40:06.676Z",
         "action": "created"
+      },
+      {
+        "timestamp": "2025-08-07T16:34:49.293Z",
+        "action": "moved_bulk",
+        "changes": {
+          "from": "Magazin",
+          "to": "DATA",
+          "type": "Air conditioner",
+          "quantity": 1
+        },
+        "description": "Moved from Magazin to DATA as part of a bulk move of 3 Air conditioner(s)."
       }
     ],
-    "isServing": false
+    "isServing": true
   },
   {
     "type": "Air conditioner",
@@ -3358,5 +3605,35 @@
       }
     ],
     "isServing": false
+  },
+  {
+    "type": "Modem",
+    "name": "Cisco 4G Serie 2100",
+    "details": "50MB/s",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "isServing": false,
+    "id": "11456",
+    "history": [
+      {
+        "timestamp": "2025-08-07T15:32:02.739Z",
+        "action": "created"
+      }
+    ]
+  },
+  {
+    "type": "Modem",
+    "name": "Cisco 4G Serie 2100",
+    "details": "50MB/s",
+    "isAvailable": true,
+    "currentLocation": "Magazin",
+    "isServing": false,
+    "id": "11457",
+    "history": [
+      {
+        "timestamp": "2025-08-07T15:32:02.739Z",
+        "action": "created"
+      }
+    ]
   }
 ]

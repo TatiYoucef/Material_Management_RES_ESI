@@ -343,7 +343,7 @@
         "name": "MacBook Pro 16\""
       }
     ],
-    "status": "active",
+    "status": "ended",
     "timestamp": "2025-08-04T21:38:42.211Z",
     "history": [
       {
@@ -378,5 +378,39 @@
       }
     ],
     "notified": true
+  },
+  {
+    "id": "RES1754586605023",
+    "description": "ESI cup 2025",
+    "startDate": "2025-08-07",
+    "endDate": "2025-08-08T00:00:00.000Z",
+    "materials": [
+      {
+        "id": "M073",
+        "type": "Modem",
+        "name": "Modem Cisco 4G"
+      },
+      {
+        "id": "M074",
+        "type": "Modem",
+        "name": "Modem Cisco 4G"
+      },
+      {
+        "id": "L004",
+        "type": "Laptop",
+        "name": "HP EliteBook 840"
+      }
+    ],
+    "status": "active",
+    "notified": true,
+    "timestamp": "2025-08-07T17:10:05.024Z",
+    "history": [
+      {
+        "timestamp": "2025-08-07T17:10:45.986Z",
+        "action": "end_date_updated",
+        "oldEndDate": "2025-08-21",
+        "newEndDate": "2025-08-08T00:00:00.000Z"
+      }
+    ]
   }
 ]
