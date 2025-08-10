@@ -568,7 +568,7 @@ router.put('/:id/update-with-id', loadMaterials, async (req, res) => {
 
 // Action: Move a quantity of a material type from one room to another
 router.post('/move-quantity', loadMaterials, async (req, res) => {
-  const { materialType, quantity, fromRoom, toRoom } = req.body;
+  const { materialType, quantity, fromRoom, toRoom, status } = req.body;
   let materials = [...req.materials];
 
   if (!materialType || !quantity || !fromRoom || !toRoom) {
@@ -591,7 +591,12 @@ router.post('/move-quantity', loadMaterials, async (req, res) => {
     const index = materials.findIndex(m => m.id === instance.id);
     const oldLocation = materials[index].currentLocation;
     materials[index].currentLocation = toRoom;
-    materials[index].isServing = toRoom !== 'Magazin';
+    // Set isServing based on user choice or default logic
+    if (status && status !== 'default') {
+      materials[index].isServing = status === 'serving';
+    } else {
+      materials[index].isServing = toRoom !== 'Magazin';
+    }
 
     // Add history entry for each moved instance
     if (!materials[index].history) materials[index].history = [];

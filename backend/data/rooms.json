@@ -251,6 +251,11 @@
         "timestamp": "2025-08-07T16:10:19.616Z",
         "action": "materials_moved_in",
         "description": "1 HDMI cable (5M HDMI cable) moved in from BI."
+      },
+      {
+        "timestamp": "2025-08-10T14:59:55.796Z",
+        "action": "materials_moved_out",
+        "description": "4 HDMI cable(s) moved out to BI."
       }
     ],
     "materialCount": 0
@@ -360,6 +365,11 @@
         "timestamp": "2025-08-07T16:10:19.616Z",
         "action": "materials_moved_out",
         "description": "1 HDMI cable (5M HDMI cable) moved out to DGB."
+      },
+      {
+        "timestamp": "2025-08-10T14:59:55.796Z",
+        "action": "materials_moved_in",
+        "description": "4 HDMI cable(s) moved in from DGB."
       }
     ],
     "materialCount": 6

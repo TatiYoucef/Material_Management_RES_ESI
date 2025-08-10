@@ -7,26 +7,41 @@
     <input type="text" [(ngModel)]="searchQuery" (input)="loadFiles()" placeholder="Search by title or ID" class="search-bar">
   </div>
 
-  <div class="filters">
-    <select [(ngModel)]="fileType" (change)="loadFiles()" class="form-input">
-      <option value="">All Types</option>
-      <option value="Facture">Facture</option>
-      <option value="Bon de Livraison">Bon de Livraison</option>
-      <option value="décharge">Décharge</option>
-    </select>
-    <input type="text" [(ngModel)]="supplier" (input)="loadFiles()" placeholder="Search by supplier" class="form-input search-input">
-    <label for="fromDate">From:</label>
-    <input type="date" id="fromDate" [(ngModel)]="fromDate" (change)="loadFiles()" class="form-input">
-    <label for="toDate">To:</label>
-    <input type="date" id="toDate" [(ngModel)]="toDate" (change)="loadFiles()" class="form-input">
+  <div class="filters" style="display: block;">
+  <div class="filter-row" style="padding-top: 30px; display: flex; align-items: center; gap: 8px;">
+      <select [(ngModel)]="fileType" (change)="loadFiles()" class="form-input">
+        <option value="">All Types</option>
+        <option value="Facture">Facture</option>
+        <option value="Bon de Livraison">Bon de Livraison</option>
+        <option value="décharge">Décharge</option>
+      </select>
+      <input type="text" [(ngModel)]="supplier" (input)="loadFiles()" placeholder="Search by supplier" class="form-input search-input">
+    </div>
+    <ng-container *ngIf="fileType === 'Facture'; else normalDateFilters">
+  <div class="filter-row" style="display: flex; align-items: center; gap: 8px;">
+        <label for="factureFromDate" style="margin-bottom: 0;">Facture Date From:</label>
+        <input type="date" id="factureFromDate" [(ngModel)]="factureFromDate" (change)="loadFiles()" class="form-input" style="margin-bottom: 0;">
+        <label for="factureToDate" style="margin-bottom: 0;">To:</label>
+        <input type="date" id="factureToDate" [(ngModel)]="factureToDate" (change)="loadFiles()" class="form-input" style="margin-bottom: 0;">
+      </div>
+    </ng-container>
+    <ng-template #normalDateFilters>
+  <div class="filter-row" style="display: flex; align-items: center; gap: 8px;">
+        <label for="fromDate">From:</label>
+        <input type="date" id="fromDate" [(ngModel)]="fromDate" (change)="loadFiles()" class="form-input">
+        <label for="toDate">To:</label>
+        <input type="date" id="toDate" [(ngModel)]="toDate" (change)="loadFiles()" class="form-input">
+      </div>
+    </ng-template>
   </div>
-  <table *ngIf="files.length > 0">
+  <table *ngIf="files.length > 0" style="table-layout: auto;">
     <thead>
       <tr>
         <th>ID</th>
         <th>Title</th>
-        <th>Type</th>
+        <th *ngIf="fileType !== 'Facture'">Type</th>
         <th>Supplier</th>
+  <th *ngIf="fileType === 'Facture'" style="white-space: nowrap; min-width: 110px;">Facture Date</th>
         <th>Created At</th>
         <th>Actions</th>
       </tr>
@@ -35,8 +50,9 @@
       <tr *ngFor="let file of files">
         <td>{{ file.id }}</td>
         <td>{{ file.title }}</td>
-        <td>{{ file.type }}</td>
+        <td *ngIf="fileType !== 'Facture'">{{ file.type }}</td>
         <td>{{ file.supplier || 'None' }}</td>
+        <td *ngIf="fileType === 'Facture'">{{ file.factureDate ? (file.factureDate | date:'dd/MM/yyyy') : 'N/A' }}</td>
         <td>{{ file.createdAt | date:'dd/MM/yyyy HH:mm' }}</td>
         <td class="action-buttons-cell">
           <button [routerLink]="['/files', file.id]" class="action-button">Details</button>
@@ -72,6 +88,10 @@
           <option value="Bon de Livraison">Bon de Livraison</option>
           <option value="décharge">Décharge</option>
         </select>
+      </div>
+      <div class="form-group" *ngIf="newFileType === 'Facture'">
+        <label for="factureDate" class="form-label">Facture Date:</label>
+        <input type="date" id="factureDate" [(ngModel)]="newFactureDate" class="form-input">
       </div>
       <div class="form-group">
         <label for="fileSupplier" class="form-label">Supplier (Optional):</label>

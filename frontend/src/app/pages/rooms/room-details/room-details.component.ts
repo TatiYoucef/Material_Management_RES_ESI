@@ -24,7 +24,7 @@ export class RoomDetailsComponent implements OnInit {
   // For adding new room
   newRoom: any = { name: '', capacity: 0 }; // Removed materials array
 
-  moveMaterialData = { materialType: '', quantity: 1, toRoom: '' };                      
+  moveMaterialData = { materialType: '', quantity: 1, toRoom: '', status: 'default' };                      
   allRooms: any[] = []; 
   showMoveMaterialForm: boolean = false; 
 
@@ -137,7 +137,13 @@ export class RoomDetailsComponent implements OnInit {
 
   moveMaterial(): void {
     if (this.room) {
-      this.dataService.moveMaterialQuantity(this.moveMaterialData.materialType, this.moveMaterialData.quantity, this.room.id, this.moveMaterialData.toRoom).subscribe({
+      this.dataService.moveMaterialQuantity(
+        this.moveMaterialData.materialType,
+        this.moveMaterialData.quantity,
+        this.room.id,
+        this.moveMaterialData.toRoom,
+        this.moveMaterialData.status
+      ).subscribe({
         next: () => {
           this.loadMaterialsInRoom(this.room.id);
           this.notificationService.show({ message: 'Materials moved successfully.', type: 'success' });

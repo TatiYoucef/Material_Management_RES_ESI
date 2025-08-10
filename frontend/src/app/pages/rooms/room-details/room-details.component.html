@@ -82,6 +82,14 @@
             <option *ngFor="let r of allRooms" [value]="r.id">{{ r.name }}</option>
           </select>
         </div>
+        <div class="form-group">
+          <label for="moveStatus">Status after move:</label>
+          <select id="moveStatus" [(ngModel)]="moveMaterialData.status">
+            <option value="default">Default (auto)</option>
+            <option value="available">Available</option>
+            <option value="serving">Serving</option>
+          </select>
+        </div>
         <button (click)="moveMaterial()">Move</button>
       </div>
     </div>

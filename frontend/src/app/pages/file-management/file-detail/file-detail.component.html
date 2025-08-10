@@ -10,7 +10,8 @@
       <div class="detail-item"><strong>Original Name:</strong> <span>{{ file.originalname }}</span></div>
       <div class="detail-item"><strong>MIME Type:</strong> <span>{{ file.mimetype }}</span></div>
       <div class="detail-item"><strong>Size:</strong> <span>{{ file.size }} bytes</span></div>
-      <div class="detail-item"><strong>Uploaded At:</strong> <span>{{ file.createdAt | date:'dd/MM/yyyy HH:mm' }}</span></div>
+  <div class="detail-item"><strong>Uploaded At:</strong> <span>{{ file.createdAt | date:'dd/MM/yyyy HH:mm' }}</span></div>
+  <div class="detail-item" *ngIf="file.type === 'Facture'"><strong>Facture Date:</strong> <span>{{ file.factureDate ? (file.factureDate | date:'dd/MM/yyyy') : 'N/A' }}</span></div>
     </div>
     <div class="file-description">
       <strong>Description:</strong>

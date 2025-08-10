@@ -19,12 +19,15 @@ export class FileListComponent implements OnInit {
   newFileDescription: string = '';
   newFileType: string = 'Facture'; // Default type
   newFileSupplier: string = '';
+  newFactureDate: string = '';
   showUploadForm: boolean = false; // Control visibility of upload form
   searchQuery: string = ''; // For search functionality
   fileType: string = ''; // For filtering
   supplier: string = ''; // For filtering
   fromDate: string = '';
   toDate: string = '';
+  factureFromDate: string = '';
+  factureToDate: string = '';
 
   constructor(private fileService: FileService, private notificationService: NotificationService) { }
 
@@ -33,7 +36,15 @@ export class FileListComponent implements OnInit {
   }
 
   loadFiles(): void {
-    this.fileService.getFiles(this.searchQuery, this.fileType, this.supplier, this.fromDate, this.toDate).subscribe({
+    this.fileService.getFiles(
+      this.searchQuery,
+      this.fileType,
+      this.supplier,
+      this.fromDate,
+      this.toDate,
+      this.factureFromDate,
+      this.factureToDate
+    ).subscribe({
       next: data => {
         this.files = data.reverse();
       },
@@ -49,7 +60,18 @@ export class FileListComponent implements OnInit {
 
   uploadFile(): void {
     if (this.newFile && this.newFileTitle) {
-      this.fileService.uploadFile(this.newFile, this.newFileTitle, this.newFileDescription, this.newFileType, this.newFileSupplier).subscribe({
+      if (this.newFileType === 'Facture' && !this.newFactureDate) {
+        this.notificationService.show({ message: 'Facture Date is required for Facture files.', type: 'warning' });
+        return;
+      }
+      this.fileService.uploadFile(
+        this.newFile,
+        this.newFileTitle,
+        this.newFileDescription,
+        this.newFileType,
+        this.newFileSupplier,
+        this.newFileType === 'Facture' ? this.newFactureDate : undefined
+      ).subscribe({
         next: response => {
           this.notificationService.show({ message: 'File uploaded successfully.', type: 'success' });
           this.loadFiles();
@@ -58,6 +80,7 @@ export class FileListComponent implements OnInit {
           this.newFileDescription = '';
           this.newFileType = 'Facture';
           this.newFileSupplier = '';
+          this.newFactureDate = '';
           this.showUploadForm = false; // Hide form after successful upload
         },
         error: err => {

@@ -20,18 +20,20 @@ export class FileService {
     return headers;
   }
 
-  uploadFile(file: File, title: string, description: string, type: string, supplier: string): Observable<any> {
+  uploadFile(file: File, title: string, description: string, type: string, supplier: string, factureDate?: string): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('title', title);
     formData.append('description', description);
     formData.append('type', type);
     formData.append('supplier', supplier);
-
+    if (type === 'Facture' && factureDate) {
+      formData.append('factureDate', factureDate);
+    }
     return this.http.post(`${this.baseUrl}/files/upload`, formData, { headers: this.getHeaders() });
   }
 
-  getFiles(search?: string, type?: string, supplier?: string, fromDate?: string, toDate?: string): Observable<any[]> {
+  getFiles(search?: string, type?: string, supplier?: string, fromDate?: string, toDate?: string, factureFromDate?: string, factureToDate?: string): Observable<any[]> {
     let params = new HttpParams();
     if (search) {
       params = params.set('search', search);
@@ -42,11 +44,12 @@ export class FileService {
     if (supplier) {
       params = params.set('supplier', supplier);
     }
-    if (fromDate) {
-      params = params.set('fromDate', fromDate);
-    }
-    if (toDate) {
-      params = params.set('toDate', toDate);
+    if (type === 'Facture') {
+      if (factureFromDate) params = params.set('factureFromDate', factureFromDate);
+      if (factureToDate) params = params.set('factureToDate', factureToDate);
+    } else {
+      if (fromDate) params = params.set('fromDate', fromDate);
+      if (toDate) params = params.set('toDate', toDate);
     }
     return this.http.get<any[]>(`${this.baseUrl}/files`, { headers: this.getHeaders(), params });
   }

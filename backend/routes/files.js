@@ -48,7 +48,7 @@ async function loadFiles(req, res, next) {
 // Get all files metadata
 router.get('/', loadFiles, (req, res) => {
   let files = [...req.filesData];
-  const { search, type, supplier, fromDate, toDate } = req.query;
+  const { search, type, supplier, fromDate, toDate, factureFromDate, factureToDate } = req.query;
 
   if (search) {
     const lowerCaseSearch = search.toLowerCase();
@@ -67,12 +67,20 @@ router.get('/', loadFiles, (req, res) => {
     files = files.filter(f => f.supplier && f.supplier.toLowerCase().includes(lowerCaseSupplier));
   }
 
-  if (fromDate) {
-    files = files.filter(f => new Date(f.createdAt) >= new Date(fromDate));
-  }
-
-  if (toDate) {
-    files = files.filter(f => new Date(f.createdAt) <= new Date(toDate));
+  if (type === 'Facture') {
+    if (factureFromDate) {
+      files = files.filter(f => f.type === 'Facture' && f.factureDate && new Date(f.factureDate) >= new Date(factureFromDate));
+    }
+    if (factureToDate) {
+      files = files.filter(f => f.type === 'Facture' && f.factureDate && new Date(f.factureDate) <= new Date(factureToDate));
+    }
+  } else {
+    if (fromDate) {
+      files = files.filter(f => new Date(f.createdAt) >= new Date(fromDate));
+    }
+    if (toDate) {
+      files = files.filter(f => new Date(f.createdAt) <= new Date(toDate));
+    }
   }
 
   res.json(files);
@@ -106,7 +114,7 @@ router.get('/download/:id', loadFiles, (req, res) => {
 
 // Upload a new file
 router.post('/upload', upload.single('file'), loadFiles, async (req, res) => {
-  const { title, description, type, supplier } = req.body;
+  const { title, description, type, supplier, factureDate } = req.body;
   const uploadedFile = req.file;
 
   if (!uploadedFile) {
@@ -129,7 +137,8 @@ router.post('/upload', upload.single('file'), loadFiles, async (req, res) => {
     createdAt: new Date().toISOString(),
     history: [{ timestamp: new Date().toISOString(), action: 'uploaded' }],
     type: type || 'Facture',
-    supplier: supplier || null
+    supplier: supplier || null,
+    factureDate: (type === 'Facture' && factureDate) ? factureDate : null
   };
 
   req.filesData.push(newFile);
