@@ -171,7 +171,6 @@ export class MaterialManagementComponent implements OnInit {
 
   selectIdInputMode(mode: 'enumerated' | 'commaSeparated'): void {
     this.idInputMode = mode;
-    this.clearCustomIds(); // Clear any previously added IDs when changing mode
   }
 
   clearCustomIds(): void {
